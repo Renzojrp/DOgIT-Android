@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.AddEventActivity"
+    tools:showIn="@layout/activity_add_event">
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoANImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:elevation="6dp" />
+
+    <Button
+        android:id="@+id/galeryButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/photoANImageView"
+        app:layout_constraintBottom_toTopOf="@id/nameTextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/galeryButton"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:onClick="galeryClick"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/nameTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error" >
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/nameInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:inputType="textCapSentences" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:text="@string/date_hint"
+        app:layout_constraintTop_toBottomOf="@id/nameTextInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/dateEditText"
+        android:textColor="@color/colorAccent"/>
+
+    <EditText
+        android:id="@+id/dateEditText"
+        android:inputType="date"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        app:layout_constraintStart_toEndOf="@id/dateTextView"
+        app:layout_constraintTop_toBottomOf="@id/nameTextInputLayout"
+        android:textSize="18sp"
+        android:hint="@string/date_format_hint"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/detailTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateEditText"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/detailInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/detail_hint"
+            android:inputType="textCapSentences|textMultiLine"  />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/locationTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailTextInputLayout"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/locationInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location_hint"
+            android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/capabilityTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationTextInputLayout"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/capabilityInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/capability_hint"
+            android:inputType="text|number"/>
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

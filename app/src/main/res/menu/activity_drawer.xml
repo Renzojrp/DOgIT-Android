@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="@string/nav_option_user" />
+        <item
+            android:id="@+id/nav_pet"
+            android:icon="@drawable/ic_pets_black_24dp"
+            android:title="@string/nav_option_pets" />
+        <item
+            android:id="@+id/nav_my_publication"
+            android:icon="@drawable/ic_public_black_24dp"
+            android:title="@string/nav_option_my_publication" />
+        <item
+            android:id="@+id/nav_event"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="@string/nav_option_event" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sesion"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="@string/nav_option_log_out" />
+    </group>
+
+</menu>

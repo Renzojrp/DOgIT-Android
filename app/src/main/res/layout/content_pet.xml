@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/petConstraintLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoPetANImageView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@mipmap/ic_login"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_name"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/photoPetANImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_description"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:layout_constraintStart_toEndOf="@id/photoPetANImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:id="@+id/genderTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_gender"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+        app:layout_constraintStart_toEndOf="@id/photoPetANImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
+
+</android.support.constraint.ConstraintLayout>
