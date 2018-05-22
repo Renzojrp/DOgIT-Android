@@ -63,9 +63,10 @@ public class AddPetActivity extends AppCompatActivity {
 
     String TAG = "DOgIT";
     private static final int GALERY_INTENT = 1;
-
     private StorageReference storageReference;
     private Uri url;
+    private Uri uriSavedImage;
+    private UploadTask uploadTask;
 
     User user;
     List<String> gender = new ArrayList<>();
@@ -140,10 +141,12 @@ public class AddPetActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if ( requestCode == 1 && resultCode == RESULT_OK) {
-            Uri uriSavedImage = data.getData();
+        if ( requestCode == GALERY_INTENT && resultCode == RESULT_OK) {
+            uriSavedImage = data.getData();
             StorageReference filepath = storageReference.child("pet").child(uriSavedImage.getLastPathSegment());
-            filepath.putFile(uriSavedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            uploadTask = filepath.putFile(uriSavedImage);
+
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(AddPetActivity.this, "Se subio exitosamente", Toast.LENGTH_SHORT).show();
