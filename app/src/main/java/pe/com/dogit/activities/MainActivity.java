@@ -115,9 +115,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_event) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_sesion) {
-            LoginActivity.changeData(MainActivity.this,"user" ,"");
-            LoginActivity.changeData(MainActivity.this,"password" ,"");
-            LoginActivity.changeData(MainActivity.this,"token" ,"");
+            SplashActivity.changeData(MainActivity.this,"user" ,"");
+            SplashActivity.changeData(MainActivity.this,"password" ,"");
+            SplashActivity.changeData(MainActivity.this,"token" ,"");
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

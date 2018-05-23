@@ -16,6 +16,7 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.activities.AboutPetActivity;
 import pe.com.dogit.activities.AddPetActivity;
 import pe.com.dogit.models.Pet;
 
@@ -55,7 +56,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
                 DOgITApp.getInstance().setCurrentPet(pets.get(position));
                 v.getContext()
                         .startActivity(new Intent(v.getContext(),
-                                AddPetActivity.class));
+                                AboutPetActivity.class));
             }
         });
     }

@@ -68,8 +68,6 @@ public class AboutEventActivity extends AppCompatActivity {
         getAssistencesByEvent();
 
         setEventInformation();
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

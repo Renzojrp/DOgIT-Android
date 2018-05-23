@@ -24,6 +24,7 @@
 
         <TextView
             android:id="@+id/displayNameTextView"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/photoANImageView"
@@ -37,6 +38,7 @@
 
         <TextView
             android:id="@+id/emailTextView"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/displayNameTextView"
@@ -47,6 +49,7 @@
 
         <TextView
             android:id="@+id/mobilePhoneTextView"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/emailTextView"
@@ -57,6 +60,7 @@
 
         <TextView
             android:id="@+id/genderTextView"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/mobilePhoneTextView"
@@ -67,6 +71,7 @@
 
         <TextView
             android:id="@+id/birthDateTextView"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/genderTextView"

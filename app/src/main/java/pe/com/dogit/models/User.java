@@ -165,6 +165,7 @@ public class User {
         try {
             user.setId(jsonUser.getString("_id"))
                     .setEmail(jsonUser.getString("email"))
+                    .setPassword(jsonUser.getString("password"))
                     .setName(jsonUser.getString("name"))
                     .setLastName(jsonUser.getString("lastName"))
                     .setSignupDate(jsonUser.getString("signupDate"))

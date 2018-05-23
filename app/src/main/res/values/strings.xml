@@ -73,19 +73,21 @@
     <string name="size_hint">Size cm</string>
     <string name="age_hint">Age month</string>
     <string name="description_hint">Description</string>
-    <string name= "detail_hint">Detail</string>
-    <string name= "date_hint">Date</string>
-    <string name= "location_hint">Location</string>
-    <string name= "capability_hint">Capability</string>
+    <string name="detail_hint">Detail</string>
+    <string name="date_hint">Date</string>
+    <string name="location_hint">Location</string>
+    <string name="capability_hint">Capability</string>
 
     <!-- Button -->
     <string name="signInButton">Login</string>
     <string name="signUpTextView"><u>No account yet? Create one</u></string>
+    <string name="forgetPasswordTextView"><u>Do not remember your password?</u></string>
     <string name="signUpButton">Create account</string>
     <string name="signInTextView"><u>Already a member? Login</u></string>
     <string name="cancelButton">Cancel</string>
     <string name="acceptButton">Accept</string>
     <string name="galeryButton">Galery</string>
+    <string name="sendMailButton">Send mail</string>
 
     <!-- Invalid -->
     <string name="invalid_email">Invalid email</string>
@@ -118,9 +120,15 @@
     <string name="sample_description" translatable="false">Sample description</string>
     <string name="sample_category" translatable="false">Sample category</string>
     <string name="sample_age" translatable="false">Sample age</string>
-    <string name="sample_weigth" translatable="false">Sample weigth</string>
+    <string name="sample_weight" translatable="false">Sample weigth</string>
     <string name="sample_size" translatable="false">Sample size</string>
     <string name="sample_address" translatable="false">Sample address</string>
     <string name="sample_capacity" translatable="false">Sample capacity</string>
+    <string name="sample_rescue_date" translatable="false">Sample rescue date</string>
+
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_about_pet">AboutPetActivity</string>
+    <string name="title_activity_recover_password">RecoverPasswordActivity</string>
 
 </resources>

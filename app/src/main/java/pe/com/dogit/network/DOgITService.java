@@ -8,6 +8,7 @@ public class DOgITService {
     public static String SIGNIN_URL = "https://dogit.herokuapp.com/api/signin";
     public static String SIGNUP_URL = "https://dogit.herokuapp.com/api/signup";
     public static String USERS_EDIT_URL = "https://dogit.herokuapp.com/api/user/{user_id}";
+    public static String USER_EMAIL_URL = "https://dogit.herokuapp.com/api/user/email/{email}";
     public static String PET_URL = "https://dogit.herokuapp.com/api/pet";
     public static String PET_EDIT_URL = "https://dogit.herokuapp.com/api/pet/{pet_id}";
     public static String PET_USER_URL = "https://dogit.herokuapp.com/api/pet/user/{user_id}";

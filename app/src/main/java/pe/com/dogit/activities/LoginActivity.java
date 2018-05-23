@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout emailEditText;
     TextInputLayout passwordEditText;
     TextView signUpTextView;
+    TextView forgetPasswordTextView;
     ProgressBar signInProgressBar;
 
     private static final String STRING_PREFERENCES = "preferences";
@@ -53,34 +54,20 @@ public class LoginActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         intent = new Intent(LoginActivity.this, MainActivity.class);
-        if(!getData("user").equals("") && !getData("password").equals("")) {
-            signIn(getData("user"), getData("password"));
-        }
 
         emailEditText = findViewById(R.id.emailTextInputLayout);
         passwordEditText = findViewById(R.id.passwordTextInputLayout);
         signInProgressBar = findViewById(R.id.signInProgressBar);
         signUpTextView = findViewById(R.id.signUpTextView);
+        forgetPasswordTextView = findViewById(R.id.forgetPasswordTextView);
+        forgetPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RecoverPasswordActivity.class));
+            }
+        });
+
         signInProgressBar.setVisibility(View.GONE);
-    }
-
-    private void setData(String keyPref, String data) {
-        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
-        SharedPreferences.Editor editor;
-        editor = preferences.edit();
-        editor.putString(keyPref, data).apply();
-    }
-
-    public static void changeData(Context context, String keyPref, String data) {
-        SharedPreferences preferences = context.getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
-        SharedPreferences.Editor editor;
-        editor = preferences.edit();
-        editor.putString(keyPref, data).apply();
-    }
-
-    private String getData(String keyPref) {
-        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
-        return preferences.getString(keyPref, "");
     }
 
     public void signInClick(View v) {
@@ -130,9 +117,9 @@ public class LoginActivity extends AppCompatActivity {
                             token = response.getString("token");
                             DOgITApp.getInstance().setCurrentToken("Bearer " + token);
                             DOgITApp.getInstance().setCurrentUser(user);
-                            setData("user" ,user.getEmail());
-                            setData("password" ,user.getPassword());
-                            setData("token" ,token);
+                            SplashActivity.setData(LoginActivity.this,"user" ,user.getEmail());
+                            SplashActivity.setData(LoginActivity.this,"password" ,user.getPassword());
+                            SplashActivity.setData(LoginActivity.this,"token" ,token);
                             Toast.makeText(getApplicationContext(),  getString(R.string.hello) + " " + DOgITApp.getInstance().getCurrentUser().getName(), Toast.LENGTH_SHORT).show();
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             finish();
