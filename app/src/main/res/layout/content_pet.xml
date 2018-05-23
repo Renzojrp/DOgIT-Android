@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/nameTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/sample_name"
@@ -29,6 +30,7 @@
 
     <TextView
         android:id="@+id/descriptionTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/sample_description"
@@ -40,6 +42,7 @@
 
     <TextView
         android:id="@+id/genderTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/sample_gender"

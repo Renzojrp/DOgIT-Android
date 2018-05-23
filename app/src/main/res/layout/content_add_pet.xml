@@ -20,6 +20,7 @@
 
     <Button
         android:id="@+id/galeryButton"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -33,6 +34,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/nameTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -46,6 +48,7 @@
         app:errorTextAppearance="@style/Error"
         app:counterOverflowTextAppearance="@style/Error" >
         <android.support.design.widget.TextInputEditText
+            android:fontFamily="@font/sourcesansprolight"
             android:id="@+id/nameInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +58,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/descriptionTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -69,6 +73,7 @@
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/descriptionInputEditText"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/description_hint"
@@ -77,6 +82,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/weigthTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -89,6 +95,7 @@
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/weigthInputEditText"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/weigth_hint"
@@ -97,6 +104,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/sizeTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -109,6 +117,7 @@
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/sizeInputEditText"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/size_hint"
@@ -117,6 +126,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ageTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -129,6 +139,7 @@
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/ageInputEditText"
+            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/age_hint"
@@ -137,6 +148,7 @@
 
     <TextView
         android:id="@+id/genderTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -148,6 +160,7 @@
 
     <Spinner
         android:id="@+id/genderSpinner"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -156,6 +169,7 @@
 
     <TextView
         android:id="@+id/rescueDateTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -167,6 +181,7 @@
 
     <EditText
         android:id="@+id/rescueEditText"
+        android:fontFamily="@font/sourcesansprolight"
         android:inputType="date"
         android:layout_margin="16dp"
         android:layout_width="wrap_content"

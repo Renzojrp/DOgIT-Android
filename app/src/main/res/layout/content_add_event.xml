@@ -33,6 +33,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/nameTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -53,6 +54,7 @@
 
     <TextView
         android:id="@+id/dateTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -65,6 +67,7 @@
 
     <EditText
         android:id="@+id/dateEditText"
+        android:fontFamily="@font/sourcesansprolight"
         android:inputType="date"
         android:layout_margin="16dp"
         android:layout_width="wrap_content"
@@ -79,6 +82,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/detailTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -101,6 +105,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/locationTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -121,6 +126,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/capabilityTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

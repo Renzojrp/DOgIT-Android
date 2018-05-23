@@ -1,5 +1,7 @@
 package pe.com.dogit.models;
 
+import android.graphics.Typeface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -134,4 +136,7 @@ public class Event {
             }
         return events;
     }
+
+
+
 }

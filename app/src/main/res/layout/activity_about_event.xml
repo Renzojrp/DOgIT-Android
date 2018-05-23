@@ -22,7 +22,6 @@
 
     <include layout="@layout/content_about_event" />
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/assistenceEventFloatingActionButton"
         android:layout_width="wrap_content"
@@ -30,9 +29,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="saveAssistenceButton"
         android:src="@drawable/ic_directions_walk_white_24dp"
         app:elevation="6dp"
-        app:fabSize="normal"
-        android:onClick="saveAssistenceButton"/>
+        app:fabSize="normal" />
 
 </android.support.design.widget.CoordinatorLayout>

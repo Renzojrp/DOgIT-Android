@@ -28,12 +28,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
         android:text="@string/sample_name"
+        android:fontFamily="@font/sourcesansprolight"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="40sp"/>
 
     <TextView
         android:id="@+id/descriptionTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
@@ -44,6 +46,7 @@
 
     <TextView
         android:id="@+id/addressTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
@@ -54,6 +57,7 @@
 
     <TextView
         android:id="@+id/dateTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/addressTextView"
@@ -64,6 +68,7 @@
 
     <TextView
         android:id="@+id/capacityTextView"
+        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dateTextView"

@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity
         emailTextView.setText(user.getEmail());
 
         navigateAccordingTo(R.id.nav_user);
+
+
     }
 
     private Fragment getFragmentFor(int id) {
