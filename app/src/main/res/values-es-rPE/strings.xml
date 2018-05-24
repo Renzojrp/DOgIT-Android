@@ -37,7 +37,7 @@
     <string name="female_gender">Mujer</string>
     <string name="work_place_hint">Lugar de trabajo</string>
     <string name="dni_hint">DNI</string>
-    <string name="address_hint">Dirección</string>
+    <string name="address_hint">Address</string>
     <string name="date_format_hint">dd/mm/yyyy</string>
     <string name="name_hint">Nombre</string>
     <string name="weigth_hint">Peso Kg</string>
@@ -82,4 +82,19 @@
     <string name="error_event_update">Error al actualizar evento</string>
     <string name="action_edit">Editar</string>
     <string name="error_edit_event">Para editar debes ser el dueño del evento</string>
+    <string name="title_activity_splash">Actividad Splash</string>
+    <string name="title_activity_about_pet">Mis Mascotas</string>
+    <string name="title_activity_recover_password">Recuperar Contraseña</string>
+    <string name="forgetPasswordTextView"><u>Me olvidé mi contraseña</u></string>
+    <string name="sendMailButton">Enviar correo</string>
+    <string name="title_activity_about_my_publication">Mis Publicaciones</string>
+    <string name="title_activity_add_my_publication">Crear publicaciones</string>
+    <string name="pet_hint">Mascota</string>
+    <string name="publication_created">Publicación creada</string>
+    <string name="error_publication_save">Fallo al guardar publicación</string>
+    <string name="publication_delete">´Publicación eliminada</string>
+    <string name="error_publication_delete">Fallo al eliminar publicación</string>
+    <string name="empty_pet">Elige una mascota</string>
+    <string name="publication_update">Publicación actualizada</string>
+    <string name="error_publication_update">Fallo al actualizar publicación</string>
 </resources>

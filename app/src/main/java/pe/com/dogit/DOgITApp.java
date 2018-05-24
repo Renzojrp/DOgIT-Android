@@ -6,10 +6,11 @@ import com.androidnetworking.AndroidNetworking;
 
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
+import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
 
-public class DOgITApp extends Application{
+public class DOgITApp extends Application {
     private static DOgITApp instance;
     private DOgITService DOgITService;
 
@@ -32,7 +33,7 @@ public class DOgITApp extends Application{
         return DOgITService.getCurrentUser();
     }
 
-    public DOgITApp setCurrentUser(User user){
+    public DOgITApp setCurrentUser(User user) {
         DOgITService.setCurrentUser(user);
         return this;
     }
@@ -41,7 +42,7 @@ public class DOgITApp extends Application{
         return DOgITService.getCurrentToken();
     }
 
-    public DOgITApp setCurrentToken(String token){
+    public DOgITApp setCurrentToken(String token) {
         DOgITService.setCurrentToken(token);
         return this;
     }
@@ -50,7 +51,7 @@ public class DOgITApp extends Application{
         return DOgITService.getCurrentPet();
     }
 
-    public DOgITApp setCurrentPet(Pet pet){
+    public DOgITApp setCurrentPet(Pet pet) {
         DOgITService.setCurrentPet(pet);
         return this;
     }
@@ -59,8 +60,18 @@ public class DOgITApp extends Application{
         return DOgITService.getCurrentEvent();
     }
 
-    public DOgITApp setCurrentEvent(Event event){
+    public DOgITApp setCurrentEvent(Event event) {
         DOgITService.setCurrentEvent(event);
         return this;
     }
+
+    public Publication getCurrentPublication() {
+        return DOgITService.getCurrentPublication();
+    }
+
+    public DOgITApp setCurrentPublication(Publication publication) {
+        DOgITService.setCurrentPublication(publication);
+        return this;
+    }
 }
+

@@ -2,6 +2,7 @@ package pe.com.dogit.network;
 
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
+import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 
 public class DOgITService {
@@ -17,17 +18,20 @@ public class DOgITService {
     public static String ASSISTENCE_URL = "https://dogit.herokuapp.com/api/assistance";
     public static String ASSISTENCE_EVENT_URL = "https://dogit.herokuapp.com/api/assistance/event/{event_id}";
     public static String ASSISTENCE_USER_URL = "https://dogit.herokuapp.com/api/assistance/user/{user_id}";
+    public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/mypublication/{publication_id}";
+    public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/mypublication";
 
     private User currentUser;
     private String currentToken;
     private Pet currentPet;
     private Event currentEvent;
+    private Publication currentPublication;
 
     public User getCurrentUser() {
         return currentUser;
     }
 
-    public DOgITService setCurrentUser(User currentUser){
+    public DOgITService setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
         return this;
     }
@@ -36,7 +40,7 @@ public class DOgITService {
         return currentToken;
     }
 
-    public DOgITService setCurrentToken(String currentToken){
+    public DOgITService setCurrentToken(String currentToken) {
         this.currentToken = currentToken;
         return this;
     }
@@ -45,7 +49,7 @@ public class DOgITService {
         return currentPet;
     }
 
-    public DOgITService setCurrentPet(Pet currentPet){
+    public DOgITService setCurrentPet(Pet currentPet) {
         this.currentPet = currentPet;
         return this;
     }
@@ -54,10 +58,19 @@ public class DOgITService {
         return currentEvent;
     }
 
-    public DOgITService setCurrentEvent(Event currentEvent){
+    public DOgITService setCurrentEvent(Event currentEvent) {
         this.currentEvent = currentEvent;
         return this;
     }
 
 
+    public Publication getCurrentPublication() {
+        return currentPublication;
+    }
+
+    public DOgITService setCurrentPublication(Publication currentPublication) {
+        this.currentPublication = currentPublication;
+        return this;
+    }
 }
+

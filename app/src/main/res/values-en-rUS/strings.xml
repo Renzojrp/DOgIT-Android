@@ -81,4 +81,19 @@
     <string name="error_event_update">Failed to update event</string>
     <string name="action_edit">Edit</string>
     <string name="error_edit_event">To edit you must be the owner of the event</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_about_pet">AboutPetActivity</string>
+    <string name="title_activity_recover_password">RecoverPasswordActivity</string>
+    <string name="forgetPasswordTextView"><u>Do not remember your password?</u></string>
+    <string name="sendMailButton">Send mail</string>
+    <string name="title_activity_about_my_publication">AboutMyPublication</string>
+    <string name="title_activity_add_my_publication">AddMyPublicationActivity</string>
+    <string name="pet_hint">Pet</string>
+    <string name="publication_created">Publication created</string>
+    <string name="error_publication_save">Failed to save publication</string>
+    <string name="publication_delete">Publication delete</string>
+    <string name="error_publication_delete">Failed to delete publication</string>
+    <string name="publication_update">Updated Publication</string>
+    <string name="error_publication_update">Failed to update Publication</string>
+    <string name="empty_pet">Choose a pet</string>
 </resources>

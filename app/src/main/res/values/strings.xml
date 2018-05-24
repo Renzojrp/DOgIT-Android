@@ -54,6 +54,14 @@
     <string name="event_update">Updated event</string>
     <string name="error_event_update">Failed to update event</string>
 
+    <!-- AddMyPublicationActivity -->
+    <string name="publication_created">Publication created</string>
+    <string name="error_publication_save">Failed to save publication</string>
+    <string name="publication_delete">Publication delete</string>
+    <string name="error_publication_delete">Failed to delete publication</string>
+    <string name="publication_update">Updated Publication</string>
+    <string name="error_publication_update">Failed to update Publication</string>
+
     <!-- Hint -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -75,6 +83,7 @@
     <string name="description_hint">Description</string>
     <string name="detail_hint">Detail</string>
     <string name="date_hint">Date</string>
+    <string name="pet_hint">Pet</string>
     <string name="location_hint">Location</string>
     <string name="capability_hint">Capability</string>
 
@@ -106,6 +115,7 @@
     <string name="empty_size">Complete size</string>
     <string name="empty_age">Complete age</string>
     <string name="empty_photo">Choose a picture</string>
+    <string name="empty_pet">Choose a pet</string>
     <string name="empty_capability">Complete capability</string>
     <string name="empty_location">Complete location</string>
 
@@ -124,11 +134,16 @@
     <string name="sample_size" translatable="false">Sample size</string>
     <string name="sample_address" translatable="false">Sample address</string>
     <string name="sample_capacity" translatable="false">Sample capacity</string>
+    <string name="sample_publication" translatable="false">Sample publication</string>
     <string name="sample_rescue_date" translatable="false">Sample rescue date</string>
+    <string name="sample_pet" translatable="false">Sample pet</string>
 
 
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_about_pet">AboutPetActivity</string>
     <string name="title_activity_recover_password">RecoverPasswordActivity</string>
+    <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>
+    <string name="title_activity_add_my_publication">AddMyPublicationActivity</string>
+
 
 </resources>

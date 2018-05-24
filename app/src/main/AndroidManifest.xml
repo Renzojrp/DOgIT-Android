@@ -33,11 +33,11 @@
         <activity
             android:name=".activities.AddPetActivity"
             android:label="@string/title_activity_add_pet"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activities.AboutPetActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pe.com.dogit.activities.MainActivity" />
+                android:value="pe.com.dogit.activities.AboutPetActivity" />
         </activity>
         <activity
             android:name=".activities.EditUserProfileActivity"
@@ -74,6 +74,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pe.com.dogit.activities.LoginActivity" />
         </activity>
+        <activity
+            android:name=".activities.AboutMyPublicationActivity"
+            android:label="@string/title_activity_about_my_publication"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddMyPublicationActivity"
+            android:label="@string/title_activity_add_my_publication"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

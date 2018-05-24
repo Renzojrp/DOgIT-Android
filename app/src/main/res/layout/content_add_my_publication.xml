@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.AddMyPublicationActivity"
+    tools:showIn="@layout/activity_add_my_publication">
 
     <com.androidnetworking.widget.ANImageView
         android:id="@+id/photoANImageView"
@@ -17,41 +20,37 @@
 
     <Button
         android:id="@+id/galeryButton"
-        android:fontFamily="@font/sourcesansprolight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/photoANImageView"
-        app:layout_constraintBottom_toTopOf="@id/nameTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/galeryButton"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:onClick="galeryClick"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/nameTextInputLayout"
+    <TextView
+        android:id="@+id/petTextView"
         android:fontFamily="@font/sourcesansprolight"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        android:text="@string/pet_hint"
         app:layout_constraintTop_toBottomOf="@id/photoANImageView"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorAccent"
-        app:counterEnabled="true"
-        app:counterMaxLength="30"
-        app:errorTextAppearance="@style/Error"
-        app:counterOverflowTextAppearance="@style/Error" >
-        <android.support.design.widget.TextInputEditText
-            android:fontFamily="@font/sourcesansprolight"
-            android:id="@+id/nameInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/name_hint"
-            android:inputType="textCapWords" />
-    </android.support.design.widget.TextInputLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/dateEditText"
+        android:textColor="@color/colorAccent"/>
+
+    <Spinner
+        android:id="@+id/petSpinner"
+        android:fontFamily="@font/sourcesansprolight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toEndOf="@id/petTextView"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/descriptionTextInputLayout"
@@ -61,7 +60,7 @@
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/petTextView"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorAccent"
         app:counterEnabled="true"
@@ -70,47 +69,31 @@
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/descriptionInputEditText"
-            android:fontFamily="@font/sourcesansprolight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/description_hint"
+            android:hint="@string/detail_hint"
             android:inputType="textCapSentences|textMultiLine"  />
     </android.support.design.widget.TextInputLayout>
-    
 
-    <Spinner
-        android:id="@+id/genderSpinner"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/addressTextInputLayout"
         android:fontFamily="@font/sourcesansprolight"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toEndOf="@id/genderTextView"
-        app:layout_constraintTop_toBottomOf="@id/ageTextInputLayout" />
-
-    <TextView
-        android:id="@+id/rescueDateTextView"
-        android:fontFamily="@font/sourcesansprolight"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="18sp"
-        android:text="@string/birthdate_hint"
-        app:layout_constraintBottom_toBottomOf="@id/rescueEditText"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/colorAccent"/>
-
-    <EditText
-        android:id="@+id/rescueEditText"
-        android:fontFamily="@font/sourcesansprolight"
-        android:inputType="date"
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        app:layout_constraintStart_toEndOf="@id/rescueDateTextView"
-        app:layout_constraintTop_toBottomOf="@id/genderTextView"
-        android:textSize="18sp"
-        android:hint="@string/date_format_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextInputLayout"
         android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorAccent" />
+        android:textColorHint="@color/colorAccent"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/addressInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address_hint"
+            android:inputType="textCapWords"/>
+    </android.support.design.widget.TextInputLayout>
+
 </android.support.constraint.ConstraintLayout>
