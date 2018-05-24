@@ -1,5 +1,7 @@
 package pe.com.dogit.network;
 
+import java.util.List;
+
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
@@ -18,14 +20,16 @@ public class DOgITService {
     public static String ASSISTENCE_URL = "https://dogit.herokuapp.com/api/assistance";
     public static String ASSISTENCE_EVENT_URL = "https://dogit.herokuapp.com/api/assistance/event/{event_id}";
     public static String ASSISTENCE_USER_URL = "https://dogit.herokuapp.com/api/assistance/user/{user_id}";
-    public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/mypublication/{publication_id}";
-    public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/mypublication";
+    public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/publication/{publication_id}";
+    public static String PUBLICATION_USER_URL = "https://dogit.herokuapp.com/api/publication/user/{user_id}";
+    public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/publication";
 
     private User currentUser;
     private String currentToken;
     private Pet currentPet;
     private Event currentEvent;
     private Publication currentPublication;
+    private List<Pet> currentPets;
 
     public User getCurrentUser() {
         return currentUser;
@@ -72,5 +76,16 @@ public class DOgITService {
         this.currentPublication = currentPublication;
         return this;
     }
+
+
+    public List<Pet> getCurrentPets() {
+        return currentPets;
+    }
+
+    public DOgITService setCurrentPets(List<Pet> currentPets){
+        this.currentPets = currentPets;
+        return this;
+    }
+
 }
 

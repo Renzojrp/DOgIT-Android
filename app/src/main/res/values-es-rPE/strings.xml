@@ -44,6 +44,7 @@
     <string name="size_hint">Tamaño cm</string>
     <string name="age_hint">Edad meses</string>
     <string name="description_hint">Descripción</string>
+    <string name="requirements_hint">Requisitos</string>
     <string name="signInButton">Iniciar sesión</string>
     <string name="signUpButton">Crear cuenta</string>
     <string name="signUpTextView"><u>¿Aún sin cuenta? Crea una</u></string>
@@ -97,4 +98,5 @@
     <string name="empty_pet">Elige una mascota</string>
     <string name="publication_update">Publicación actualizada</string>
     <string name="error_publication_update">Fallo al actualizar publicación</string>
+    <string name="empty_requirements">Complete los requisitos</string>
 </resources>

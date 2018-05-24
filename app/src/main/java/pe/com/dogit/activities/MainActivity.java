@@ -9,11 +9,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
@@ -21,7 +31,9 @@ import pe.com.dogit.fragments.EventFragment;
 import pe.com.dogit.fragments.MyPublicationFragment;
 import pe.com.dogit.fragments.PetFragment;
 import pe.com.dogit.fragments.UserFragment;
+import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
+import pe.com.dogit.network.DOgITService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +43,9 @@ public class MainActivity extends AppCompatActivity
     TextView emailTextView;
 
     User user;
+
+    private List<Pet> pets;
+    private static String TAG = "DOgIT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +79,7 @@ public class MainActivity extends AppCompatActivity
 
         navigateAccordingTo(R.id.nav_user);
 
+        getPets();
 
     }
 
@@ -128,6 +144,33 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void getPets() {
+        AndroidNetworking
+                .get(DOgITService.PET_USER_URL)
+                .addPathParameter("user_id", user.getId())
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setTag(TAG)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            pets = Pet.build(response.getJSONArray("pets"));
+                            Log.d(TAG, "Found Pets: " + String.valueOf(pets.size()));
+                            DOgITApp.getInstance().setCurrentPets(pets);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d(TAG, anError.getMessage());
+                    }
+                });
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -138,5 +181,6 @@ public class MainActivity extends AppCompatActivity
         photoANImageView.setImageUrl(user.getPhoto());
         displayNameTextView.setText(user.getName());
         emailTextView.setText(user.getEmail());
+        getPets();
     }
 }

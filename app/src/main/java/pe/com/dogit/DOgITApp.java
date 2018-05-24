@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.androidnetworking.AndroidNetworking;
 
+import java.util.List;
+
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
@@ -73,5 +75,16 @@ public class DOgITApp extends Application {
         DOgITService.setCurrentPublication(publication);
         return this;
     }
+
+    public List<Pet> getCurrentPets() {
+        return DOgITService.getCurrentPets();
+    }
+
+    public DOgITApp setCurrentPets(List<Pet> pets){
+        DOgITService.setCurrentPets(pets);
+        return this;
+    }
+
+
 }
 

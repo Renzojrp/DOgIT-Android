@@ -15,7 +15,6 @@ public class Publication {
     private String requirements;
     private String publicationDate;
     private String status;
-    private String photo;
     private String address;
     private String date;
 
@@ -95,6 +94,14 @@ public class Publication {
         return this;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public static Publication build(JSONObject jsonPublication) {
         if(jsonPublication == null) return null;
         Publication publication = new Publication();
@@ -106,7 +113,6 @@ public class Publication {
                     .setRequirements(jsonPublication.getString("requirements"))
                     .setPublicationDate(jsonPublication.getString("publicationDate"))
                     .setStatus(jsonPublication.getString("status"))
-                    .setDate(jsonPublication.getString("date"))
                     .setAddress(jsonPublication.getString("address"));
             return publication;
         } catch (JSONException e) {
@@ -129,22 +135,6 @@ public class Publication {
     }
 
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public Publication setDate(String date) {
-        this.date = date;
-        return this;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
 
 }

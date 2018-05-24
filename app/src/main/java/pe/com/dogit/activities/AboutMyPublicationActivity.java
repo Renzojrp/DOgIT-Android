@@ -51,7 +51,6 @@ public class AboutMyPublicationActivity extends AppCompatActivity {
         petTextView.setText(publication.getPet().getName());
         descriptionTextView.setText(publication.getDescription());
         addressTextView.setText(publication.getAddress());
-        dateTextView.setText((publication.getDate()));
     }
 
 
