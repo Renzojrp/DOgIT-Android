@@ -55,6 +55,7 @@
     <string name="error_event_update">Failed to update event</string>
 
     <!-- AddMyPublicationActivity -->
+    <string name="title_activity_add_my_publication">AddMyPublicationActivity</string>
     <string name="publication_created">Publication created</string>
     <string name="error_publication_save">Failed to save publication</string>
     <string name="publication_delete">Publication delete</string>
@@ -86,6 +87,7 @@
     <string name="pet_hint">Pet</string>
     <string name="location_hint">Location</string>
     <string name="capability_hint">Capability</string>
+    <string name="requirements_hint">Requirements</string>
 
     <!-- Button -->
     <string name="signInButton">Login</string>
@@ -118,6 +120,7 @@
     <string name="empty_pet">Choose a pet</string>
     <string name="empty_capability">Complete capability</string>
     <string name="empty_location">Complete location</string>
+    <string name="empty_requirements">Complete requirements</string>
 
     <!-- Samples -->
     <string name="sample_name" translatable="false">Sample Name</string>
@@ -143,7 +146,6 @@
     <string name="title_activity_about_pet">AboutPetActivity</string>
     <string name="title_activity_recover_password">RecoverPasswordActivity</string>
     <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>
-    <string name="title_activity_add_my_publication">AddMyPublicationActivity</string>
 
 
 </resources>

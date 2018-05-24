@@ -14,21 +14,10 @@
         android:layout_height="100dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
         android:src="@mipmap/ic_launcher"
         android:elevation="6dp" />
-
-    <Button
-        android:id="@+id/galeryButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/photoANImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/galeryButton"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
-        android:onClick="galeryClick"/>
 
     <TextView
         android:id="@+id/petTextView"
@@ -86,6 +75,8 @@
         app:layout_constraintTop_toBottomOf="@id/descriptionTextInputLayout"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorAccent"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
         app:errorTextAppearance="@style/Error"
         app:counterOverflowTextAppearance="@style/Error">
         <android.support.design.widget.TextInputEditText
@@ -94,6 +85,29 @@
             android:layout_height="wrap_content"
             android:hint="@string/address_hint"
             android:inputType="textCapWords"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/requirementsTextInputLayout"
+        android:fontFamily="@font/sourcesansprolight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressTextInputLayout"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
+        app:errorTextAppearance="@style/Error"
+        app:counterOverflowTextAppearance="@style/Error">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/requirementsInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/requirements_hint"
+            android:inputType="textCapSentences|textMultiLine"  />
     </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>

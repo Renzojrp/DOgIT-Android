@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
@@ -50,15 +52,16 @@ public class AddMyPublicationActivity extends AppCompatActivity {
     Button galeryButton;
     private TextInputLayout descriptionTextInputLayout;
     private TextInputLayout addressTextInputLayout;
-    private Spinner genderSpinner;
-    //private EditText rescueEditText;
+    private TextInputLayout requirementsTextInputLayout;
+    private Spinner petSpinner;
 
-    Boolean correctPet = false;
     Boolean correctDescription = false;
     Boolean correctAddress = false;
-    Boolean correctGender = false;
-    Boolean correctUrl = false;
-    Boolean correctDate = false;
+    Boolean correctRequirements = false;
+
+    List<String> namePet = new ArrayList<>();
+    List<String> idPet = new ArrayList<>();
+    String idPetSelected;
 
     int day;
     int month;
@@ -82,13 +85,44 @@ public class AddMyPublicationActivity extends AppCompatActivity {
 
         photoANImageView = findViewById(R.id.photoANImageView);
         galeryButton = findViewById(R.id.galeryButton);
-        //petTextInputLayout = findViewById(R.id.PetTextInputLayout);
         descriptionTextInputLayout = findViewById(R.id.descriptionTextInputLayout);
         addressTextInputLayout = findViewById(R.id.addressTextInputLayout);
+        requirementsTextInputLayout = findViewById(R.id.requirementsTextInputLayout);
+        petSpinner = findViewById(R.id.petSpinner);
+
+        user = DOgITApp.getInstance().getCurrentUser();
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
         user = DOgITApp.getInstance().getCurrentUser();
+
+        for(int i = 0; i<DOgITApp.getInstance().getCurrentPets().size(); i++) {
+            idPet.add(DOgITApp.getInstance().getCurrentPets().get(i).getId());
+            namePet.add(DOgITApp.getInstance().getCurrentPets().get(i).getName());
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namePet);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        petSpinner.setAdapter(dataAdapter);
+
+        petSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+                idPetSelected = idPet.get(pos);
+                photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(pos).getPhoto());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                idPetSelected = idPet.get(0);
+                photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(0).getPhoto());
+            }
+        });
 
         layoutByOrigin();
     }
@@ -99,37 +133,10 @@ public class AddMyPublicationActivity extends AppCompatActivity {
             photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
             photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
             photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentEvent().getPhoto());
-            //petTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getPet().toString());
-            descriptionTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentEvent().getDescription());
-            addressTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentEvent().getAddress());
+            requirementsTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getRequirements());
+            descriptionTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getDescription());
+            addressTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getAddress());
 
-        }
-    }
-
-
-    public void galeryClick(View v) {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, GALERY_INTENT);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if ( requestCode == 1 && resultCode == RESULT_OK) {
-            Uri uriSavedImage = data.getData();
-            StorageReference filepath = storageReference.child("publication").child(uriSavedImage.getLastPathSegment());
-            filepath.putFile(uriSavedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddMyPublicationActivity.this, "Se subio exitosamente", Toast.LENGTH_SHORT).show();
-                    url = taskSnapshot.getDownloadUrl();
-                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setImageUrl(url.toString());
-                }
-            });
         }
     }
 
@@ -151,15 +158,15 @@ public class AddMyPublicationActivity extends AppCompatActivity {
             correctAddress = true;
         }
 
-
-        if( url == null) {
-            Toast.makeText(getApplicationContext(), R.string.empty_photo, Toast.LENGTH_SHORT ).show();
-            correctUrl = false;
+        if(requirementsTextInputLayout.getEditText().getText().toString().length() == 0) {
+            requirementsTextInputLayout.setError(getResources().getString(R.string.empty_requirements));
+            correctRequirements = false;
         } else {
-            correctUrl = true;
+            requirementsTextInputLayout.setError(null);
+            correctRequirements = true;
         }
 
-        if(correctPet && correctDescription && correctDate && correctAddress && correctUrl) {
+        if(correctDescription && correctAddress && correctRequirements) {
             if (DOgITApp.getInstance().getCurrentPublication() == null) {
                 savePublication();
             } else {
@@ -171,11 +178,10 @@ public class AddMyPublicationActivity extends AppCompatActivity {
     private void savePublication() {
         AndroidNetworking.post(DOgITService.PUBLICATION_URL)
                 .addBodyParameter("user", user.getId())
-                //.addBodyParameter("pet", petTextInputLayout.getEditText().getText().toString())
+                .addBodyParameter("pet", idPetSelected)
+                .addBodyParameter("requirements", requirementsTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("description", descriptionTextInputLayout.getEditText().getText().toString())
-                //.addBodyParameter("date", dateEditText.getText().toString())
                 .addBodyParameter("address", addressTextInputLayout.getEditText().getText().toString())
-                .addBodyParameter("photo", url.toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
@@ -196,11 +202,10 @@ public class AddMyPublicationActivity extends AppCompatActivity {
     private void editPublication() {
         AndroidNetworking.put(DOgITService.PUBLICATION_EDIT_URL)
                 .addPathParameter("publication_id", DOgITApp.getInstance().getCurrentPublication().getId())
-                .addBodyParameter("photo", url.toString())
-                //.addBodyParameter("pet", petTextInputLayout.getEditText().getText().toString())
-                //.addBodyParameter("date", dateEditText.getText().toString())
+                .addBodyParameter("pet", idPetSelected)
+                .addBodyParameter("requirements", requirementsTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("description", descriptionTextInputLayout.getEditText().getText().toString())
-                .addBodyParameter("address",addressTextInputLayout.getEditText().getText().toString())
+                .addBodyParameter("address", addressTextInputLayout.getEditText().getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)

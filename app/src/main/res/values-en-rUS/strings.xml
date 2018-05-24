@@ -43,6 +43,7 @@
     <string name="size_hint">Size cm</string>
     <string name="age_hint">Age month</string>
     <string name="description_hint">Description</string>
+    <string name="requirements_hint">Requirements</string>
     <string name="signInButton">Login</string>
     <string name="signUpTextView"><u>No account yet? Create one</u></string>
     <string name="signUpButton">Create account</string>
@@ -66,6 +67,7 @@
     <string name="empty_size">Complete size</string>
     <string name="empty_age">Complete age</string>
     <string name="empty_photo">Choose a picture</string>
+    <string name="empty_requirements">Complete requirements</string>
     <string name="detail_hint">Detail</string>
     <string name="date_hint">Date</string>
     <string name= "location_hint">Location</string>
