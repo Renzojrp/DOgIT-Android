@@ -98,4 +98,5 @@
     <string name="publication_update">Updated Publication</string>
     <string name="error_publication_update">Failed to update Publication</string>
     <string name="empty_pet">Choose a pet</string>
+    <string name="error_go_add_pet">You must have registered pets</string>
 </resources>

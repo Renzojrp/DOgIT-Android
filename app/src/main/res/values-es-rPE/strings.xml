@@ -99,4 +99,5 @@
     <string name="publication_update">Publicación actualizada</string>
     <string name="error_publication_update">Fallo al actualizar publicación</string>
     <string name="empty_requirements">Complete los requisitos</string>
+    <string name="error_go_add_pet">Debe tener mascotas registradas</string>
 </resources>

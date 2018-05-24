@@ -12,7 +12,9 @@ import com.androidnetworking.widget.ANImageView;
 
 import java.util.List;
 
+import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.activities.AboutMyPublicationActivity;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
 
@@ -40,13 +42,13 @@ public class MyPublicationsAdapter extends RecyclerView.Adapter<MyPublicationsAd
         holder.photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
         holder.photoANImageView.setImageUrl(publications.get(position).getPet().getPhoto());
         holder.descriptionTextView.setText(publications.get(position).getDescription());
-        /*holder.instrumentCardView.setOnClickListener(new View.OnClickListener() {
+        holder.petCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MuContactApp.getInstance().setCurrentInstrument(instruments.get(position));
-                v.getContext().startActivity(new Intent(v.getContext(), AddInstrumentActivity.class));
+                DOgITApp.getInstance().setCurrentPublication(publications.get(position));
+                v.getContext().startActivity(new Intent(v.getContext(), AboutMyPublicationActivity.class));
             }
-        });*/
+        });
     }
 
     @Override
@@ -67,13 +69,13 @@ public class MyPublicationsAdapter extends RecyclerView.Adapter<MyPublicationsAd
         ANImageView photoANImageView;
         TextView nameTextView;
         TextView descriptionTextView;
-        CardView publicationCardView;
+        CardView petCardView;
         public ViewHolder(View itemView) {
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
-            publicationCardView = (CardView) itemView.findViewById(R.id.publicationCardView);
+            petCardView = (CardView) itemView.findViewById(R.id.petCardView);
         }
     }
 }

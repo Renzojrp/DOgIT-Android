@@ -147,5 +147,6 @@
     <string name="title_activity_recover_password">RecoverPasswordActivity</string>
     <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>
 
+    <string name="error_go_add_pet">You must have registered pets</string>
 
 </resources>

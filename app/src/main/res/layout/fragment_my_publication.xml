@@ -9,7 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/publicationsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addPublicationFloatingActionButton"
@@ -18,7 +19,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_playlist_add_check_white_24dp"
+        android:src="@drawable/ic_add_white_24dp"
         app:elevation="6dp"
         app:fabSize="normal" />
 

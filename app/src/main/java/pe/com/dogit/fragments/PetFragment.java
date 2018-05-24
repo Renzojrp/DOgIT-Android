@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -57,9 +58,7 @@ public class PetFragment extends Fragment {
         addPetFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext()
-                        .startActivity(new Intent(v.getContext(),
-                                AddPetActivity.class));
+                goToAddPetActivity(v);
             }
         });
         petsRecyclerView = view.findViewById(R.id.petsRecyclerView);
@@ -71,6 +70,18 @@ public class PetFragment extends Fragment {
         user = DOgITApp.getInstance().getCurrentUser();
         getPets();
         return view;
+    }
+
+    public void goToAddPetActivity (View v) {
+        if(pets.size()!= 0) {
+            v.getContext()
+                    .startActivity(new Intent(v.getContext(),
+                            AddPetActivity.class));
+        } else {
+            Toast.makeText(v.getContext(), R.string.error_go_add_pet, Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     private void getPets() {
