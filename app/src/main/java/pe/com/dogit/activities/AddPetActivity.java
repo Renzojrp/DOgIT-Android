@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
 
@@ -69,6 +72,7 @@ public class AddPetActivity extends AppCompatActivity {
     private UploadTask uploadTask;
 
     User user;
+    List<Publication> publications;
     List<String> gender = new ArrayList<>();
 
     @Override
@@ -161,7 +165,7 @@ public class AddPetActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_pet, menu);
+        inflater.inflate(R.menu.menu_button_pet_delete, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -172,7 +176,7 @@ public class AddPetActivity extends AppCompatActivity {
                 if(DOgITApp.getInstance().getCurrentPet() == null) {
                     finish();
                 } else {
-                    deletePet();
+                    getMyPublications();
                 }
                 return true;
             default:
@@ -324,12 +328,43 @@ public class AddPetActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        DOgITApp.getInstance().setCurrentPet(null);
                         Toast.makeText(getApplicationContext(), R.string.pet_delete, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.error_pet_delete, Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void getMyPublications() {
+        AndroidNetworking
+                .get(DOgITService.PUBLICATION_PET_URL)
+                .addPathParameter("pet_id", DOgITApp.getInstance().getCurrentPet().getId())
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setTag(TAG)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            publications = Publication.build(response.getJSONArray("publications"));
+                            if(publications.size() == 0) {
+                                Toast.makeText(getApplicationContext(), R.string.error_pet_publication, Toast.LENGTH_SHORT).show();
+                            } else {
+                                deletePet();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d(TAG, anError.getMessage());
                     }
                 });
     }

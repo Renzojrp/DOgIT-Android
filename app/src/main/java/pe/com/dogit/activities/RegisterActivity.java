@@ -2,7 +2,6 @@ package pe.com.dogit.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;

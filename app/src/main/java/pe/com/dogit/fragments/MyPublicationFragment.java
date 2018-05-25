@@ -75,7 +75,6 @@ public class MyPublicationFragment extends Fragment {
         return view;
     }
 
-
     public void goToAddPetActivity (View v) {
         if(pets.size()!= 0) {
             v.getContext()

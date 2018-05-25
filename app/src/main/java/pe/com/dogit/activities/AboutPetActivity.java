@@ -2,25 +2,17 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.widget.ANImageView;
 
-import java.util.List;
-
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.models.Assistence;
-import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 
 public class AboutPetActivity extends AppCompatActivity {
@@ -69,7 +61,7 @@ public class AboutPetActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_event, menu);
+        inflater.inflate(R.menu.menu_button_event_edit, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -85,4 +77,12 @@ public class AboutPetActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setPeInformation();
+        if(DOgITApp.getInstance().getCurrentPet() == null) {
+            finish();
+        }
+    }
 }

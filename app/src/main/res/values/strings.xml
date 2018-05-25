@@ -31,6 +31,7 @@
     <string name="error_pet_save">Failed to save pet</string>
     <string name="pet_delete">Pet delete</string>
     <string name="error_pet_delete">Failed to delete pet</string>
+    <string name="error_pet_publication">There is an publication created with this pet</string>
 
     <!-- EditUserProfileActivity -->
     <string name="title_activity_edit_user_profile">EditUserProfileActivity</string>

@@ -22,6 +22,7 @@ public class DOgITService {
     public static String ASSISTENCE_USER_URL = "https://dogit.herokuapp.com/api/assistance/user/{user_id}";
     public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/publication/{publication_id}";
     public static String PUBLICATION_USER_URL = "https://dogit.herokuapp.com/api/publication/user/{user_id}";
+    public static String PUBLICATION_PET_URL = "https://dogit.herokuapp.com/api/publication/pet/{pet_id}";
     public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/publication";
 
     private User currentUser;

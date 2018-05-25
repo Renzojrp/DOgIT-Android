@@ -1,24 +1,18 @@
 package pe.com.dogit.activities;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -27,18 +21,12 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import pe.com.dogit.DOgITApp;
@@ -62,18 +50,11 @@ public class AddMyPublicationActivity extends AppCompatActivity {
     List<String> namePet = new ArrayList<>();
     List<String> idPet = new ArrayList<>();
     String idPetSelected;
-
-    int day;
-    int month;
-    int year;
+    Integer position;
 
     User user;
 
     String TAG = "DOgIT";
-    private static final int GALERY_INTENT = 1;
-
-    private StorageReference storageReference;
-    private Uri url;
 
 
     @Override
@@ -91,8 +72,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
         petSpinner = findViewById(R.id.petSpinner);
 
         user = DOgITApp.getInstance().getCurrentUser();
-
-        storageReference = FirebaseStorage.getInstance().getReference();
 
         user = DOgITApp.getInstance().getCurrentUser();
 
@@ -113,6 +92,7 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
                 photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
                 photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(pos).getPhoto());
+                position = pos;
             }
 
             @Override
@@ -121,6 +101,7 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
                 photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
                 photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(0).getPhoto());
+                position = 0;
             }
         });
 
@@ -128,15 +109,31 @@ public class AddMyPublicationActivity extends AppCompatActivity {
     }
 
     public void layoutByOrigin() {
-        if (DOgITApp.getInstance().getCurrentEvent() != null) {
-            url = Uri.parse(DOgITApp.getInstance().getCurrentEvent().getPhoto());
-            photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-            photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-            photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentEvent().getPhoto());
+        if (DOgITApp.getInstance().getCurrentPublication() != null) {
             requirementsTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getRequirements());
             descriptionTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getDescription());
             addressTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getAddress());
+        }
+    }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_button_publication_delete, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_delete_publication:
+                if(DOgITApp.getInstance().getCurrentPublication() == null) {
+                    finish();
+                } else {
+                    deletePublication();
+                }
+                return true;
+            default:
+                return super.onContextItemSelected(item);
         }
     }
 
@@ -213,11 +210,9 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //DOgITApp.getInstance().getCurrentPublication().setPhoto(url.toString());
-                        //DOgITApp.getInstance().getCurrentPublication().setPet(petTextInputLayout.getEditText().getText().toString());
-                        //DOgITApp.getInstance().getCurrentPublication().setDate(dateEditText.getText().toString());
-                        //DOgITApp.getInstance().getCurrentPublication().setDescription(descriptionTextInputLayout.getEditText().getText().toString());
-                        //DOgITApp.getInstance().getCurrentPublication().setAddress(addressTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPublication().setPet(DOgITApp.getInstance().getCurrentPets().get(position));
+                        DOgITApp.getInstance().getCurrentPublication().setDescription(descriptionTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPublication().setAddress(addressTextInputLayout.getEditText().getText().toString());
 
                         Toast.makeText(getApplicationContext(), R.string.publication_created, Toast.LENGTH_SHORT).show();
                         finish();
@@ -239,6 +234,7 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        DOgITApp.getInstance().setCurrentPublication(null);
                         Toast.makeText(getApplicationContext(), R.string.publication_delete, Toast.LENGTH_SHORT).show();
                         finish();
                     }

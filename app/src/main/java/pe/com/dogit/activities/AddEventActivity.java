@@ -4,13 +4,14 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -125,6 +126,27 @@ public class AddEventActivity extends AppCompatActivity {
             dateEditText.setText(DOgITApp.getInstance().getCurrentEvent().getDate());
             locationTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentEvent().getAddress());
             capabilityTextInputLayout.getEditText().setText(String.valueOf(DOgITApp.getInstance().getCurrentEvent().getCapacity().toString()));
+        }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_button_event_delete, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_delete_event:
+                if(DOgITApp.getInstance().getCurrentEvent() == null) {
+                    finish();
+                } else {
+                    deleteEvent();
+                }
+                return true;
+            default:
+                return super.onContextItemSelected(item);
         }
     }
 
@@ -307,6 +329,7 @@ public class AddEventActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        DOgITApp.getInstance().setCurrentEvent(null);
                         Toast.makeText(getApplicationContext(), R.string.event_delete, Toast.LENGTH_SHORT).show();
                         finish();
                     }

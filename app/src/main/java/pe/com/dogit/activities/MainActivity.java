@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity
         super.onRestart();
         DOgITApp.getInstance().setCurrentPet(null);
         DOgITApp.getInstance().setCurrentEvent(null);
+        DOgITApp.getInstance().setCurrentPublication(null);
         photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
         photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
         photoANImageView.setImageUrl(user.getPhoto());

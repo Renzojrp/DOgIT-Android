@@ -26,7 +26,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.AddEventActivity;
-import pe.com.dogit.activities.LoginActivity;
 import pe.com.dogit.adapters.EventsAdapter;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.User;

@@ -1,8 +1,6 @@
 package pe.com.dogit.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -22,8 +20,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Objects;
-
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.models.User;
@@ -36,8 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     TextView signUpTextView;
     TextView forgetPasswordTextView;
     ProgressBar signInProgressBar;
-
-    private static final String STRING_PREFERENCES = "preferences";
 
     boolean correctEmail = false;
     boolean correctPassword= false;

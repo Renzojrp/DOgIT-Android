@@ -31,7 +31,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
