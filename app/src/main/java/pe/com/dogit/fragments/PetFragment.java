@@ -58,7 +58,9 @@ public class PetFragment extends Fragment {
         addPetFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToAddPetActivity(v);
+                v.getContext()
+                        .startActivity(new Intent(v.getContext(),
+                                AddPetActivity.class));
             }
         });
         petsRecyclerView = view.findViewById(R.id.petsRecyclerView);
@@ -70,18 +72,6 @@ public class PetFragment extends Fragment {
         user = DOgITApp.getInstance().getCurrentUser();
         getPets();
         return view;
-    }
-
-    public void goToAddPetActivity (View v) {
-        if(pets.size()!= 0) {
-            v.getContext()
-                    .startActivity(new Intent(v.getContext(),
-                            AddPetActivity.class));
-        } else {
-            Toast.makeText(v.getContext(), R.string.error_go_add_pet, Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
     private void getPets() {

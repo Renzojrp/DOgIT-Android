@@ -9,6 +9,8 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -37,6 +39,7 @@ import pe.com.dogit.network.DOgITService;
 public class RecoverPasswordActivity extends AppCompatActivity {
 
     TextInputLayout emailTextInputLayout;
+    ProgressBar sendMailProgressBar;
 
     String email;
     String password;
@@ -57,16 +60,23 @@ public class RecoverPasswordActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         emailTextInputLayout = findViewById(R.id.emailTextInputLayout);
+        sendMailProgressBar = findViewById(R.id.sendMailProgressBar);
+
+        sendMailProgressBar.setVisibility(View.GONE);
 
         email = "dogitutp@gmail.com";
         password = "posito0310";
     }
 
     public void sendMailButton(View v) {
+        sendMailProgressBar.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
             emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
+            sendMailProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
             emailTextInputLayout.setError(null);
@@ -75,10 +85,14 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
         if(correctEmail) {
             getPasswordByEmail();
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
     }
 
     private void sendMail() {
+
+        sendMailProgressBar.setVisibility(View.VISIBLE);
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -103,12 +117,15 @@ public class RecoverPasswordActivity extends AppCompatActivity {
                 message.setSubject("DOgIT - Recuperar contraseña");
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(emailTextInputLayout.getEditText().getText().toString()));
-                message.setContent("Tu contraseña es: " + user.getPassword().toString(), "text/html; charset=utf-8");
+                message.setContent("Tu contraseña es: " + user.getPassword(), "text/html; charset=utf-8");
                 Transport.send(message);
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
         }
+        Toast.makeText(getApplicationContext(),  R.string.mail_send, Toast.LENGTH_SHORT).show();
+        sendMailProgressBar.setVisibility(View.INVISIBLE);
+        finish();
     }
 
     private void getPasswordByEmail() {
@@ -127,6 +144,8 @@ public class RecoverPasswordActivity extends AppCompatActivity {
                             sendMail();
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
+                            sendMailProgressBar.setVisibility(View.INVISIBLE);
                         }
                     }
                     @Override

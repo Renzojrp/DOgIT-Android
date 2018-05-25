@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -28,6 +29,7 @@ import pe.com.dogit.R;
 import pe.com.dogit.activities.AddMyPublicationActivity;
 import pe.com.dogit.adapters.MyPublicationsAdapter;
 import pe.com.dogit.adapters.PetsAdapter;
+import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
@@ -41,6 +43,7 @@ public class MyPublicationFragment extends Fragment {
     private MyPublicationsAdapter publicationsAdapter;
     private RecyclerView.LayoutManager publicationsLayoutManager;
     private List<Publication> publications;
+    private List<Pet> pets;
     private static String TAG = "DOgIT";
     private User user;
     public MyPublicationFragment() {
@@ -60,17 +63,29 @@ public class MyPublicationFragment extends Fragment {
         publicationsRecyclerView.setAdapter(publicationsAdapter);
         publicationsRecyclerView.setLayoutManager(publicationsLayoutManager);
         user = DOgITApp.getInstance().getCurrentUser();
+        pets = DOgITApp.getInstance().getCurrentPets();
         addPublicationFloatingActionButton = view.findViewById(R.id.addPublicationFloatingActionButton);
         addPublicationFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext()
-                        .startActivity(new Intent(v.getContext(),
-                                AddMyPublicationActivity.class));
+                goToAddPetActivity(v);
             }
         });
         getMyPublications();
         return view;
+    }
+
+
+    public void goToAddPetActivity (View v) {
+        if(pets.size()!= 0) {
+            v.getContext()
+                    .startActivity(new Intent(v.getContext(),
+                            AddMyPublicationActivity.class));
+        } else {
+            Toast.makeText(v.getContext(), R.string.error_go_add_pet, Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     private void getMyPublications() {

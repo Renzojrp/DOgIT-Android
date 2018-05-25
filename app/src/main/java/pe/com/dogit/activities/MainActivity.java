@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     ANImageView photoANImageView;
     TextView displayNameTextView;
     TextView emailTextView;
+    Toolbar toolbar;
 
     User user;
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -85,10 +86,18 @@ public class MainActivity extends AppCompatActivity
 
     private Fragment getFragmentFor(int id) {
         switch (id) {
-            case R.id.nav_user: return new UserFragment();
-            case R.id.nav_pet: return new PetFragment();
-            case R.id.nav_my_publication: return new MyPublicationFragment();
-            case R.id.nav_event: return new EventFragment();
+            case R.id.nav_user:
+                toolbar.setTitle("Usuario");
+                return new UserFragment();
+            case R.id.nav_pet:
+                toolbar.setTitle("Mis Mascotas");
+                return new PetFragment();
+            case R.id.nav_my_publication:
+                toolbar.setTitle("Mis Publicaciones");
+                return new MyPublicationFragment();
+            case R.id.nav_event:
+                toolbar.setTitle("Eventos");
+                return new EventFragment();
         }
         return null;
     }

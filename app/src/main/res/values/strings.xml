@@ -148,5 +148,7 @@
     <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>
 
     <string name="error_go_add_pet">You must have registered pets</string>
+    <string name="mail_not_exist">There are no registered users with email</string>
+    <string name="mail_send">Your password has been sent</string>
 
 </resources>
