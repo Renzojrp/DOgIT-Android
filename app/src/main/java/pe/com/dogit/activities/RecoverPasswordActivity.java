@@ -39,7 +39,6 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
     TextInputLayout emailTextInputLayout;
     ProgressBar sendMailProgressBar;
-
     String email;
     String password;
     Session session;

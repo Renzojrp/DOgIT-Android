@@ -86,7 +86,7 @@
     <string name="title_activity_splash">Actividad Splash</string>
     <string name="title_activity_about_pet">Mis Mascotas</string>
     <string name="title_activity_recover_password">Recuperar Contraseña</string>
-    <string name="forgetPasswordTextView"><u>Me olvidé mi contraseña</u></string>
+    <string name="forgetPasswordTextView"><u>¿Olvidaste tu contraseña?</u></string>
     <string name="sendMailButton">Enviar correo</string>
     <string name="title_activity_about_my_publication">Mis Publicaciones</string>
     <string name="title_activity_add_my_publication">Crear publicaciones</string>
@@ -100,4 +100,6 @@
     <string name="error_publication_update">Fallo al actualizar publicación</string>
     <string name="empty_requirements">Complete los requisitos</string>
     <string name="error_go_add_pet">Debe tener mascotas registradas</string>
+    <string name="mail_not_exist">El correo no ha sido registrado</string>
+    <string name="mail_send">Tu contraseña ha sido enviada</string>
 </resources>

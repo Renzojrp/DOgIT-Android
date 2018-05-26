@@ -73,8 +73,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
 
         user = DOgITApp.getInstance().getCurrentUser();
 
-        user = DOgITApp.getInstance().getCurrentUser();
-
         for(int i = 0; i<DOgITApp.getInstance().getCurrentPets().size(); i++) {
             idPet.add(DOgITApp.getInstance().getCurrentPets().get(i).getId());
             namePet.add(DOgITApp.getInstance().getCurrentPets().get(i).getName());
