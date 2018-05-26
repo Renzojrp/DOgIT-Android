@@ -8,9 +8,9 @@
     <application
         android:name=".DOgITApp"
         android:allowBackup="true"
-        android:icon="@mipmap/launcher_dogit"
+        android:icon="@mipmap/ic_launcher_dogit"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_dogit_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
