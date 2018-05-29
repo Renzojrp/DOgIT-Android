@@ -3,6 +3,9 @@
 
     <string name="incorrect_login">Usuario o contraseña incorrecto</string>
     <string name="hello">Hola</string>
+    <string name="title_activity_about_requirements">Requerimientos</string>
+    <string name="error_pet_publication">Existe una publicación con esa mascota</string>
+    <string name="nav_option_adoption">Adopción</string>
     <string name="title_activity_register">Registro</string>
     <string name="user_saved">Usuario guardado</string>
     <string name="user_exists">Ya existe una cuenta registrada con este correo</string>

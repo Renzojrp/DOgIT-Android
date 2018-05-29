@@ -3,47 +3,33 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
-        <entry key="imageWizard">
+        <entry key="vectorWizard">
           <value>
             <PersistentState>
               <option name="children">
                 <map>
-                  <entry key="imageAssetPanel">
+                  <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
                         <option name="children">
                           <map>
-                            <entry key="launcher">
+                            <entry key="clipartAsset">
                               <value>
                                 <PersistentState>
-                                  <option name="children">
-                                    <map>
-                                      <entry key="foregroundImage">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="scalingPercent" value="50" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
-                                    </map>
-                                  </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="C:\Users\renzo.romero.pajuelo\Documents\GitHub\DOgIT-Android\app\src\main\res\mipmap-anydpi-v26\launcher_dogit.png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="ic_launcher_dogit" />
+                                      <entry key="url" value="jar:file:/D:/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_favorite_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputName" value="ic_favorite_black_24dp" />
+                            <entry key="sourceFile" value="C:\Users\greci" />
                           </map>
                         </option>
                       </PersistentState>

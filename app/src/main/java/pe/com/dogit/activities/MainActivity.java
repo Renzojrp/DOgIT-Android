@@ -27,6 +27,7 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.fragments.PublicationFragment;
 import pe.com.dogit.fragments.EventFragment;
 import pe.com.dogit.fragments.MyPublicationFragment;
 import pe.com.dogit.fragments.PetFragment;
@@ -95,6 +96,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_my_publication:
                 toolbar.setTitle("Mis Publicaciones");
                 return new MyPublicationFragment();
+            case R.id.nav_adoption:
+                toolbar.setTitle("Adopciones");
+                return new PublicationFragment();
             case R.id.nav_event:
                 toolbar.setTitle("Eventos");
                 return new EventFragment();
@@ -135,7 +139,9 @@ public class MainActivity extends AppCompatActivity
             navigateAccordingTo(id);
         } else if (id == R.id.nav_pet) {
             navigateAccordingTo(id);
-        } else if (id == R.id.nav_my_publication) {
+        }  else if (id == R.id.nav_my_publication) {
+            navigateAccordingTo(id);
+        }  else if (id == R.id.nav_adoption) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_event) {
             navigateAccordingTo(id);

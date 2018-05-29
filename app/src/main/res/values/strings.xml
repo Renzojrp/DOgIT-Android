@@ -141,6 +141,7 @@
     <string name="sample_publication" translatable="false">Sample publication</string>
     <string name="sample_rescue_date" translatable="false">Sample rescue date</string>
     <string name="sample_pet" translatable="false">Sample pet</string>
+    <string name="sample_requirements" translatable="false">Sample requirements</string>
 
 
     <string name="title_activity_splash">SplashActivity</string>
@@ -151,5 +152,11 @@
     <string name="error_go_add_pet">You must have registered pets</string>
     <string name="mail_not_exist">There are no registered users with email</string>
     <string name="mail_send">Your password has been sent</string>
+    <string name="title_activity_about_requirements">AboutRequirementsActivity</string>
+
+    <string name="nav_option_adoption">Adoption</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

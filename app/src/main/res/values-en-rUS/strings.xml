@@ -2,6 +2,10 @@
 <resources>
     <string name="incorrect_login">User or password incorrect</string>
     <string name="hello">Hello</string>
+    <string name="nav_option_adoption">Adoption</string>
+    <string name="sample_requirements" translatable="false">Sample requirements</string>
+    <string name="title_activity_about_requirements">AboutRequirementsActivity</string>
+    <string name="error_pet_publication">There is an publication created with this pet</string>
     <string name="title_activity_register">Register</string>
     <string name="user_saved">User saved</string>
     <string name="user_exists">An account with this email already exists</string>

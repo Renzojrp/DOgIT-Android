@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,12 @@ public class AboutMyPublicationActivity extends AppCompatActivity {
         nameTextView.setText(publication.getPet().getName());
         descriptionTextView.setText(publication.getDescription());
         addressTextView.setText(publication.getAddress());
+    }
+
+    public void goToRequirements(View v){
+        v.getContext()
+                .startActivity(new Intent(v.getContext(),
+                        AboutRequirementsActivity.class));
     }
 
     @Override
