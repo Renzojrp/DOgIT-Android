@@ -15,7 +15,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.AboutMyPublicationActivity;
-import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
 
 public class MyPublicationsAdapter extends RecyclerView.Adapter<MyPublicationsAdapter.ViewHolder>  {

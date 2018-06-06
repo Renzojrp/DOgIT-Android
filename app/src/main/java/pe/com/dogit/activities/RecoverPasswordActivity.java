@@ -1,7 +1,10 @@
 package pe.com.dogit.activities;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -39,13 +42,11 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
     TextInputLayout emailTextInputLayout;
     ProgressBar sendMailProgressBar;
-    String email;
-    String password;
+    String email = "dogitutp@gmail.com";
+    String password = "posito0310";
     Session session;
 
     boolean correctEmail = false;
-
-    String TAG = "DOgIT";
 
     User user;
 
@@ -56,14 +57,12 @@ public class RecoverPasswordActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         emailTextInputLayout = findViewById(R.id.emailTextInputLayout);
         sendMailProgressBar = findViewById(R.id.sendMailProgressBar);
 
         sendMailProgressBar.setVisibility(View.GONE);
-
-        email = "dogitutp@gmail.com";
-        password = "posito0310";
     }
 
     public void sendMailButton(View v) {
@@ -83,13 +82,37 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
         if(correctEmail) {
             getPasswordByEmail();
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
+        sendMailProgressBar.setVisibility(View.INVISIBLE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    private void getPasswordByEmail() {
+        AndroidNetworking
+                .get(DOgITService.USER_EMAIL_URL)
+                .addPathParameter("email",emailTextInputLayout.getEditText().getText().toString())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            user = User.build(response.getJSONObject("user"));
+                            sendMail();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void sendMail() {
-
-        sendMailProgressBar.setVisibility(View.VISIBLE);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -122,34 +145,7 @@ public class RecoverPasswordActivity extends AppCompatActivity {
             }
         }
         Toast.makeText(getApplicationContext(),  R.string.mail_send, Toast.LENGTH_SHORT).show();
-        sendMailProgressBar.setVisibility(View.INVISIBLE);
         finish();
     }
 
-    private void getPasswordByEmail() {
-        AndroidNetworking
-                .get(DOgITService.USER_EMAIL_URL)
-                .addPathParameter("email",emailTextInputLayout.getEditText().getText().toString())
-                .setTag(TAG)
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        if(response == null) return;
-                        try {
-                            user = User.build(response.getJSONObject("user"));
-                            sendMail();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
-                            sendMailProgressBar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
-                    }
-                });
-    }
 }

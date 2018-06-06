@@ -1,7 +1,8 @@
 package pe.com.dogit.activities;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,18 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import org.json.JSONObject;
 
@@ -54,15 +52,14 @@ public class AddMyPublicationActivity extends AppCompatActivity {
 
     User user;
 
-    String TAG = "DOgIT";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_my_publication);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         photoANImageView = findViewById(R.id.photoANImageView);
         galeryButton = findViewById(R.id.galeryButton);
@@ -105,7 +102,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
 
         layoutByOrigin();
     }
-
     public void layoutByOrigin() {
         if (DOgITApp.getInstance().getCurrentPublication() != null) {
             requirementsTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getRequirements());
@@ -116,14 +112,14 @@ public class AddMyPublicationActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_publication_delete, menu);
+        inflater.inflate(R.menu.menu_button_delete, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_delete_publication:
+            case R.id.action_delete:
                 if(DOgITApp.getInstance().getCurrentPublication() == null) {
                     finish();
                 } else {
@@ -178,7 +174,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 .addBodyParameter("description", descriptionTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("address", addressTextInputLayout.getEditText().getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -202,7 +197,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
                 .addBodyParameter("description", descriptionTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("address", addressTextInputLayout.getEditText().getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -226,7 +220,6 @@ public class AddMyPublicationActivity extends AppCompatActivity {
         AndroidNetworking.delete(DOgITService.PUBLICATION_EDIT_URL)
                 .addPathParameter("publication_id", DOgITApp.getInstance().getCurrentPublication().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

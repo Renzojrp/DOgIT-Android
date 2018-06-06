@@ -2,8 +2,7 @@ package pe.com.dogit.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.AboutPetActivity;
-import pe.com.dogit.activities.AddPetActivity;
 import pe.com.dogit.models.Pet;
 
 public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
@@ -33,7 +31,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
     public PetsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.content_pet, parent, false));
+                .inflate(R.layout.card_pet, parent, false));
     }
 
     @Override
@@ -50,7 +48,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
         } else {
             holder.genderTextView.setText(R.string.female_gender);
         }
-        holder.petConstraintLayout.setOnClickListener(new View.OnClickListener() {
+        holder.petCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DOgITApp.getInstance().setCurrentPet(pets.get(position));
@@ -60,7 +58,6 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -81,7 +78,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
         TextView nameTextView;
         TextView descriptionTextView;
         TextView genderTextView;
-        ConstraintLayout petConstraintLayout;
+        CardView petCardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -89,7 +86,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
             nameTextView = itemView.findViewById(R.id.nameTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             genderTextView = itemView.findViewById(R.id.genderTextView);
-            petConstraintLayout = itemView.findViewById(R.id.petConstraintLayout);
+            petCardView = itemView.findViewById(R.id.petCardView);
         }
     }
 }

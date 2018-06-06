@@ -15,22 +15,22 @@ public class DOgITService {
     public static String PET_URL = "https://dogit.herokuapp.com/api/pet";
     public static String PET_EDIT_URL = "https://dogit.herokuapp.com/api/pet/{pet_id}";
     public static String PET_USER_URL = "https://dogit.herokuapp.com/api/pet/user/{user_id}";
+    public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/publication/{publication_id}";
+    public static String PUBLICATION_USER_URL = "https://dogit.herokuapp.com/api/publication/user/{user_id}";
+    public static String PUBLICATION_PET_URL = "https://dogit.herokuapp.com/api/publication/pet/{pet_id}";
+    public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/publication";
     public static String EVENT_URL = "https://dogit.herokuapp.com/api/event";
     public static String EVENT_EDIT_URL = "https://dogit.herokuapp.com/api/event/{event_id}";
     public static String ASSISTENCE_URL = "https://dogit.herokuapp.com/api/assistance";
     public static String ASSISTENCE_EVENT_URL = "https://dogit.herokuapp.com/api/assistance/event/{event_id}";
     public static String ASSISTENCE_USER_URL = "https://dogit.herokuapp.com/api/assistance/user/{user_id}";
-    public static String PUBLICATION_EDIT_URL = "https://dogit.herokuapp.com/api/publication/{publication_id}";
-    public static String PUBLICATION_USER_URL = "https://dogit.herokuapp.com/api/publication/user/{user_id}";
-    public static String PUBLICATION_PET_URL = "https://dogit.herokuapp.com/api/publication/pet/{pet_id}";
-    public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/publication";
 
     private User currentUser;
     private String currentToken;
     private Pet currentPet;
-    private Event currentEvent;
-    private Publication currentPublication;
     private List<Pet> currentPets;
+    private Publication currentPublication;
+    private Event currentEvent;
 
     public User getCurrentUser() {
         return currentUser;
@@ -59,15 +59,14 @@ public class DOgITService {
         return this;
     }
 
-    public Event getCurrentEvent() {
-        return currentEvent;
+    public List<Pet> getCurrentPets() {
+        return currentPets;
     }
 
-    public DOgITService setCurrentEvent(Event currentEvent) {
-        this.currentEvent = currentEvent;
+    public DOgITService setCurrentPets(List<Pet> currentPets){
+        this.currentPets = currentPets;
         return this;
     }
-
 
     public Publication getCurrentPublication() {
         return currentPublication;
@@ -78,15 +77,12 @@ public class DOgITService {
         return this;
     }
 
-
-    public List<Pet> getCurrentPets() {
-        return currentPets;
+    public Event getCurrentEvent() {
+        return currentEvent;
     }
 
-    public DOgITService setCurrentPets(List<Pet> currentPets){
-        this.currentPets = currentPets;
+    public DOgITService setCurrentEvent(Event currentEvent) {
+        this.currentEvent = currentEvent;
         return this;
     }
-
 }
-

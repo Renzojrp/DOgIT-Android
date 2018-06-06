@@ -3,6 +3,7 @@ package pe.com.dogit.adapters;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public EventsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.content_event, parent, false));
+                .inflate(R.layout.card_event, parent, false));
     }
 
     @Override
@@ -44,7 +45,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.nameTextView.setText(events.get(position).getName());
         holder.descriptionTextView.setText(String.valueOf(events.get(position).getDescription()));
         holder.dateTextView.setText(events.get(position).getDate());
-        holder.eventConstraintLayout.setOnClickListener(new View.OnClickListener() {
+        holder.eventCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DOgITApp.getInstance().setCurrentEvent(events.get(position));
@@ -75,7 +76,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         TextView nameTextView;
         TextView descriptionTextView;
         TextView dateTextView;
-        ConstraintLayout eventConstraintLayout;
+        CardView eventCardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -83,7 +84,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             nameTextView = itemView.findViewById(R.id.nameTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
-            eventConstraintLayout = itemView.findViewById(R.id.eventConstraintLayout);
+            eventCardView = itemView.findViewById(R.id.eventCardView);
         }
     }
 }

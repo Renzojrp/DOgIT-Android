@@ -2,6 +2,8 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -42,9 +44,7 @@ public class AboutEventActivity extends AppCompatActivity {
 
     Event event;
 
-    String TAG = "DOgIT";
     List<Assistence> assistences;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +69,14 @@ public class AboutEventActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_event_edit, menu);
+        inflater.inflate(R.menu.menu_button_edit, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_edit_event:
+            case R.id.action_edit:
                 if(event.getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())) {
                     Intent intent = new Intent(this, AddEventActivity.class);
                     this.startActivity(intent);
@@ -108,7 +108,6 @@ public class AboutEventActivity extends AppCompatActivity {
                 .get(DOgITService.ASSISTENCE_EVENT_URL)
                 .addPathParameter("event_id", event.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -117,7 +116,6 @@ public class AboutEventActivity extends AppCompatActivity {
                         if(response == null) return;
                         try {
                             assistences = Assistence.build(response.getJSONArray("assistances"));
-                            Log.d(TAG, "Found Assistences: " + String.valueOf(assistences.size()));
                             capacityTextView.setText(assistences.size() + "/" + event.getCapacity());
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -125,7 +123,7 @@ public class AboutEventActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
+                        //Log.d(TAG, anError.getMessage());
                     }
                 });
     }
@@ -135,7 +133,6 @@ public class AboutEventActivity extends AppCompatActivity {
                 .get(DOgITService.ASSISTENCE_USER_URL)
                 .addPathParameter("user_id", DOgITApp.getInstance().getCurrentUser().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -165,7 +162,7 @@ public class AboutEventActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
+                        //Log.d(TAG, anError.getMessage());
                     }
                 });
     }
@@ -176,7 +173,6 @@ public class AboutEventActivity extends AppCompatActivity {
                 .addBodyParameter("user", DOgITApp.getInstance().getCurrentUser().getId())
                 .addBodyParameter("event", event.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

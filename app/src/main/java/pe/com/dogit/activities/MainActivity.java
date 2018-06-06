@@ -2,17 +2,18 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.View;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -27,10 +28,10 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.fragments.PublicationFragment;
 import pe.com.dogit.fragments.EventFragment;
 import pe.com.dogit.fragments.MyPublicationFragment;
 import pe.com.dogit.fragments.PetFragment;
+import pe.com.dogit.fragments.PublicationFragment;
 import pe.com.dogit.fragments.UserFragment;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity
     User user;
 
     private List<Pet> pets;
-    private static String TAG = "DOgIT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         View headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
@@ -82,25 +82,24 @@ public class MainActivity extends AppCompatActivity
         navigateAccordingTo(R.id.nav_user);
 
         getPets();
-
     }
 
     private Fragment getFragmentFor(int id) {
         switch (id) {
             case R.id.nav_user:
-                toolbar.setTitle("Usuario");
+                toolbar.setTitle(R.string.nav_option_user);
                 return new UserFragment();
             case R.id.nav_pet:
-                toolbar.setTitle("Mis Mascotas");
+                toolbar.setTitle(R.string.nav_option_pets);
                 return new PetFragment();
             case R.id.nav_my_publication:
-                toolbar.setTitle("Mis Publicaciones");
+                toolbar.setTitle(R.string.nav_option_my_publication);
                 return new MyPublicationFragment();
             case R.id.nav_adoption:
-                toolbar.setTitle("Adopciones");
+                toolbar.setTitle(R.string.nav_option_adoption);
                 return new PublicationFragment();
             case R.id.nav_event:
-                toolbar.setTitle("Eventos");
+                toolbar.setTitle(R.string.nav_option_event);
                 return new EventFragment();
         }
         return null;
@@ -149,8 +148,7 @@ public class MainActivity extends AppCompatActivity
             SplashActivity.changeData(MainActivity.this,"user" ,"");
             SplashActivity.changeData(MainActivity.this,"password" ,"");
             SplashActivity.changeData(MainActivity.this,"token" ,"");
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
 
@@ -164,7 +162,6 @@ public class MainActivity extends AppCompatActivity
                 .get(DOgITService.PET_USER_URL)
                 .addPathParameter("user_id", user.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -173,7 +170,6 @@ public class MainActivity extends AppCompatActivity
                         if(response == null) return;
                         try {
                             pets = Pet.build(response.getJSONArray("pets"));
-                            Log.d(TAG, "Found Pets: " + String.valueOf(pets.size()));
                             DOgITApp.getInstance().setCurrentPets(pets);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -181,22 +177,8 @@ public class MainActivity extends AppCompatActivity
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
+                        Toast.makeText(getApplicationContext(), R.string.error_pet, Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        DOgITApp.getInstance().setCurrentPet(null);
-        DOgITApp.getInstance().setCurrentEvent(null);
-        DOgITApp.getInstance().setCurrentPublication(null);
-        photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-        photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-        photoANImageView.setImageUrl(user.getPhoto());
-        displayNameTextView.setText(user.getName());
-        emailTextView.setText(user.getEmail());
-        getPets();
     }
 }

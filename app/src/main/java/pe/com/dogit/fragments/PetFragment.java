@@ -42,12 +42,12 @@ public class PetFragment extends Fragment {
     private PetsAdapter petsAdapter;
     private RecyclerView.LayoutManager petsLayoutManager;
     private List<Pet> pets;
-    private static String TAG = "DOgIT";
     private User user;
 
     public PetFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +79,6 @@ public class PetFragment extends Fragment {
                 .get(DOgITService.PET_USER_URL)
                 .addPathParameter("user_id", user.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -88,7 +87,6 @@ public class PetFragment extends Fragment {
                         if(response == null) return;
                         try {
                             pets = Pet.build(response.getJSONArray("pets"));
-                            Log.d(TAG, "Found Pets: " + String.valueOf(pets.size()));
                             petsAdapter.setPets(pets);
                             petsAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -97,7 +95,7 @@ public class PetFragment extends Fragment {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
+
                     }
                 });
     }

@@ -3,19 +3,28 @@
     package="pe.com.dogit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".DOgITApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_dogit"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_dogit_round"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.SplashActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.MainActivity"
@@ -31,41 +40,6 @@
                 android:value="pe.com.dogit.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".activities.AddPetActivity"
-            android:label="@string/title_activity_add_pet"
-            android:parentActivityName=".activities.AboutPetActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="pe.com.dogit.activities.AboutPetActivity" />
-        </activity>
-        <activity
-            android:name=".activities.EditUserProfileActivity"
-            android:label="@string/title_activity_edit_user_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.AboutEventActivity"
-            android:label="@string/title_activity_about_event"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.AddEventActivity"
-            android:label="@string/title_activity_add_event"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.SplashActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.AboutPetActivity"
-            android:label="@string/title_activity_about_pet"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activities.RecoverPasswordActivity"
             android:label="@string/title_activity_recover_password"
             android:parentActivityName=".activities.LoginActivity"
@@ -75,17 +49,47 @@
                 android:value="pe.com.dogit.activities.LoginActivity" />
         </activity>
         <activity
+            android:name=".activities.EditUserProfileActivity"
+            android:label="@string/title_activity_edit_user_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AboutPetActivity"
+            android:label="@string/title_activity_about_pet"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddPetActivity"
+            android:label="@string/title_activity_add_pet"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AboutEventActivity"
+            android:label="@string/title_activity_abou_event"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddEventActivity"
+            android:label="@string/title_activity_add_event"
+            android:parentActivityName=".activities.AboutEventActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.AboutEventActivity" />
+        </activity>
+        <activity
             android:name=".activities.AboutMyPublicationActivity"
             android:label="@string/title_activity_about_my_publication"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.AddMyPublicationActivity"
             android:label="@string/title_activity_add_my_publication"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.AboutRequirementsActivity"
-            android:label="@string/title_activity_about_requirements"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".activities.AboutMyPublicationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.AboutMyPublicationActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -14,7 +14,6 @@ import com.androidnetworking.widget.ANImageView;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.activities.AddPetActivity;
 import pe.com.dogit.activities.EditUserProfileActivity;
 import pe.com.dogit.models.User;
 
@@ -32,7 +31,6 @@ public class UserFragment extends Fragment {
     private TextView birthDateTextView;
 
     User user;
-    String TAG = "DOgIT";
 
     public UserFragment() {
         // Required empty public constructor

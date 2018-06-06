@@ -4,6 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +26,9 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -63,11 +68,11 @@ public class AddEventActivity extends AppCompatActivity {
 
     User user;
 
-    String TAG = "DOgIT";
     private static final int GALERY_INTENT = 1;
-
     private StorageReference storageReference;
     private Uri url;
+    private Uri uriSavedImage;
+    private UploadTask uploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,7 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         photoANImageView = findViewById(R.id.photoANImageView);
         galeryButton = findViewById(R.id.galeryButton);
@@ -131,14 +137,14 @@ public class AddEventActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_event_delete, menu);
+        inflater.inflate(R.menu.menu_button_delete, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_delete_event:
+            case R.id.action_delete:
                 if(DOgITApp.getInstance().getCurrentEvent() == null) {
                     finish();
                 } else {
@@ -160,22 +166,34 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if ( requestCode == 1 && resultCode == RESULT_OK) {
-            Uri uriSavedImage = data.getData();
-            StorageReference filepath = storageReference.child("event").child(uriSavedImage.getLastPathSegment());
-            filepath.putFile(uriSavedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        if ( requestCode == GALERY_INTENT && resultCode == RESULT_OK) {
+            uriSavedImage = data.getData();
+            final StorageReference filepath = storageReference.child("user").child(uriSavedImage.getLastPathSegment());
+            uploadTask = filepath.putFile(uriSavedImage);
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddEventActivity.this, "Se subio exitosamente", Toast.LENGTH_SHORT).show();
-                    url = taskSnapshot.getDownloadUrl();
-                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setImageUrl(url.toString());
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return filepath.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        url = task.getResult();
+                        photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setImageUrl(url.toString());
+                    }
                 }
             });
         }
     }
-
     public void onDateButton() {
         final Calendar calendar = Calendar.getInstance();
         day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -270,7 +288,6 @@ public class AddEventActivity extends AppCompatActivity {
                 .addBodyParameter("capacity", capabilityTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("photo", url.toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -296,7 +313,6 @@ public class AddEventActivity extends AppCompatActivity {
                 .addBodyParameter("location",locationTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("capability",capabilityTextInputLayout.getEditText().getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -323,7 +339,6 @@ public class AddEventActivity extends AppCompatActivity {
         AndroidNetworking.delete(DOgITService.EVENT_EDIT_URL)
                 .addPathParameter("event_id", DOgITApp.getInstance().getCurrentEvent().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

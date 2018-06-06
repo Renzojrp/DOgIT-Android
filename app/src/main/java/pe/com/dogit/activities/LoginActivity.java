@@ -2,9 +2,9 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,8 +27,8 @@ import pe.com.dogit.network.DOgITService;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputLayout emailEditText;
-    TextInputLayout passwordEditText;
+    TextInputLayout emailTextInputLayout;
+    TextInputLayout passwordTextInputLayout;
     TextView signUpTextView;
     TextView forgetPasswordTextView;
     ProgressBar signInProgressBar;
@@ -39,27 +39,17 @@ public class LoginActivity extends AppCompatActivity {
     User user;
     String token;
 
-    Intent intent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        intent = new Intent(LoginActivity.this, MainActivity.class);
-
-        emailEditText = findViewById(R.id.emailTextInputLayout);
-        passwordEditText = findViewById(R.id.passwordTextInputLayout);
+        emailTextInputLayout = findViewById(R.id.emailTextInputLayout);
+        passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout);
         signInProgressBar = findViewById(R.id.signInProgressBar);
         signUpTextView = findViewById(R.id.signUpTextView);
         forgetPasswordTextView = findViewById(R.id.forgetPasswordTextView);
-        forgetPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RecoverPasswordActivity.class));
-            }
-        });
 
         signInProgressBar.setVisibility(View.GONE);
     }
@@ -69,30 +59,31 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(emailEditText.getEditText().getText().toString()).matches()){
-            emailEditText.setError(getResources().getString(R.string.invalid_email));
+        if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
+            emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
             signInProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
-            emailEditText.setError(null);
+            emailTextInputLayout.setError(null);
             correctEmail = true;
         }
 
-        if(passwordEditText.getEditText().getText().toString().length() < 8) {
-            passwordEditText.setError(getResources().getString(R.string.invalid_password));
+        if(passwordTextInputLayout.getEditText().getText().toString().length() < 8) {
+            passwordTextInputLayout.setError(getResources().getString(R.string.invalid_password));
             correctPassword = false;
             signInProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
-            passwordEditText.setError(null);
+            passwordTextInputLayout.setError(null);
             correctPassword = true;
         }
 
         if(correctEmail && correctPassword) {
-            signIn(emailEditText.getEditText().getText().toString(), passwordEditText.getEditText().getText().toString());
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            signIn(emailTextInputLayout.getEditText().getText().toString(), passwordTextInputLayout.getEditText().getText().toString());
         }
+        signInProgressBar.setVisibility(View.INVISIBLE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     private void signIn(String email, final String password) {
@@ -107,25 +98,21 @@ public class LoginActivity extends AppCompatActivity {
                         if(response == null) return;
                         try {
                             user = User.build(response.getJSONObject("user"));
-                            user.setPassword(password);
                             token = response.getString("token");
                             DOgITApp.getInstance().setCurrentToken("Bearer " + token);
                             DOgITApp.getInstance().setCurrentUser(user);
                             SplashActivity.setData(LoginActivity.this,"user" ,user.getEmail());
                             SplashActivity.setData(LoginActivity.this,"password" ,user.getPassword());
-                            SplashActivity.setData(LoginActivity.this,"token" ,token);
                             Toast.makeText(getApplicationContext(),  getString(R.string.hello) + " " + DOgITApp.getInstance().getCurrentUser().getName(), Toast.LENGTH_SHORT).show();
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        signInProgressBar.setVisibility(View.INVISIBLE);
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.incorrect_login, Toast.LENGTH_SHORT).show();
-                        signInProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
@@ -134,5 +121,11 @@ public class LoginActivity extends AppCompatActivity {
         v.getContext()
                 .startActivity(new Intent(v.getContext(),
                         RegisterActivity.class));
+    }
+
+    public void goToSendMailActivity(View v) {
+        v.getContext()
+                .startActivity(new Intent(v.getContext(),
+                        RecoverPasswordActivity.class));
     }
 }

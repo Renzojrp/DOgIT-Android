@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,13 +21,17 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONObject;
 
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,7 +75,6 @@ public class EditUserProfileActivity extends AppCompatActivity {
     List<String> gender = new ArrayList<>();
 
     User user;
-    String TAG = "DOgIT";
 
     boolean correctEmail = false;
     boolean correctPassword= false;
@@ -87,7 +91,7 @@ public class EditUserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         photoANImageView = findViewById(R.id.photoANImageView);
@@ -131,6 +135,8 @@ public class EditUserProfileActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(dataAdapter);
 
+        storageReference = FirebaseStorage.getInstance().getReference();
+
         if (user.getGender().equals("1")) {
             genderSpinner.setSelection(1);
         } else {
@@ -141,7 +147,6 @@ public class EditUserProfileActivity extends AppCompatActivity {
             }
         }
 
-        storageReference = FirebaseStorage.getInstance().getReference();
     }
 
     public void onDateButton() {
@@ -255,6 +260,45 @@ public class EditUserProfileActivity extends AppCompatActivity {
         }
     }
 
+    public void galeryClick(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, GALERY_INTENT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == GALERY_INTENT && resultCode == RESULT_OK) {
+            uriSavedImage = data.getData();
+            final StorageReference filepath = storageReference.child("user").child(uriSavedImage.getLastPathSegment());
+            uploadTask = filepath.putFile(uriSavedImage);
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return filepath.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        url = task.getResult();
+                        photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setImageUrl(url.toString());
+                    }
+                }
+            });
+        }
+    }
+
     private void editProfile() {
         AndroidNetworking.put(DOgITService.USERS_EDIT_URL)
                 .addBodyParameter("photo", url.toString())
@@ -270,7 +314,6 @@ public class EditUserProfileActivity extends AppCompatActivity {
                 .addBodyParameter("birthDate", birthDateEditText.getText().toString())
                 .addPathParameter("user_id", user.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -297,36 +340,7 @@ public class EditUserProfileActivity extends AppCompatActivity {
                 });
     }
 
-    public void galeryClick(View v) {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, GALERY_INTENT);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if ( requestCode == GALERY_INTENT && resultCode == RESULT_OK) {
-            uriSavedImage = data.getData();
-            StorageReference filepath = storageReference.child("user").child(uriSavedImage.getLastPathSegment());
-            uploadTask = filepath.putFile(uriSavedImage);
-
-            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(EditUserProfileActivity.this, "Se subio exitosamente", Toast.LENGTH_SHORT).show();
-                    url = taskSnapshot.getDownloadUrl();
-                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setImageUrl(url.toString());
-                }
-            });
-        }
-    }
-
     public void cancelClick(View v) {
         finish();
     }
-
 }

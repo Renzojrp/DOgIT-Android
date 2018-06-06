@@ -1,8 +1,10 @@
 package pe.com.dogit.activities;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -40,6 +43,7 @@ import pe.com.dogit.R;
 import pe.com.dogit.network.DOgITService;
 
 public class RegisterActivity extends AppCompatActivity {
+
     TextInputLayout nameTextInputLayout;
     TextInputLayout lastNameTextInputLayout;
     TextInputLayout emailTextInputLayout;
@@ -71,15 +75,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     List<String> gender = new ArrayList<>();
 
-    String TAG = "DOgIT";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         nameTextInputLayout = findViewById(R.id.nameTextInputLayout);
         lastNameTextInputLayout = findViewById(R.id.lastNameTextInputLayout);
@@ -145,6 +148,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void signUpClick(View v) {
         signUpProgressBar.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
             emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
@@ -253,6 +259,9 @@ public class RegisterActivity extends AppCompatActivity {
                 && correctAddress && correctDNI && correctBirthDate && correctGender) {
             signUpUser();
         }
+        signUpProgressBar.setVisibility(View.INVISIBLE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
     }
 
     private void signUpUser() {
@@ -267,7 +276,6 @@ public class RegisterActivity extends AppCompatActivity {
                 .addBodyParameter("mobilePhone", Objects.requireNonNull(mobilePhoneTextInputLayout.getEditText()).getText().toString())
                 .addBodyParameter("gender", Long.toString(genderSpinner.getSelectedItemId()))
                 .addBodyParameter("birthDate", birthDateEditText.getText().toString())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -283,19 +291,12 @@ public class RegisterActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        signUpProgressBar.setVisibility(View.INVISIBLE);
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.error_user_saved, Toast.LENGTH_SHORT).show();
-                        signUpProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
 
-    public void goToLoginActivity(View v) {
-        v.getContext()
-                .startActivity(new Intent(v.getContext(),
-                        LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-    }
 }

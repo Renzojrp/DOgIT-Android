@@ -17,7 +17,6 @@ import pe.com.dogit.models.Pet;
 
 public class AboutPetActivity extends AppCompatActivity {
 
-
     ANImageView photoANImageView;
     TextView nameTextView;
     TextView descriptionTextView;
@@ -26,8 +25,6 @@ public class AboutPetActivity extends AppCompatActivity {
     TextView sizeTextView;
 
     Pet pet;
-
-    String TAG = "DOgIT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +58,14 @@ public class AboutPetActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_event_edit, menu);
+        inflater.inflate(R.menu.menu_button_edit, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_edit_event:
+            case R.id.action_edit:
                 Intent intent = new Intent(this, AddPetActivity.class);
                 this.startActivity(intent);
                 return true;
@@ -85,4 +82,5 @@ public class AboutPetActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

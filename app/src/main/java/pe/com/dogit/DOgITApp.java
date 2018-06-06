@@ -58,12 +58,12 @@ public class DOgITApp extends Application {
         return this;
     }
 
-    public Event getCurrentEvent() {
-        return DOgITService.getCurrentEvent();
+    public List<Pet> getCurrentPets() {
+        return DOgITService.getCurrentPets();
     }
 
-    public DOgITApp setCurrentEvent(Event event) {
-        DOgITService.setCurrentEvent(event);
+    public DOgITApp setCurrentPets(List<Pet> pets){
+        DOgITService.setCurrentPets(pets);
         return this;
     }
 
@@ -76,15 +76,12 @@ public class DOgITApp extends Application {
         return this;
     }
 
-    public List<Pet> getCurrentPets() {
-        return DOgITService.getCurrentPets();
+    public Event getCurrentEvent() {
+        return DOgITService.getCurrentEvent();
     }
 
-    public DOgITApp setCurrentPets(List<Pet> pets){
-        DOgITService.setCurrentPets(pets);
+    public DOgITApp setCurrentEvent(Event event) {
+        DOgITService.setCurrentEvent(event);
         return this;
     }
-
-
 }
-

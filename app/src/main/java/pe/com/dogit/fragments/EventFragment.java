@@ -41,7 +41,6 @@ public class EventFragment extends Fragment {
     private EventsAdapter eventsAdapter;
     private RecyclerView.LayoutManager eventsLayoutManager;
     private List<Event> events;
-    private static String TAG = "DOgIT";
     private User user;
 
 
@@ -53,6 +52,7 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event, container, false);
 
         eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView);
@@ -78,7 +78,6 @@ public class EventFragment extends Fragment {
         AndroidNetworking
                 .get(DOgITService.EVENT_URL)
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -87,7 +86,6 @@ public class EventFragment extends Fragment {
                         if(response == null) return;
                         try {
                             events = Event.build(response.getJSONArray("events"));
-                            Log.d(TAG, "Found Events: " + String.valueOf(events.size()));
                             eventsAdapter.setEvents(events);
                             eventsAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -96,7 +94,6 @@ public class EventFragment extends Fragment {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
                     }
                 });
     }

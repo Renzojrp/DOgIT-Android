@@ -17,7 +17,7 @@
         android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@mipmap/ic_launcher_dogit"/>
+        android:src="@mipmap/ic_splash"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/emailTextInputLayout"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@id/signUpTextView"
         android:textColor="@color/colorPrimary"
         android:gravity="center"
-        android:onClick="goToRegisterActivity"/>
+        android:onClick="goToSendMailActivity"/>
 
     <ProgressBar
         android:id="@+id/signInProgressBar"

@@ -4,6 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +26,9 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -64,7 +69,6 @@ public class AddPetActivity extends AppCompatActivity {
     int month;
     int year;
 
-    String TAG = "DOgIT";
     private static final int GALERY_INTENT = 1;
     private StorageReference storageReference;
     private Uri url;
@@ -81,8 +85,6 @@ public class AddPetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_pet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         user = DOgITApp.getInstance().getCurrentUser();
 
@@ -147,32 +149,42 @@ public class AddPetActivity extends AppCompatActivity {
 
         if ( requestCode == GALERY_INTENT && resultCode == RESULT_OK) {
             uriSavedImage = data.getData();
-            StorageReference filepath = storageReference.child("pet").child(uriSavedImage.getLastPathSegment());
+            final StorageReference filepath = storageReference.child("user").child(uriSavedImage.getLastPathSegment());
             uploadTask = filepath.putFile(uriSavedImage);
 
-            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddPetActivity.this, "Se subio exitosamente", Toast.LENGTH_SHORT).show();
-                    url = taskSnapshot.getDownloadUrl();
-                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                    photoANImageView.setImageUrl(url.toString());
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return filepath.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        url = task.getResult();
+                        photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                        photoANImageView.setImageUrl(url.toString());
+                    }
                 }
             });
         }
     }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_pet_delete, menu);
+        inflater.inflate(R.menu.menu_button_delete, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_delete_pet:
+            case R.id.action_delete:
                 if(DOgITApp.getInstance().getCurrentPet() == null) {
                     finish();
                 } else {
@@ -274,7 +286,6 @@ public class AddPetActivity extends AppCompatActivity {
                 .addBodyParameter("gender", Long.toString(genderSpinner.getSelectedItemId()))
                 .addBodyParameter("rescue_date", rescueEditText.getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -302,7 +313,6 @@ public class AddPetActivity extends AppCompatActivity {
                 .addBodyParameter("gender", Long.toString(genderSpinner.getSelectedItemId()))
                 .addBodyParameter("rescue_date", rescueEditText.getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -322,7 +332,6 @@ public class AddPetActivity extends AppCompatActivity {
         AndroidNetworking.delete(DOgITService.PET_EDIT_URL)
                 .addPathParameter("pet_id", DOgITApp.getInstance().getCurrentPet().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -344,7 +353,6 @@ public class AddPetActivity extends AppCompatActivity {
                 .get(DOgITService.PUBLICATION_PET_URL)
                 .addPathParameter("pet_id", DOgITApp.getInstance().getCurrentPet().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
-                .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -364,7 +372,7 @@ public class AddPetActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        Log.d(TAG, anError.getMessage());
+                        Toast.makeText(getApplicationContext(), R.string.error_pet_publication, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
