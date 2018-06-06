@@ -238,12 +238,12 @@ public class AddEventActivity extends AppCompatActivity {
             Calendar c = Calendar.getInstance();
             if(c.getTime().compareTo(date) > 0) {
                 correctDate = false;
-                Toast.makeText(getApplicationContext(), R.string.invalid_birthdate, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.invalid_date, Toast.LENGTH_SHORT).show();
             } else {
                 correctDate = true;
             }
         } else {
-            Toast.makeText(getApplicationContext(), R.string.invalid_birthdate, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.invalid_date, Toast.LENGTH_SHORT).show();
         }
 
         if(locationTextInputLayout.getEditText().getText().toString().length() == 0) {

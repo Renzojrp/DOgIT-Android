@@ -36,6 +36,7 @@
     <string name="error_pet">No pets were found</string>
     <string name="action_edit">Edit</string>
     <string name="action_delete">Delete</string>
+    <string name="error_go_add_pet">You must have registered pets</string>
 
     <!-- EditUserProfileActivity -->
     <string name="title_activity_edit_user_profile">EditUserProfileActivity</string>
@@ -123,6 +124,7 @@
     <string name="invalid_mobilePhone">Invalid mobile phone</string>
     <string name="invalid_gender">Invalid gender</string>
     <string name="invalid_birthdate">Invalid birthdate</string>
+    <string name="invalid_date">Invalid date</string>
     <string name="empty_name">Complete name</string>
     <string name="empty_description">Complete description</string>
     <string name="empty_weigth">Complete weigth</string>
@@ -157,8 +159,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_about_pet">AboutPetActivity</string>
     <string name="title_activity_abou_event">AbouEventActivity</string>
     <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>

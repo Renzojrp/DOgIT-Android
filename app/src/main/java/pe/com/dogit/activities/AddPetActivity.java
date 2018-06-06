@@ -318,6 +318,14 @@ public class AddPetActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        DOgITApp.getInstance().getCurrentPet().setName(nameTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPet().setDescription(descriptionTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPet().setWeigth(Double.parseDouble(weigthTextInputLayout.getEditText().getText().toString()));
+                        DOgITApp.getInstance().getCurrentPet().setId(sizeTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPet().setId(ageTextInputLayout.getEditText().getText().toString());
+                        DOgITApp.getInstance().getCurrentPet().setPhoto(url.toString());
+                        DOgITApp.getInstance().getCurrentPet().setGender(Long.toString(genderSpinner.getSelectedItemId()));
+                        DOgITApp.getInstance().getCurrentPet().setRescueDate(rescueEditText.getText().toString());
                         Toast.makeText(getApplicationContext(), R.string.pet_save, Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -362,9 +370,9 @@ public class AddPetActivity extends AppCompatActivity {
                         try {
                             publications = Publication.build(response.getJSONArray("publications"));
                             if(publications.size() == 0) {
-                                Toast.makeText(getApplicationContext(), R.string.error_pet_publication, Toast.LENGTH_SHORT).show();
-                            } else {
                                 deletePet();
+                            } else {
+                                Toast.makeText(getApplicationContext(), R.string.error_pet_publication, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
