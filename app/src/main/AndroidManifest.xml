@@ -78,17 +78,26 @@
                 android:value="pe.com.dogit.activities.AboutEventActivity" />
         </activity>
         <activity
-            android:name=".activities.AboutMyPublicationActivity"
-            android:label="@string/title_activity_about_my_publication"
+            android:name=".activities.AboutPublicationActivity"
+            android:label="@string/title_activity_about_publication"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.AddMyPublicationActivity"
-            android:label="@string/title_activity_add_my_publication"
-            android:parentActivityName=".activities.AboutMyPublicationActivity"
+            android:name=".activities.AddPublicationActivity"
+            android:label="@string/title_activity_add_publication"
+            android:parentActivityName=".activities.AboutPublicationActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pe.com.dogit.activities.AboutMyPublicationActivity" />
+                android:value="pe.com.dogit.activities.AboutPublicationActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SendRequestActivity"
+            android:label="@string/title_activity_send_request"
+            android:parentActivityName=".activities.AboutPublicationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.AboutPublicationActivity" />
         </activity>
     </application>
 

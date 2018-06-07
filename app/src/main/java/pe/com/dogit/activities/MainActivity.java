@@ -3,7 +3,6 @@ package pe.com.dogit.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,10 +27,12 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.fragments.AdoptionFragment;
+import pe.com.dogit.fragments.BlogFragment;
 import pe.com.dogit.fragments.EventFragment;
-import pe.com.dogit.fragments.MyPublicationFragment;
-import pe.com.dogit.fragments.PetFragment;
 import pe.com.dogit.fragments.PublicationFragment;
+import pe.com.dogit.fragments.PetFragment;
+import pe.com.dogit.fragments.RequestFragment;
 import pe.com.dogit.fragments.UserFragment;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
@@ -90,14 +91,20 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle(R.string.nav_option_user);
                 return new UserFragment();
             case R.id.nav_pet:
-                toolbar.setTitle(R.string.nav_option_pets);
+                toolbar.setTitle(R.string.nav_option_pet);
                 return new PetFragment();
-            case R.id.nav_my_publication:
-                toolbar.setTitle(R.string.nav_option_my_publication);
-                return new MyPublicationFragment();
+            case R.id.nav_blog:
+                toolbar.setTitle(R.string.nav_option_blog);
+                return new BlogFragment();
+            case R.id.nav_publication:
+                toolbar.setTitle(R.string.nav_option_publication);
+                return new PublicationFragment();
+            case R.id.nav_request:
+                toolbar.setTitle(R.string.nav_option_request);
+                return new RequestFragment();
             case R.id.nav_adoption:
                 toolbar.setTitle(R.string.nav_option_adoption);
-                return new PublicationFragment();
+                return new AdoptionFragment();
             case R.id.nav_event:
                 toolbar.setTitle(R.string.nav_option_event);
                 return new EventFragment();
@@ -138,7 +145,11 @@ public class MainActivity extends AppCompatActivity
             navigateAccordingTo(id);
         } else if (id == R.id.nav_pet) {
             navigateAccordingTo(id);
-        }  else if (id == R.id.nav_my_publication) {
+        }  else if (id == R.id.nav_blog) {
+            navigateAccordingTo(id);
+        }  else if (id == R.id.nav_publication) {
+            navigateAccordingTo(id);
+        }  else if (id == R.id.nav_request) {
             navigateAccordingTo(id);
         }  else if (id == R.id.nav_adoption) {
             navigateAccordingTo(id);

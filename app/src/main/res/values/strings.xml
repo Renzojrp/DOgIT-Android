@@ -28,9 +28,11 @@
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="nav_option_user">User</string>
-    <string name="nav_option_pets">My Pets</string>
-    <string name="nav_option_my_publication">My Publications</string>
-    <string name="nav_option_adoption">Adoption</string>
+    <string name="nav_option_pet">My Pets</string>
+    <string name="nav_option_blog">Blog</string>
+    <string name="nav_option_publication">Publications</string>
+    <string name="nav_option_request">Requests</string>
+    <string name="nav_option_adoption">Adoptions</string>
     <string name="nav_option_event">Events</string>
     <string name="nav_option_log_out">Log out</string>
     <string name="error_pet">No pets were found</string>
@@ -67,8 +69,8 @@
     <string name="event_update">Updated event</string>
     <string name="error_event_update">Failed to update event</string>
 
-    <!-- AddMyPublicationActivity -->
-    <string name="title_activity_add_my_publication">AddMyPublicationActivity</string>
+    <!-- AddPublicationActivity -->
+    <string name="title_activity_add_publication">AddPublicationActivity</string>
     <string name="publication_created">Publication created</string>
     <string name="error_publication_save">Failed to save publication</string>
     <string name="publication_delete">Publication delete</string>
@@ -161,5 +163,9 @@
 
     <string name="title_activity_about_pet">AboutPetActivity</string>
     <string name="title_activity_abou_event">AbouEventActivity</string>
-    <string name="title_activity_about_my_publication">AboutMyPublicationActivity</string>
+    <string name="title_activity_about_publication">AboutPublicationActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_send_request">SendRequestActivity</string>
 </resources>

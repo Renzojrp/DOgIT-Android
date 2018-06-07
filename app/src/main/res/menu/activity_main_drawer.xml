@@ -11,11 +11,19 @@
         <item
             android:id="@+id/nav_pet"
             android:icon="@drawable/ic_pets_black_24dp"
-            android:title="@string/nav_option_pets" />
+            android:title="@string/nav_option_pet" />
         <item
-            android:id="@+id/nav_my_publication"
+            android:id="@+id/nav_blog"
+            android:icon="@drawable/ic_pages_black_24dp"
+            android:title="@string/nav_option_blog" />
+        <item
+            android:id="@+id/nav_publication"
             android:icon="@drawable/ic_public_black_24dp"
-            android:title="@string/nav_option_my_publication" />
+            android:title="@string/nav_option_publication" />
+        <item
+            android:id="@+id/nav_request"
+            android:icon="@drawable/ic_markunread_mailbox_black_24dp"
+            android:title="@string/nav_option_request" />
         <item
             android:id="@+id/nav_adoption"
             android:icon="@drawable/ic_favorite_black_24dp"
