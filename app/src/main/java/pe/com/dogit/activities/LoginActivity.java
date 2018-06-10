@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         if(correctEmail && correctPassword) {
             signIn(emailTextInputLayout.getEditText().getText().toString(), passwordTextInputLayout.getEditText().getText().toString());
         }
-        signInProgressBar.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
@@ -106,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),  getString(R.string.hello) + " " + DOgITApp.getInstance().getCurrentUser().getName(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             finish();
+                            signInProgressBar.setVisibility(View.INVISIBLE);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.incorrect_login, Toast.LENGTH_SHORT).show();
+                        signInProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }

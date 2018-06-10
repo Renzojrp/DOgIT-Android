@@ -58,7 +58,6 @@ public class AddPublicationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         photoANImageView = findViewById(R.id.photoANImageView);
         galeryButton = findViewById(R.id.galeryButton);
         descriptionTextInputLayout = findViewById(R.id.descriptionTextInputLayout);
@@ -100,6 +99,7 @@ public class AddPublicationActivity extends AppCompatActivity {
 
         layoutByOrigin();
     }
+
     public void layoutByOrigin() {
         if (DOgITApp.getInstance().getCurrentPublication() != null) {
             requirementsTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getRequirements());

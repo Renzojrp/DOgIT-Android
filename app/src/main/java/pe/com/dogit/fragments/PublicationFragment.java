@@ -67,14 +67,14 @@ public class PublicationFragment extends Fragment {
         addPublicationFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToAddPetActivity(v);
+                goToAddPublicationActivity(v);
             }
         });
         getMyPublications();
         return view;
     }
 
-    public void goToAddPetActivity (View v) {
+    public void goToAddPublicationActivity(View v) {
         if(pets.size()!= 0) {
             v.getContext()
                     .startActivity(new Intent(v.getContext(),
@@ -82,14 +82,11 @@ public class PublicationFragment extends Fragment {
         } else {
             Toast.makeText(v.getContext(), R.string.error_go_add_pet, Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     private void getMyPublications() {
         AndroidNetworking
-                .get(DOgITService.PUBLICATION_USER_URL)
-                .addPathParameter("user_id", user.getId())
+                .get(DOgITService.PUBLICATION_URL)
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()

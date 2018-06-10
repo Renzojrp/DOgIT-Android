@@ -85,6 +85,7 @@ public class AddPetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_pet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         user = DOgITApp.getInstance().getCurrentUser();
 

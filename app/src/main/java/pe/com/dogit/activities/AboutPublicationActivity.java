@@ -58,7 +58,7 @@ public class AboutPublicationActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, AddPublicationActivity.class);
                     this.startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.error_edit_event, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.error_edit_publication, Toast.LENGTH_SHORT).show();
                 }
                 return true;
             default:

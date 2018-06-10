@@ -259,7 +259,6 @@ public class RegisterActivity extends AppCompatActivity {
                 && correctAddress && correctDNI && correctBirthDate && correctGender) {
             signUpUser();
         }
-        signUpProgressBar.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     }
@@ -287,6 +286,7 @@ public class RegisterActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(getApplicationContext(), R.string.user_saved, Toast.LENGTH_SHORT).show();
                                 finish();
+                                signUpProgressBar.setVisibility(View.INVISIBLE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -295,6 +295,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.error_user_saved, Toast.LENGTH_SHORT).show();
+                        signUpProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }

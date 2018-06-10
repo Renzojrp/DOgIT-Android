@@ -2,6 +2,7 @@ package pe.com.dogit.network;
 
 import java.util.List;
 
+import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
@@ -24,6 +25,9 @@ public class DOgITService {
     public static String ASSISTENCE_URL = "https://dogit.herokuapp.com/api/assistance";
     public static String ASSISTENCE_EVENT_URL = "https://dogit.herokuapp.com/api/assistance/event/{event_id}";
     public static String ASSISTENCE_USER_URL = "https://dogit.herokuapp.com/api/assistance/user/{user_id}";
+    public static String BLOG_URL = "https://dogit.herokuapp.com/api/blog";
+    public static String BLOG_USER_URL = "https://dogit.herokuapp.com/api/blog/user/{user_id}";
+    public static String BLOG_EDIT_URL = "https://dogit.herokuapp.com/api/blog/{blog_id}";
 
     private User currentUser;
     private String currentToken;
@@ -31,6 +35,7 @@ public class DOgITService {
     private List<Pet> currentPets;
     private Publication currentPublication;
     private Event currentEvent;
+    private Blog currentBlog;
 
     public User getCurrentUser() {
         return currentUser;
@@ -83,6 +88,15 @@ public class DOgITService {
 
     public DOgITService setCurrentEvent(Event currentEvent) {
         this.currentEvent = currentEvent;
+        return this;
+    }
+
+    public Blog getCurrentBlog() {
+        return currentBlog;
+    }
+
+    public DOgITService setCurrentBlog(Blog currentBlog) {
+        this.currentBlog = currentBlog;
         return this;
     }
 }

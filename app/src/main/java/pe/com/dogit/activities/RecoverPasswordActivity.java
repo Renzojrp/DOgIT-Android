@@ -83,7 +83,6 @@ public class RecoverPasswordActivity extends AppCompatActivity {
         if(correctEmail) {
             getPasswordByEmail();
         }
-        sendMailProgressBar.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 

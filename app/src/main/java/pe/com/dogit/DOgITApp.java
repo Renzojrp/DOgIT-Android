@@ -6,6 +6,7 @@ import com.androidnetworking.AndroidNetworking;
 
 import java.util.List;
 
+import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
@@ -82,6 +83,15 @@ public class DOgITApp extends Application {
 
     public DOgITApp setCurrentEvent(Event event) {
         DOgITService.setCurrentEvent(event);
+        return this;
+    }
+
+    public Blog getCurrentBlog() {
+        return DOgITService.getCurrentBlog();
+    }
+
+    public DOgITApp setCurrentBlog(Blog blog) {
+        DOgITService.setCurrentBlog(blog);
         return this;
     }
 }

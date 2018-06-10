@@ -12,15 +12,17 @@ public class Blog {
     private User user;
     private Pet pet;
     private String description;
+    private String date;
 
     public Blog() {
     }
 
-    public Blog(String id, User user, Pet pet, String description) {
+    public Blog(String id, User user, Pet pet, String description, String date) {
         this.setId(id);
         this.setUser(user);
         this.setPet(pet);
         this.setDescription(description);
+        this.setDate(date);
     }
 
     public String getId() {
@@ -55,6 +57,14 @@ public class Blog {
         this.description = description;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public static Blog build(JSONObject jsonBlog) {
         if(jsonBlog == null) return null;
         Blog blog= new Blog();
@@ -63,6 +73,7 @@ public class Blog {
             blog.setUser(User.build(jsonBlog.getJSONObject("user")));
             blog.setPet(Pet.build(jsonBlog.getJSONObject("pet")));
             blog.setDescription(jsonBlog.getString("description"));
+            blog.setDate(jsonBlog.getString("date"));
             return blog;
         } catch (JSONException e) {
             e.printStackTrace();

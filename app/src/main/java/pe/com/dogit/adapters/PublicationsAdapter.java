@@ -41,7 +41,7 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
         holder.photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
         holder.photoANImageView.setImageUrl(publications.get(position).getPet().getPhoto());
         holder.descriptionTextView.setText(publications.get(position).getDescription());
-        holder.petCardView.setOnClickListener(new View.OnClickListener() {
+        holder.publicationCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DOgITApp.getInstance().setCurrentPublication(publications.get(position));
@@ -68,13 +68,13 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
         ANImageView photoANImageView;
         TextView nameTextView;
         TextView descriptionTextView;
-        CardView petCardView;
+        CardView publicationCardView;
         public ViewHolder(View itemView) {
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
-            petCardView = (CardView) itemView.findViewById(R.id.petCardView);
+            publicationCardView = (CardView) itemView.findViewById(R.id.publicationCardView);
         }
     }
 }

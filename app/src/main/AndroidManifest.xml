@@ -62,7 +62,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pe.com.dogit.activities.LoginActivity" />
+                android:value="pe.com.dogit.activities.AboutPetActivity" />
         </activity>
         <activity
             android:name=".activities.AboutEventActivity"
@@ -99,6 +99,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pe.com.dogit.activities.AboutPublicationActivity" />
         </activity>
+        <activity
+            android:name=".activities.AboutBlogActivity"
+            android:label="@string/title_activity_about_blog"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddBlogActivity"
+            android:label="@string/title_activity_add_blog"
+            android:parentActivityName=".activities.AboutBlogActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.AboutBlogActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AboutRequestActivity"
+            android:label="@string/title_activity_about_request"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
