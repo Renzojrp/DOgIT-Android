@@ -10,6 +10,7 @@ import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Publication;
+import pe.com.dogit.models.Request;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
 
@@ -92,6 +93,15 @@ public class DOgITApp extends Application {
 
     public DOgITApp setCurrentBlog(Blog blog) {
         DOgITService.setCurrentBlog(blog);
+        return this;
+    }
+
+    public Request getCurrentRequest() {
+        return DOgITService.getCurrentRequest();
+    }
+
+    public DOgITApp setCurrentRequest(Request request) {
+        DOgITService.setCurrentRequest(request);
         return this;
     }
 }

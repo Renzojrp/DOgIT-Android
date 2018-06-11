@@ -8,4 +8,102 @@
     tools:context=".activities.AboutRequestActivity"
     tools:showIn="@layout/activity_about_request">
 
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sourcesansprolight"
+        android:gravity="center"
+        android:text="@string/sample_publication"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoANImageView"
+        android:layout_width="287dp"
+        android:layout_height="147dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:elevation="6dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView" />
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoUserANImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="56dp"
+        android:elevation="6dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView" />
+
+    <TextView
+        android:id="@+id/nameUserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sourcesansprolight"
+        android:gravity="center"
+        android:text="@string/sample_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/photoUserANImageView"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView"
+        app:layout_constraintBottom_toBottomOf="@id/photoUserANImageView"/>
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="196dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/sourcesansprolight"
+        android:text="@string/sample_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photoUserANImageView" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/cancelButton"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            />
+
+        <Button
+            android:id="@+id/updateInfoButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/acceptButton"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

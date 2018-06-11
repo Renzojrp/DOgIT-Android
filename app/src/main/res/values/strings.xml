@@ -91,6 +91,14 @@
     <string name="title_activity_about_publication">AboutPublicationActivity</string>
     <string name="error_edit_publication">To edit you must be the owner of the pulication</string>
 
+    <!-- SendRequestActivity -->
+    <string name="title_activity_send_request">SendRequestActivity</string>
+    <string name="question_request">Why do you want to adopt</string>
+    <string name="question_mark">"?"</string>
+    <string name="error_request_publication">You can not send a request to a publication of yours</string>
+    <string name="request_send">Request sent</string>
+    <string name="error_request_send">Error sending request</string>
+
     <!-- Hint -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -116,6 +124,7 @@
     <string name="location_hint">Location</string>
     <string name="capability_hint">Capability</string>
     <string name="requirements_hint">Requirements</string>
+    <string name="answer_hint">Answer</string>
 
     <!-- Button -->
     <string name="signInButton">Login</string>
@@ -151,6 +160,7 @@
     <string name="empty_capability">Complete capability</string>
     <string name="empty_location">Complete location</string>
     <string name="empty_requirements">Complete requirements</string>
+    <string name="empty_answer">Complete answer</string>
 
     <!-- Samples -->
     <string name="sample_name" translatable="false">Sample Name</string>
@@ -171,7 +181,7 @@
     <string name="sample_rescue_date" translatable="false">Sample rescue date</string>
     <string name="sample_pet" translatable="false">Sample pet</string>
     <string name="sample_requirements" translatable="false">Sample requirements</string>
-
+    <string name="sample_question" translatable="false">Sample question</string>
 
     <string name="action_settings">Settings</string>
 
@@ -181,7 +191,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_send_request">SendRequestActivity</string>
+
     <string name="title_activity_about_blog">AboutBlogActivity</string>
 
     <string name="title_activity_about_request">AboutRequestActivity</string>

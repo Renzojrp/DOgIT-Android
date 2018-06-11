@@ -55,8 +55,8 @@ public class BlogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_publication, container, false);
-        blogsRecyclerView = view.findViewById(R.id.publicationsRecyclerView);
+        View view = inflater.inflate(R.layout.fragment_blog, container, false);
+        blogsRecyclerView = view.findViewById(R.id.blogsRecyclerView);
         blogs = new ArrayList<>();
         blogsAdapter = (new BlogsAdapter()).setBlogs(blogs);
         blogsLayoutManager = new LinearLayoutManager(view.getContext());
@@ -64,7 +64,7 @@ public class BlogFragment extends Fragment {
         blogsRecyclerView.setLayoutManager(blogsLayoutManager);
         user = DOgITApp.getInstance().getCurrentUser();
         pets = DOgITApp.getInstance().getCurrentPets();
-        addBlogFloatingActionButton = view.findViewById(R.id.addPublicationFloatingActionButton);
+        addBlogFloatingActionButton = view.findViewById(R.id.addBlogFloatingActionButton);
         addBlogFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -70,7 +70,7 @@ public class PublicationFragment extends Fragment {
                 goToAddPublicationActivity(v);
             }
         });
-        getMyPublications();
+        getPublications();
         return view;
     }
 
@@ -84,9 +84,10 @@ public class PublicationFragment extends Fragment {
         }
     }
 
-    private void getMyPublications() {
+    private void getPublications() {
         AndroidNetworking
                 .get(DOgITService.PUBLICATION_URL)
+                .addPathParameter("user_id", user.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -111,7 +112,7 @@ public class PublicationFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getMyPublications();
+        getPublications();
     }
 
 }
