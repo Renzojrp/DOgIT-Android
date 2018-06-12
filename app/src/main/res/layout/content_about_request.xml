@@ -88,11 +88,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/refuseButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/cancelButton"
+            android:text="@string/refuseButton"
+            android:onClick="refuseButton"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
             />
 
@@ -102,6 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/acceptButton"
+            android:onClick="acceptButton"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             />
     </LinearLayout>

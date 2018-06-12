@@ -99,6 +99,18 @@
     <string name="request_send">Request sent</string>
     <string name="error_request_send">Error sending request</string>
 
+    <!-- AboutRequestActivity -->
+    <string name="title_activity_about_request">AboutRequestActivity</string>
+    <string name="request_refuse">Rejected request</string>
+    <string name="error_request_refuse">Error when rejecting request</string>
+    <string name="request_accept">Approved request</string>
+    <string name="error_request_accept">Error when approving request</string>
+    <string name="response_mail_subject">DOgIT - Request response</string>
+    <string name="response_mail">the request sent for the adoption of</string>
+    <string name="response_mail_body">has been</string>
+    <string name="approved">approved</string>
+    <string name="rejected">rejected</string>
+
     <!-- Hint -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -137,6 +149,7 @@
     <string name="galeryButton">Galery</string>
     <string name="sendMailButton">Send mail</string>
     <string name="shareButton">Share</string>
+    <string name="refuseButton">Refuse</string>
 
     <!-- Invalid -->
     <string name="invalid_email">Invalid email</string>
@@ -194,5 +207,5 @@
 
     <string name="title_activity_about_blog">AboutBlogActivity</string>
 
-    <string name="title_activity_about_request">AboutRequestActivity</string>
+
 </resources>

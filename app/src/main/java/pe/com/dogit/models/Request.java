@@ -31,48 +31,54 @@ public class Request {
         return id;
     }
 
-    public void setId(String id) {
+    public Request setId(String id) {
         this.id = id;
+        return this;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public Request setUser(User user) {
         this.user = user;
+        return this;
     }
 
     public Publication getPublication() {
         return publication;
     }
 
-    public void setPublication(Publication publication) {
+    public Request setPublication(Publication publication) {
         this.publication = publication;
+        return this;
     }
 
     public String getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(String requestDate) {
+    public Request setRequestDate(String requestDate) {
         this.requestDate = requestDate;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public Request setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public Request setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public static Request build(JSONObject jsonRequest) {

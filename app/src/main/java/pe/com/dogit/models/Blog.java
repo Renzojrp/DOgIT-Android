@@ -29,40 +29,45 @@ public class Blog {
         return id;
     }
 
-    public void setId(String id) {
+    public Blog setId(String id) {
         this.id = id;
+        return this;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public Blog setUser(User user) {
         this.user = user;
+        return this;
     }
 
     public Pet getPet() {
         return pet;
     }
 
-    public void setPet(Pet pet) {
+    public Blog setPet(Pet pet) {
         this.pet = pet;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Blog setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public Blog setDate(String date) {
         this.date = date;
+        return this;
     }
 
     public static Blog build(JSONObject jsonBlog) {
