@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DOgIT</string>
+    <string name="app_name" translatable="false">DOgIT</string>
 
     <!-- SplashActivity -->
     <string name="internet_error">Please check your internet connection</string>
@@ -33,6 +33,7 @@
     <string name="nav_option_publication">Publications</string>
     <string name="nav_option_request">Requests</string>
     <string name="nav_option_adoption">Adoptions</string>
+    <string name="nav_option_visit">Visits</string>
     <string name="nav_option_event">Events</string>
     <string name="nav_option_log_out">Log out</string>
     <string name="error_pet">No pets were found</string>
@@ -94,10 +95,12 @@
     <!-- SendRequestActivity -->
     <string name="title_activity_send_request">SendRequestActivity</string>
     <string name="question_request">Why do you want to adopt</string>
-    <string name="question_mark">"?"</string>
+    <string name="question_mark" translatable="false">"?"</string>
     <string name="error_request_publication">You can not send a request to a publication of yours</string>
     <string name="request_send">Request sent</string>
     <string name="error_request_send">Error sending request</string>
+    <string name="request_sended">Error sending request</string>
+    <string name="request_send_already">You have already sent a request</string>
 
     <!-- AboutRequestActivity -->
     <string name="title_activity_about_request">AboutRequestActivity</string>
@@ -195,6 +198,7 @@
     <string name="sample_pet" translatable="false">Sample pet</string>
     <string name="sample_requirements" translatable="false">Sample requirements</string>
     <string name="sample_question" translatable="false">Sample question</string>
+    <string name="sample_place" translatable="false">Sample place</string>
 
     <string name="action_settings">Settings</string>
 
@@ -203,9 +207,12 @@
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <string name="title_activity_about_blog">AboutBlogActivity</string>
+    <string name="title_activity_about_adoption">AboutAdoptionActivity</string>
+    <string name="title_activity_schedule_visit">ScheduleVisitActivity</string>
+    <string name="title_activity_list_adoption">ListAdoptionActivity</string>
 
 
 </resources>

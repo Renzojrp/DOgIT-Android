@@ -34,6 +34,7 @@ import pe.com.dogit.fragments.PublicationFragment;
 import pe.com.dogit.fragments.PetFragment;
 import pe.com.dogit.fragments.RequestFragment;
 import pe.com.dogit.fragments.UserFragment;
+import pe.com.dogit.fragments.VisitFragment;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
@@ -105,6 +106,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_adoption:
                 toolbar.setTitle(R.string.nav_option_adoption);
                 return new AdoptionFragment();
+            case R.id.nav_visit:
+                toolbar.setTitle(R.string.nav_option_visit);
+                return new VisitFragment();
             case R.id.nav_event:
                 toolbar.setTitle(R.string.nav_option_event);
                 return new EventFragment();
@@ -152,6 +156,8 @@ public class MainActivity extends AppCompatActivity
         }  else if (id == R.id.nav_request) {
             navigateAccordingTo(id);
         }  else if (id == R.id.nav_adoption) {
+            navigateAccordingTo(id);
+        }  else if (id == R.id.nav_visit) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_event) {
             navigateAccordingTo(id);

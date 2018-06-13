@@ -38,9 +38,7 @@ public class AdoptionFragment extends Fragment {
     private AdoptionsAdapter adoptionsAdapter;
     private RecyclerView.LayoutManager adoptionsLayoutManager;
     private List<Adoption> adoptions;
-    private List<Pet> pets;
     private User user;
-
 
     public AdoptionFragment() {
         // Required empty public constructor
@@ -51,15 +49,14 @@ public class AdoptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_publication, container, false);
-        adoptionsRecyclerView = view.findViewById(R.id.publicationsRecyclerView);
+        View view = inflater.inflate(R.layout.fragment_adoption, container, false);
+        adoptionsRecyclerView = view.findViewById(R.id.adoptionsRecyclerView);
         adoptions = new ArrayList<>();
         adoptionsAdapter = (new AdoptionsAdapter()).setAdoptions(adoptions);
         adoptionsLayoutManager = new LinearLayoutManager(view.getContext());
         adoptionsRecyclerView.setAdapter(adoptionsAdapter);
         adoptionsRecyclerView.setLayoutManager(adoptionsLayoutManager);
         user = DOgITApp.getInstance().getCurrentUser();
-        pets = DOgITApp.getInstance().getCurrentPets();
         getAdoptions();
         return view;
     }

@@ -115,6 +115,21 @@
         <activity
             android:name=".activities.AboutRequestActivity"
             android:label="@string/title_activity_about_request"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AboutAdoptionActivity"
+            android:label="@string/title_activity_about_adoption"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ScheduleVisitActivity"
+            android:label="@string/title_activity_schedule_visit"
+            android:theme="@style/AppTheme.NoActionBar" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pe.com.dogit.activities.ListAdoptionActivity" />
+        <activity
+            android:name=".activities.ListAdoptionActivity"
+            android:label="@string/title_activity_list_adoption"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -16,7 +16,10 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
@@ -78,9 +81,38 @@ public class SendRequestActivity extends AppCompatActivity {
             if(publication.getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())) {
                 Toast.makeText(getApplicationContext(), R.string.error_request_publication, Toast.LENGTH_SHORT).show();
             } else {
-                sendResquest();
+                getRequestByUser();
             }
         }
+    }
+
+    private void getRequestByUser() {
+        AndroidNetworking
+                .get(DOgITService.REQUEST_USER_URL)
+                .addPathParameter("user_id", DOgITApp.getInstance().getCurrentUser().getId())
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            List<Request> requestsToReject = Request.build(response.getJSONArray("requests"));
+                            if(requestsToReject.size() == 0) {
+                                sendResquest();
+                            } else {
+                                Toast.makeText(getApplicationContext(), R.string.request_send_already, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private void sendResquest() {

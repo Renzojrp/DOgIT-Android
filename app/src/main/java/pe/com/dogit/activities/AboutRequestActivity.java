@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +17,10 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -31,6 +34,7 @@ import javax.mail.internet.MimeMessage;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
+import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.Request;
 import pe.com.dogit.network.DOgITService;
 
@@ -41,12 +45,15 @@ public class AboutRequestActivity extends AppCompatActivity {
     TextView nameUserTextView;
     ANImageView photoUserANImageView;
     TextView descriptionTextView;
+    ProgressBar messageProgressBar;
 
     Request request;
 
     String email = "dogitutp@gmail.com";
     String password = "posito0310";
     Session session;
+
+    List<Request> requestsToReject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,7 @@ public class AboutRequestActivity extends AppCompatActivity {
         photoUserANImageView = findViewById(R.id.photoUserANImageView);
         nameUserTextView = findViewById(R.id.nameUserTextView);
         descriptionTextView = findViewById(R.id.descriptionTextView);
+        messageProgressBar = findViewById(R.id.messageProgressBar);
 
         request = DOgITApp.getInstance().getCurrentRequest();
 
@@ -72,9 +80,21 @@ public class AboutRequestActivity extends AppCompatActivity {
         photoUserANImageView.setImageUrl(request.getUser().getPhoto());
         nameUserTextView.setText(request.getUser().getName());
         descriptionTextView.setText(request.getMessage());
+
+        messageProgressBar.setVisibility(View.GONE);
     }
 
     public void refuseButton(View v) {
+        messageProgressBar.setVisibility(View.VISIBLE);
+        rejectRequest();
+    }
+
+    public void acceptButton(View v) {
+        messageProgressBar.setVisibility(View.VISIBLE);
+        acceptRequest();
+    }
+
+    public void rejectRequest() {
         AndroidNetworking.put(DOgITService.REQUEST_EDIT_URL)
                 .addPathParameter("request_id", DOgITApp.getInstance().getCurrentRequest().getId())
                 .addBodyParameter("status", "R")
@@ -85,7 +105,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(getApplicationContext(), R.string.request_refuse, Toast.LENGTH_SHORT).show();
-                        sendMail("R");
+                        sendMail("R", request);
                         finish();
                     }
                     @Override
@@ -95,7 +115,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                 });
     }
 
-    public void acceptButton(View v) {
+    public void acceptRequest() {
         AndroidNetworking.put(DOgITService.REQUEST_EDIT_URL)
                 .addPathParameter("request_id", DOgITApp.getInstance().getCurrentRequest().getId())
                 .addBodyParameter("status", "A")
@@ -106,10 +126,10 @@ public class AboutRequestActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(getApplicationContext(), R.string.request_accept, Toast.LENGTH_SHORT).show();
-                        sendMail("A");
+                        sendMail("A", request);
+                        getRequestByPublication();
                         changePublicationStatus();
                         createAdoption();
-                        finish();
                     }
                     @Override
                     public void onError(ANError error) {
@@ -118,7 +138,55 @@ public class AboutRequestActivity extends AppCompatActivity {
                 });
     }
 
-    private void sendMail(String answer) {
+    public void requestReject(final Request requestToReject) {
+        AndroidNetworking.put(DOgITService.REQUEST_EDIT_URL)
+                .addPathParameter("request_id", requestToReject.getId())
+                .addBodyParameter("status", "R")
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        sendMail("N", requestToReject);
+                    }
+                    @Override
+                    public void onError(ANError error) {
+
+                    }
+                });
+    }
+
+    private void getRequestByPublication() {
+        AndroidNetworking
+                .get(DOgITService.REQUEST_PUBLICATION_URL)
+                .addPathParameter("publication_id", request.getPublication().getId())
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            requestsToReject = Request.build(response.getJSONArray("requests"));
+                            for(int i = 0; i < requestsToReject.size(); i++) {
+                                if(!request.getId().equals(requestsToReject.get(i).getId())) {
+                                    requestReject(requestsToReject.get(i));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void sendMail(String answer, Request requestOfUser) {
 
         String status;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -149,8 +217,8 @@ public class AboutRequestActivity extends AppCompatActivity {
                 message.setFrom(new InternetAddress(email));
                 message.setSubject(getResources().getString(R.string.response_mail_subject));
                 message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse(request.getUser().getEmail()));
-                message.setContent(request.getUser().getName() + " " + getResources().getString(R.string.response_mail) + " " + request.getPublication().getPet().getName() +
+                        InternetAddress.parse(requestOfUser.getUser().getEmail()));
+                message.setContent(requestOfUser.getUser().getName() + " " + getResources().getString(R.string.response_mail) + " " + requestOfUser.getPublication().getPet().getName() +
                         " " + getResources().getString(R.string.response_mail_body) + " " + status, "text/html; charset=utf-8");
                 Transport.send(message);
             } catch (MessagingException e) {
@@ -169,7 +237,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        finish();
                     }
                     @Override
                     public void onError(ANError error) {

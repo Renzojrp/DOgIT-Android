@@ -2,11 +2,8 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,7 +24,7 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.models.Assistence;
+import pe.com.dogit.models.Assistance;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.network.DOgITService;
 
@@ -40,11 +37,11 @@ public class AboutEventActivity extends AppCompatActivity {
     TextView dateTextView;
     TextView capacityTextView;
 
-    Boolean assistenceExist = false;
+    Boolean assistanceExist = false;
 
     Event event;
 
-    List<Assistence> assistences;
+    List<Assistance> assists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +112,8 @@ public class AboutEventActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         if(response == null) return;
                         try {
-                            assistences = Assistence.build(response.getJSONArray("assistances"));
-                            capacityTextView.setText(assistences.size() + "/" + event.getCapacity());
+                            assists = Assistance.build(response.getJSONArray("assistances"));
+                            capacityTextView.setText(assists.size() + "/" + event.getCapacity());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -140,15 +137,15 @@ public class AboutEventActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         if(response == null) return;
                         try {
-                            assistences = Assistence.build(response.getJSONArray("assistances"));
-                            if (assistences.size() != 0) {
-                                for (int i = 0; i < assistences.size(); i++){
-                                    if (DOgITApp.getInstance().getCurrentUser().getId().equals(assistences.get(i).getUser().getId())
-                                            && event.getId().equals(assistences.get(i).getEvent().getId())) {
-                                        assistenceExist = true;
+                            assists = Assistance.build(response.getJSONArray("assistances"));
+                            if (assists.size() != 0) {
+                                for (int i = 0; i < assists.size(); i++){
+                                    if (DOgITApp.getInstance().getCurrentUser().getId().equals(assists.get(i).getUser().getId())
+                                            && event.getId().equals(assists.get(i).getEvent().getId())) {
+                                        assistanceExist = true;
                                     }
                                 }
-                                if (assistenceExist) {
+                                if (assistanceExist) {
                                     Toast.makeText(getApplicationContext(), R.string.error_assistence_saved, Toast.LENGTH_SHORT).show();
                                 } else {
                                     saveAssistence();

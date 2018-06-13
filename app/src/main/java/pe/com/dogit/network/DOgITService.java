@@ -31,9 +31,11 @@ public class DOgITService {
     public static String BLOG_EDIT_URL = "https://dogit.herokuapp.com/api/blog/{blog_id}";
     public static String REQUEST_URL = "https://dogit.herokuapp.com/api/request";
     public static String REQUEST_USER_URL = "https://dogit.herokuapp.com/api/request/user/{user_id}";
+    public static String REQUEST_PUBLICATION_URL = "https://dogit.herokuapp.com/api/request/publication/{publication_id}";
     public static String REQUEST_EDIT_URL = "https://dogit.herokuapp.com/api/request/{request_id}";
     public static String ADOPTION_URL = "https://dogit.herokuapp.com/api/adoption";
     public static String ADOPTION_USER_URL = "https://dogit.herokuapp.com/api/adoption/user/{user_id}";
+    public static String VISIT_URL = "https://dogit.herokuapp.com/api/visit";
 
     private User currentUser;
     private String currentToken;
