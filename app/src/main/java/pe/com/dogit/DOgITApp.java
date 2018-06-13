@@ -6,6 +6,7 @@ import com.androidnetworking.AndroidNetworking;
 
 import java.util.List;
 
+import pe.com.dogit.models.Adoption;
 import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
@@ -102,6 +103,15 @@ public class DOgITApp extends Application {
 
     public DOgITApp setCurrentRequest(Request request) {
         DOgITService.setCurrentRequest(request);
+        return this;
+    }
+
+    public Adoption getCurrentAdoption() {
+        return DOgITService.getCurrentAdoption();
+    }
+
+    public DOgITApp setCurrentAdoption(Adoption adoption) {
+        DOgITService.setCurrentAdoption(adoption);
         return this;
     }
 }

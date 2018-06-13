@@ -141,4 +141,12 @@
     <string name="response_mail">the request sent for the adoption of</string>
     <string name="request_sended">Error sending request</string>
     <string name="request_send_already">You have already sent a request</string>
+    <string name="message_hint">Message</string>
+    <string name="empty_message">Complete message</string>
+    <string name="response_mail_visit_in">In</string>
+    <string name="response_mail_visit_date">the day</string>
+    <string name="response_mail_visit_to">to see</string>
+    <string name="response_mail_visit">you have a visit scheduled with</string>
+    <string name="error_visit_save">Failed to save event</string>
+    <string name="mail_send_visit">Mail sent</string>
 </resources>

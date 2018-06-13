@@ -65,7 +65,7 @@ public class Visit {
     }
 
     public String getPlace() {
-        return date;
+        return place;
     }
 
     public Visit setPlace(String place) {

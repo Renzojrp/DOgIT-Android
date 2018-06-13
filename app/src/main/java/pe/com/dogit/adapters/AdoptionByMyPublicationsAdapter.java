@@ -12,6 +12,7 @@ import com.androidnetworking.widget.ANImageView;
 
 import java.util.List;
 
+import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.ScheduleVisitActivity;
 import pe.com.dogit.models.Adoption;
@@ -43,6 +44,7 @@ public class AdoptionByMyPublicationsAdapter extends RecyclerView.Adapter<Adopti
         holder.adoptionCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DOgITApp.getInstance().setCurrentAdoption(adoptions.get(position));
                 v.getContext()
                         .startActivity(new Intent(v.getContext(),
                                 ScheduleVisitActivity.class));

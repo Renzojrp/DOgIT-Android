@@ -141,5 +141,12 @@
     <string name="error_request_publication">No puede enviar una solicitud para una publicación tuya</string>
     <string name="request_sended">Error al enviar solicitud</string>
     <string name="request_send_already">Ya ha enviado una solicitud</string>
+    <string name="message_hint">Mensaje</string>
+    <string name="empty_message">Complete el mensaje</string>
+    <string name="mail_send_visit">Correo enviado</string>
+    <string name="response_mail_visit_in">en</string>
+    <string name="response_mail_visit_date">el día</string>
+    <string name="response_mail_visit_to">para ver</string>
+    <string name="response_mail_visit">tienes agendada una visita con</string>
 
 </resources>

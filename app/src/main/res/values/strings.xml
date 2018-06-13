@@ -90,7 +90,7 @@
 
     <!-- AboutPublicationActivity -->
     <string name="title_activity_about_publication">AboutPublicationActivity</string>
-    <string name="error_edit_publication">To edit you must be the owner of the pulication</string>
+    <string name="error_edit_publication">To edit you must be the owner of the publication</string>
 
     <!-- SendRequestActivity -->
     <string name="title_activity_send_request">SendRequestActivity</string>
@@ -113,6 +113,17 @@
     <string name="response_mail_body">has been</string>
     <string name="approved">approved</string>
     <string name="rejected">rejected</string>
+
+    <!-- ScheduleVisitActivity -->
+    <string name="title_activity_schedule_visit">ScheduleVisitActivity</string>
+    <string name="visit_mail_subject">DOgIT - Scheduled visit</string>
+    <string name="response_mail_visit">you have a visit scheduled with</string>
+    <string name="response_mail_visit_to">to see</string>
+    <string name="response_mail_visit_date">the day</string>
+    <string name="response_mail_visit_in">In</string>
+    <string name="visit_created">Visit created</string>
+    <string name="error_visit_save">Failed to save visit</string>
+    <string name="mail_send_visit">Mail sent</string>
 
     <!-- Hint -->
     <string name="email_hint">Email</string>
@@ -140,6 +151,7 @@
     <string name="capability_hint">Capability</string>
     <string name="requirements_hint">Requirements</string>
     <string name="answer_hint">Answer</string>
+    <string name="message_hint">Message</string>
 
     <!-- Button -->
     <string name="signInButton">Login</string>
@@ -177,6 +189,7 @@
     <string name="empty_location">Complete location</string>
     <string name="empty_requirements">Complete requirements</string>
     <string name="empty_answer">Complete answer</string>
+    <string name="empty_message">Complete message</string>
 
     <!-- Samples -->
     <string name="sample_name" translatable="false">Sample Name</string>
@@ -211,7 +224,6 @@
 
     <string name="title_activity_about_blog">AboutBlogActivity</string>
     <string name="title_activity_about_adoption">AboutAdoptionActivity</string>
-    <string name="title_activity_schedule_visit">ScheduleVisitActivity</string>
     <string name="title_activity_list_adoption">ListAdoptionActivity</string>
 
 
