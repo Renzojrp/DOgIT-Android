@@ -148,5 +148,14 @@
     <string name="response_mail_visit_date">el día</string>
     <string name="response_mail_visit_to">para ver</string>
     <string name="response_mail_visit">tienes agendada una visita con</string>
+    <string name="nav_option_visit">Visitas</string>
+    <string name="visit_created">Visita creada</string>
+    <string name="error_visit_save">Error al agendar visita</string>
+    <string name="title_activity_schedule_visit">Agendar visita</string>
+    <string name="title_activity_list_adoption">Lista de adopciones</string>
+    <string name="title_activity_about_adoption">Datos de adopcion</string>
+    <string name="visit_mail_subject">DOgIT - Visita agendada</string>
+    <string name="mail_send_request">DOgIT - Solicitud de adopción</string>
+    <string name="mail_send_request_request">has recibido una solicitud de adopción para</string>
 
 </resources>

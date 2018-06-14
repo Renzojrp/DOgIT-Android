@@ -130,6 +130,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                         getRequestByPublication();
                         changePublicationStatus();
                         createAdoption();
+                        editPet();
                     }
                     @Override
                     public void onError(ANError error) {
@@ -237,7 +238,6 @@ public class AboutRequestActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        finish();
                     }
                     @Override
                     public void onError(ANError error) {
@@ -261,6 +261,24 @@ public class AboutRequestActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
 
+                    }
+                });
+    }
+
+    private void editPet() {
+        AndroidNetworking.put(DOgITService.PET_EDIT_URL)
+                .addPathParameter("pet_id", request.getPublication().getPet().getId())
+                .addBodyParameter("user", request.getUser().getId())
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        finish();
+                    }
+                    @Override
+                    public void onError(ANError error) {
                     }
                 });
     }

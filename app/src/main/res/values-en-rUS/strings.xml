@@ -38,8 +38,6 @@
     <string name="error_assistence_saved">You have already registered your assistance</string>
     <string name="error_edit_event">To edit you must be the owner of the event</string>
     <string name="title_activity_add_event">AddEventActivity</string>
-    <string name="event_created">Event created</string>
-    <string name="error_event_save">Failed to save event</string>
     <string name="event_delete">Event delete</string>
     <string name="error_event_delete">Failed to delete event</string>
     <string name="event_update">Updated event</string>
@@ -147,6 +145,14 @@
     <string name="response_mail_visit_date">the day</string>
     <string name="response_mail_visit_to">to see</string>
     <string name="response_mail_visit">you have a visit scheduled with</string>
-    <string name="error_visit_save">Failed to save event</string>
     <string name="mail_send_visit">Mail sent</string>
+    <string name="nav_option_visit">Visits</string>
+    <string name="visit_mail_subject">DOgIT - Visit scheduled</string>
+    <string name="visit_created">Visit created</string>
+    <string name="error_visit_save">Failed to save visit</string>
+    <string name="title_activity_schedule_visit">ScheduleVisit</string>
+    <string name="title_activity_list_adoption">ListAdoption</string>
+    <string name="title_activity_about_adoption">AboutAdoption</string>
+    <string name="event_created">Event created</string>
+    <string name="error_event_save">Failed to save event</string>
 </resources>

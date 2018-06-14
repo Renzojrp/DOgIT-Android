@@ -1,6 +1,7 @@
 package pe.com.dogit.activities;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -20,6 +21,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
@@ -39,6 +50,10 @@ public class SendRequestActivity extends AppCompatActivity {
 
     Publication publication;
 
+    String email = "dogitutp@gmail.com";
+    String password = "posito0310";
+    Session session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +65,7 @@ public class SendRequestActivity extends AppCompatActivity {
         photoANImageView = findViewById(R.id.photoANImageView);
         nameTextView = findViewById(R.id.nameTextView);
         descriptionTextView = findViewById(R.id.descriptionTextView);
-        questionTextView = findViewById(R.id.addressTextView);
+        questionTextView = findViewById(R.id.questionTextView);
         answerTextInputLayout = findViewById(R.id.answerTextInputLayout);
 
         publication = DOgITApp.getInstance().getCurrentPublication();
@@ -64,8 +79,8 @@ public class SendRequestActivity extends AppCompatActivity {
         photoANImageView.setImageUrl(publication.getPet().getPhoto());
         nameTextView.setText(publication.getPet().getName());
         descriptionTextView.setText(publication.getDescription());
-        String message = this.getResources().getString(R.string.question_request);
-        //questionTextView.setText(message);
+        questionTextView.setText(getResources().getString(R.string.question_request) + " " + publication.getPet().getName()
+                + getResources().getString(R.string.question_mark));
     }
 
     public void sendRequest(View v) {
@@ -127,12 +142,48 @@ public class SendRequestActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(getApplicationContext(), R.string.request_send, Toast.LENGTH_SHORT).show();
-                        finish();
+                        sendMail();
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.error_request_send, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void sendMail() {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.googlemail.com");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "465");
+
+        session = Session.getDefaultInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(email, password);
+            }
+        });
+
+        if(session != null) {
+            Message message = new MimeMessage(session);
+            try {
+                message.setFrom(new InternetAddress(email));
+                message.setSubject(getResources().getString(R.string.mail_send_request));
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(publication.getUser().getEmail()));
+                message.setContent(publication.getUser().getName() + " " + getResources().getString(R.string.mail_send_request_request)
+                        + " " + publication.getPet().getName(), "text/html; charset=utf-8");
+                Transport.send(message);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        }
+        finish();
     }
 }

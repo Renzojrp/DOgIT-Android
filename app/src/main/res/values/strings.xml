@@ -101,6 +101,8 @@
     <string name="error_request_send">Error sending request</string>
     <string name="request_sended">Error sending request</string>
     <string name="request_send_already">You have already sent a request</string>
+    <string name="mail_send_request">DOgIT - Adoption request</string>
+    <string name="mail_send_request_request">, you have received an adoption request for</string>
 
     <!-- AboutRequestActivity -->
     <string name="title_activity_about_request">AboutRequestActivity</string>
