@@ -15,6 +15,10 @@ import android.widget.Toast;
 
 import com.androidnetworking.widget.ANImageView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.models.Blog;
@@ -81,7 +85,11 @@ public class AboutBlogActivity extends AppCompatActivity {
         nameUserTextView.setText(blog.getUser().getName() + " " + blog.getUser().getLastName());
         nameTextView.setText(blog.getPet().getName());
         descriptionTextView.setText(blog.getDescription());
-        dateTextView.setText(blog.getDate());
+        String date = blog.getDate().substring(0,10);
+        String year = date.substring(0,4);
+        String month = date.substring(5, 7);
+        String day = date.substring(8, 10);
+        dateTextView.setText(day + "/" + month + "/" + year);
     }
 
     @Override

@@ -127,9 +127,9 @@ public class EditUserProfileActivity extends AppCompatActivity {
         workPlaceTextInputLayout.getEditText().setText(user.getWorkPlace());
         addressTextInputLayout.getEditText().setText(user.getAddress());
 
-        gender.add("");
-        gender.add(getResources().getString(R.string.male_gender));
-        gender.add(getResources().getString(R.string.female_gender));
+        gender.add(getResources().getString(R.string.select_spinner));
+        gender.add(getResources().getString(R.string.man_gender));
+        gender.add(getResources().getString(R.string.women_gender));
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, gender);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

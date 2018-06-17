@@ -44,12 +44,11 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/sourcesansprolight"
         android:gravity="center"
-        android:text="@string/sample_publication"
+        android:text="@string/sample_blog"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/photoUserANImageView" />
 
     <com.androidnetworking.widget.ANImageView
@@ -65,28 +64,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nameTextView" />
 
+    <ImageView
+        android:id="@+id/descriptionIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_description_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/descriptionTextView"
+        app:layout_constraintBottom_toBottomOf="@id/descriptionTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginTop="196dp"
+        android:layout_margin="16dp"
         android:fontFamily="@font/sourcesansprolight"
         android:text="@string/sample_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/descriptionIcon"
         app:layout_constraintTop_toBottomOf="@id/photoANImageView" />
+
+    <ImageView
+        android:id="@+id/dateIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_date_range_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/dateTextView"
+        app:layout_constraintBottom_toBottomOf="@id/dateTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:layout_marginTop="196dp"
         android:fontFamily="@font/sourcesansprolight"
         android:text="@string/sample_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dateIcon"
         app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
 
 </android.support.constraint.ConstraintLayout>

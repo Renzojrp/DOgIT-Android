@@ -16,7 +16,6 @@ public class Publication {
     private String publicationDate;
     private String status;
     private String address;
-    private String date;
 
     public Publication() {
     }

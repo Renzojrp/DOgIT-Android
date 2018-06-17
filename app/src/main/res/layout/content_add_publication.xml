@@ -60,7 +60,7 @@
             android:id="@+id/descriptionInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/detail_hint"
+            android:hint="@string/description_hint"
             android:inputType="textCapSentences|textMultiLine"  />
     </android.support.design.widget.TextInputLayout>
 

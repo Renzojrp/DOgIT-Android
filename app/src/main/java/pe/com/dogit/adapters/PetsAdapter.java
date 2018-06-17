@@ -43,7 +43,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
         holder.photoPetANImageView.setImageUrl(pets.get(position).getPhoto());
         holder.nameTextView.setText(pets.get(position).getName());
         holder.descriptionTextView.setText(String.valueOf(pets.get(position).getDescription()));
-        if (pets.get(position).getGender().equals("0")) {
+        if (pets.get(position).getGender().equals("1")) {
             holder.genderTextView.setText(R.string.male_gender);
         } else {
             holder.genderTextView.setText(R.string.female_gender);

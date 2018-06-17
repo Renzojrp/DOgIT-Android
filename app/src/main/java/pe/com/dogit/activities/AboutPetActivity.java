@@ -23,6 +23,7 @@ public class AboutPetActivity extends AppCompatActivity {
     TextView weightTextView;
     TextView rescueDateTextView;
     TextView sizeTextView;
+    TextView genderTextView;
 
     Pet pet;
 
@@ -36,9 +37,10 @@ public class AboutPetActivity extends AppCompatActivity {
         photoANImageView = findViewById(R.id.photoANImageView);
         nameTextView = findViewById(R.id.nameTextView);
         descriptionTextView = findViewById(R.id.descriptionTextView);
-        weightTextView = findViewById(R.id.weighTextView);
+        weightTextView = findViewById(R.id.weightTextView);
         rescueDateTextView = findViewById(R.id.rescueDateTextView);
         sizeTextView = findViewById(R.id.sizeTextView);
+        genderTextView = findViewById(R.id.genderTextView);
 
         pet = DOgITApp.getInstance().getCurrentPet();
 
@@ -51,9 +53,18 @@ public class AboutPetActivity extends AppCompatActivity {
         photoANImageView.setImageUrl(pet.getPhoto());
         nameTextView.setText(pet.getName());
         descriptionTextView.setText(pet.getDescription());
-        weightTextView.setText(pet.getWeigth().toString());
+        weightTextView.setText(String.valueOf(pet.getWeigth()) + " Kg");
         rescueDateTextView.setText((pet.getRescueDate()));
-        sizeTextView.setText(pet.getSize().toString());
+        sizeTextView.setText(String.valueOf(pet.getSize()) + " cm");
+        if (pet.getGender().equals("1")) {
+            genderTextView.setText(getResources().getString(R.string.male_gender));
+        } else {
+            if (pet.getGender().equals("2")) {
+                genderTextView.setText(getResources().getString(R.string.female_gender));
+            } else {
+                genderTextView.setText("");
+            }
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

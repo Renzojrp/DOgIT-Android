@@ -174,13 +174,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textSize="18sp"
-        android:text="@string/birthdate_hint"
-        app:layout_constraintBottom_toBottomOf="@id/rescueEditText"
+        android:text="@string/rescue_date_hint"
+        app:layout_constraintBottom_toBottomOf="@id/rescueDateEditText"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/colorAccent"/>
 
     <EditText
-        android:id="@+id/rescueEditText"
+        android:id="@+id/rescueDateEditText"
         android:fontFamily="@font/sourcesansprolight"
         android:inputType="date"
         android:layout_margin="16dp"

@@ -67,14 +67,10 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
     public void sendMailButton(View v) {
         sendMailProgressBar.setVisibility(View.VISIBLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
             emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
-            sendMailProgressBar.setVisibility(View.INVISIBLE);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
             emailTextInputLayout.setError(null);
             correctEmail = true;
@@ -82,8 +78,9 @@ public class RecoverPasswordActivity extends AppCompatActivity {
 
         if(correctEmail) {
             getPasswordByEmail();
+        } else {
+            sendMailProgressBar.setVisibility(View.INVISIBLE);
         }
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     private void getPasswordByEmail() {
@@ -102,11 +99,13 @@ public class RecoverPasswordActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
+                            sendMailProgressBar.setVisibility(View.INVISIBLE);
                         }
                     }
                     @Override
                     public void onError(ANError anError) {
                         Toast.makeText(getApplicationContext(),  R.string.mail_not_exist, Toast.LENGTH_SHORT).show();
+                        sendMailProgressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }

@@ -19,11 +19,14 @@ import pe.com.dogit.models.Publication;
 
 public class AboutPublicationActivity extends AppCompatActivity {
 
+    ANImageView photoUserANImageView;
+    TextView nameUserTextView;
     ANImageView photoANImageView;
     TextView nameTextView;
     TextView descriptionTextView;
     TextView addressTextView;
     TextView dateTextView;
+    TextView requirementTextView;
 
     Publication publication;
 
@@ -34,11 +37,14 @@ public class AboutPublicationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        photoUserANImageView = findViewById(R.id.photoUserANImageView);
         photoANImageView = findViewById(R.id.photoANImageView);
+        nameUserTextView = findViewById(R.id.nameUserTextView);
         nameTextView = findViewById(R.id.nameTextView);
         descriptionTextView = findViewById(R.id.descriptionTextView);
         addressTextView = findViewById(R.id.addressTextView);
         dateTextView = findViewById(R.id.dateTextView);
+        requirementTextView = findViewById(R.id.requirementTextView);
 
         publication = DOgITApp.getInstance().getCurrentPublication();
 
@@ -67,12 +73,22 @@ public class AboutPublicationActivity extends AppCompatActivity {
     }
 
     private void setPublicationInformation() {
+        photoUserANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+        photoUserANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+        photoUserANImageView.setImageUrl(publication.getUser().getPhoto());
         photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
         photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
         photoANImageView.setImageUrl(publication.getPet().getPhoto());
+        nameUserTextView.setText(publication.getUser().getName() + " " + publication.getUser().getLastName());
         nameTextView.setText(publication.getPet().getName());
         descriptionTextView.setText(publication.getDescription());
         addressTextView.setText(publication.getAddress());
+        requirementTextView.setText(publication.getRequirements());
+        String date = publication.getPublicationDate().substring(0,10);
+        String year = date.substring(0,4);
+        String month = date.substring(5, 7);
+        String day = date.substring(8, 10);
+        dateTextView.setText(day + "/" + month + "/" + year);
     }
 
     public void goToSendRequestActivity(View v) {

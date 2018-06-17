@@ -56,14 +56,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signInClick(View v) {
         signInProgressBar.setVisibility(View.VISIBLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
             emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
-            signInProgressBar.setVisibility(View.INVISIBLE);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
             emailTextInputLayout.setError(null);
             correctEmail = true;
@@ -72,8 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         if(passwordTextInputLayout.getEditText().getText().toString().length() < 8) {
             passwordTextInputLayout.setError(getResources().getString(R.string.invalid_password));
             correctPassword = false;
-            signInProgressBar.setVisibility(View.INVISIBLE);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
             passwordTextInputLayout.setError(null);
             correctPassword = true;
@@ -81,8 +75,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(correctEmail && correctPassword) {
             signIn(emailTextInputLayout.getEditText().getText().toString(), passwordTextInputLayout.getEditText().getText().toString());
+        } else {
+            signInProgressBar.setVisibility(View.INVISIBLE);
         }
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
     }
 
     private void signIn(String email, final String password) {

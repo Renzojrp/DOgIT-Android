@@ -10,6 +10,8 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,8 +38,11 @@ import com.google.firebase.storage.UploadTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import pe.com.dogit.DOgITApp;
@@ -55,7 +60,7 @@ public class AddPetActivity extends AppCompatActivity {
     private TextInputLayout sizeTextInputLayout;
     private TextInputLayout ageTextInputLayout;
     private Spinner genderSpinner;
-    private EditText rescueEditText;
+    private EditText rescueDateEditText;
 
     Boolean correctName = false;
     Boolean correctDescription = false;
@@ -64,6 +69,7 @@ public class AddPetActivity extends AppCompatActivity {
     Boolean correctAge = false;
     Boolean correctGender = false;
     Boolean correctUrl = false;
+    Boolean correctRescueDate = false;
 
     int day;
     int month;
@@ -96,14 +102,15 @@ public class AddPetActivity extends AppCompatActivity {
         sizeTextInputLayout = findViewById(R.id.sizeTextInputLayout);
         ageTextInputLayout = findViewById(R.id.ageTextInputLayout);
         genderSpinner = findViewById(R.id.genderSpinner);
-        rescueEditText = findViewById(R.id.rescueEditText);
-        rescueEditText.setOnClickListener(new View.OnClickListener() {
+        rescueDateEditText = findViewById(R.id.rescueDateEditText);
+        rescueDateEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onDateButton();
             }
         });
 
+        gender.add(getResources().getString(R.string.select_spinner));
         gender.add(getResources().getString(R.string.male_gender));
         gender.add(getResources().getString(R.string.female_gender));
 
@@ -112,6 +119,23 @@ public class AddPetActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, gender);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(dataAdapter);
+
+        rescueDateEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                correctRescueDate = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         layoutByOrigin();
     }
@@ -127,12 +151,14 @@ public class AddPetActivity extends AppCompatActivity {
             weigthTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPet().getWeigth().toString());
             sizeTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPet().getSize().toString());
             ageTextInputLayout.getEditText().setText(String.valueOf(DOgITApp.getInstance().getCurrentPet().getAge()));
-            rescueEditText.setText(DOgITApp.getInstance().getCurrentPet().getRescueDate());
-            if (DOgITApp.getInstance().getCurrentPet().getGender().equals("0")) {
-                genderSpinner.setSelection(0);
+            rescueDateEditText.setText(DOgITApp.getInstance().getCurrentPet().getRescueDate());
+            if (DOgITApp.getInstance().getCurrentPet().getGender().equals("1")) {
+                genderSpinner.setSelection(1);
             } else {
-                if (DOgITApp.getInstance().getCurrentPet().getGender().equals("1")) {
-                    genderSpinner.setSelection(1);
+                if (DOgITApp.getInstance().getCurrentPet().getGender().equals("2")) {
+                    genderSpinner.setSelection(2);
+                } else {
+                    genderSpinner.setSelection(0);
                 }
             }
         }
@@ -245,13 +271,33 @@ public class AddPetActivity extends AppCompatActivity {
             correctUrl = true;
         }
 
-        if(genderSpinner.getSelectedItemPosition() == 3) {
+        if(genderSpinner.getSelectedItemPosition() == 0) {
             Toast.makeText(getApplicationContext(), R.string.invalid_gender, Toast.LENGTH_SHORT).show();
         } else {
             correctGender = true;
         }
 
-        if(correctName && correctDescription && correctWeigth && correctSize && correctAge && correctUrl && correctGender) {
+        if(correctRescueDate) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = null;
+            try {
+                date = sdf.parse(rescueDateEditText.getText().toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Calendar c = Calendar.getInstance();
+            if(c.getTime().compareTo(date) < 0) {
+                correctRescueDate = false;
+                Toast.makeText(getApplicationContext(), R.string.invalid_rescue_date, Toast.LENGTH_SHORT).show();
+            } else {
+                correctRescueDate = true;
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.invalid_rescue_date, Toast.LENGTH_SHORT).show();
+        }
+
+        if(correctName && correctDescription && correctWeigth && correctSize && correctAge && correctUrl && correctGender && correctRescueDate) {
             if (DOgITApp.getInstance().getCurrentPet() == null) {
                 savePet();
             } else {
@@ -269,7 +315,7 @@ public class AddPetActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                rescueEditText.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                rescueDateEditText.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, year, month, day);
         datePickerDialog.show();
@@ -285,7 +331,7 @@ public class AddPetActivity extends AppCompatActivity {
                 .addBodyParameter("age", ageTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("photo", url.toString())
                 .addBodyParameter("gender", Long.toString(genderSpinner.getSelectedItemId()))
-                .addBodyParameter("rescue_date", rescueEditText.getText().toString())
+                .addBodyParameter("rescue_date", rescueDateEditText.getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -312,7 +358,7 @@ public class AddPetActivity extends AppCompatActivity {
                 .addBodyParameter("age", ageTextInputLayout.getEditText().getText().toString())
                 .addBodyParameter("photo", url.toString())
                 .addBodyParameter("gender", Long.toString(genderSpinner.getSelectedItemId()))
-                .addBodyParameter("rescue_date", rescueEditText.getText().toString())
+                .addBodyParameter("rescue_date", rescueDateEditText.getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -326,7 +372,7 @@ public class AddPetActivity extends AppCompatActivity {
                         DOgITApp.getInstance().getCurrentPet().setId(ageTextInputLayout.getEditText().getText().toString());
                         DOgITApp.getInstance().getCurrentPet().setPhoto(url.toString());
                         DOgITApp.getInstance().getCurrentPet().setGender(Long.toString(genderSpinner.getSelectedItemId()));
-                        DOgITApp.getInstance().getCurrentPet().setRescueDate(rescueEditText.getText().toString());
+                        DOgITApp.getInstance().getCurrentPet().setRescueDate(rescueDateEditText.getText().toString());
                         Toast.makeText(getApplicationContext(), R.string.pet_save, Toast.LENGTH_SHORT).show();
                         finish();
                     }

@@ -33,16 +33,35 @@
         android:textStyle="bold"
         android:textSize="40sp"/>
 
+    <ImageView
+        android:id="@+id/descriptionIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_description_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/descriptionTextView"
+        app:layout_constraintBottom_toBottomOf="@id/descriptionTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/descriptionTextView"
         android:fontFamily="@font/sourcesansprolight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/descriptionIcon"
+        android:layout_margin="16dp"
         android:text="@string/sample_description"/>
+
+    <ImageView
+        android:id="@+id/addressIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_direction_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/addressTextView"
+        app:layout_constraintBottom_toBottomOf="@id/addressTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/addressTextView"
@@ -50,10 +69,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/addressIcon"
+        android:layout_margin="16dp"
         android:text="@string/sample_address"/>
+
+    <ImageView
+        android:id="@+id/dateIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_date_range_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/dateTextView"
+        app:layout_constraintBottom_toBottomOf="@id/dateTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/dateTextView"
@@ -61,10 +89,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/addressTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/dateIcon"
+        android:layout_margin="16dp"
         android:text="@string/sample_date"/>
+
+    <ImageView
+        android:id="@+id/capacityIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_capacity_grey_24dp"
+        app:layout_constraintTop_toTopOf="@id/capacityTextView"
+        app:layout_constraintBottom_toBottomOf="@id/capacityTextView"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/capacityTextView"
@@ -72,9 +109,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dateTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/capacityIcon"
+        android:layout_margin="16dp"
         android:text="@string/sample_capacity"/>
 
 </android.support.constraint.ConstraintLayout>

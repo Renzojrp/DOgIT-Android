@@ -1,6 +1,7 @@
 package pe.com.dogit.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -105,9 +106,9 @@ public class RegisterActivity extends AppCompatActivity {
         signUpButton = findViewById(R.id.signUpButton);
         signUpProgressBar.setVisibility(View.GONE);
 
-        gender.add("");
-        gender.add(getResources().getString(R.string.male_gender));
-        gender.add(getResources().getString(R.string.female_gender));
+        gender.add(getResources().getString(R.string.select_spinner));
+        gender.add(getResources().getString(R.string.man_gender));
+        gender.add(getResources().getString(R.string.women_gender));
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, gender);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -148,13 +149,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void signUpClick(View v) {
         signUpProgressBar.setVisibility(View.VISIBLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailTextInputLayout.getEditText().getText().toString()).matches()){
             emailTextInputLayout.setError(getResources().getString(R.string.invalid_email));
             correctEmail = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             emailTextInputLayout.setError(null);
             correctEmail = true;
@@ -165,7 +163,6 @@ public class RegisterActivity extends AppCompatActivity {
                 || (nameTextInputLayout.getEditText().getText().toString().length() > 30)) {
             nameTextInputLayout.setError(getResources().getString(R.string.invalid_name));
             correctName = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             nameTextInputLayout.setError(null);
             correctName = true;
@@ -175,7 +172,6 @@ public class RegisterActivity extends AppCompatActivity {
                 || lastNameTextInputLayout.getEditText().getText().toString().length() > 30) {
             lastNameTextInputLayout.setError(getResources().getString(R.string.invalid_lastName));
             correctLastName = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             lastNameTextInputLayout.setError(null);
             correctLastName = true;
@@ -184,16 +180,14 @@ public class RegisterActivity extends AppCompatActivity {
         if(Objects.requireNonNull(passwordTextInputLayout.getEditText()).getText().toString().length() < 8) {
             passwordTextInputLayout.setError(getResources().getString(R.string.invalid_password));
             correctPassword = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             passwordTextInputLayout.setError(null);
             correctPassword = true;
         }
 
-        if(Objects.requireNonNull(dniTextInputLayout.getEditText()).getText().toString().length() != 8) {
+        if(dniTextInputLayout.getEditText().getText().toString().length() != 8) {
             dniTextInputLayout.setError(getResources().getString(R.string.invalid_dni));
             correctDNI = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             dniTextInputLayout.setError(null);
             correctDNI = true;
@@ -202,7 +196,6 @@ public class RegisterActivity extends AppCompatActivity {
         if(addressTextInputLayout.getEditText().getText().toString().length() == 0) {
             addressTextInputLayout.setError(getResources().getString(R.string.invalid_address));
             correctAddress = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             addressTextInputLayout.setError(null);
             correctAddress = true;
@@ -211,7 +204,6 @@ public class RegisterActivity extends AppCompatActivity {
         if(workPlaceTextInputLayout.getEditText().getText().toString().length() == 0) {
             workPlaceTextInputLayout.setError(getResources().getString(R.string.invalid_workPlace));
             correctWorkPlace = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             workPlaceTextInputLayout.setError(null);
             correctWorkPlace = true;
@@ -220,7 +212,6 @@ public class RegisterActivity extends AppCompatActivity {
         if(mobilePhoneTextInputLayout.getEditText().getText().toString().length() == 0) {
             mobilePhoneTextInputLayout.setError(getResources().getString(R.string.invalid_mobilePhone));
             correctMobilePhone = false;
-            signUpProgressBar.setVisibility(View.INVISIBLE);
         } else {
             mobilePhoneTextInputLayout.setError(null);
             correctMobilePhone = true;
@@ -240,16 +231,13 @@ public class RegisterActivity extends AppCompatActivity {
                 correctBirthDate = false;
                 Toast.makeText(getApplicationContext(), R.string.invalid_birthdate, Toast.LENGTH_SHORT).show();
             } else {
-                signUpProgressBar.setVisibility(View.INVISIBLE);
                 correctBirthDate = true;
             }
         } else {
-            signUpProgressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(), R.string.invalid_birthdate, Toast.LENGTH_SHORT).show();
         }
 
         if(genderSpinner.getSelectedItemPosition() == 0) {
-            signUpProgressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(), R.string.invalid_gender, Toast.LENGTH_SHORT).show();
         } else {
             correctGender = true;
@@ -258,8 +246,9 @@ public class RegisterActivity extends AppCompatActivity {
         if(correctEmail && correctPassword && correctName && correctLastName && correctMobilePhone && correctWorkPlace
                 && correctAddress && correctDNI && correctBirthDate && correctGender) {
             signUpUser();
+        } else {
+            signUpProgressBar.setVisibility(View.INVISIBLE);
         }
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     }
 
@@ -300,4 +289,9 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
+    public void goToLoginActivity(View v) {
+        v.getContext()
+                .startActivity(new Intent(v.getContext(),
+                        LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+    }
 }

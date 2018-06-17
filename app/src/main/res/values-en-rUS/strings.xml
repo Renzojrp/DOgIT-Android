@@ -155,4 +155,11 @@
     <string name="title_activity_about_adoption">AboutAdoption</string>
     <string name="event_created">Event created</string>
     <string name="error_event_save">Failed to save event</string>
+    <string name="mail_send_request">DOgIT - Adoption request</string>
+    <string name="mail_send_request_request">, you have received an adoption request for</string>
+    <string name="man_gender">Man</string>
+    <string name="women_gender">Woman</string>
+    <string name="select_spinner">Select</string>
+    <string name="rescue_date_hint">Rescue date</string>
+    <string name="invalid_rescue_date">Invalid rescue date</string>
 </resources>

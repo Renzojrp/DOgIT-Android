@@ -19,6 +19,7 @@
     <string name="user_saved">User saved</string>
     <string name="user_exists">An account with this email already exists</string>
     <string name="error_user_saved">Failed to save user</string>
+    <string name="select_spinner">Select</string>
 
     <!-- MainActivity -->
     <string name="title_activity_main">MainActivity</string>
@@ -135,8 +136,10 @@
     <string name="gender_hint">Sex</string>
     <string name="birthdate_hint">Birthdate</string>
     <string name="mobile_phone_hint">Mobile Phone</string>
-    <string name="male_gender">Man</string>
-    <string name="female_gender">Woman</string>
+    <string name="male_gender">Male</string>
+    <string name="female_gender">Female</string>
+    <string name="man_gender">Man</string>
+    <string name="women_gender">Woman</string>
     <string name="work_place_hint">Work Place</string>
     <string name="dni_hint">DNI</string>
     <string name="address_hint">Address</string>
@@ -154,6 +157,7 @@
     <string name="requirements_hint">Requirements</string>
     <string name="answer_hint">Answer</string>
     <string name="message_hint">Message</string>
+    <string name="rescue_date_hint">Rescue date</string>
 
     <!-- Button -->
     <string name="signInButton">Login</string>
@@ -179,6 +183,7 @@
     <string name="invalid_mobilePhone">Invalid mobile phone</string>
     <string name="invalid_gender">Invalid gender</string>
     <string name="invalid_birthdate">Invalid birthdate</string>
+    <string name="invalid_rescue_date">Invalid rescue date</string>
     <string name="invalid_date">Invalid date</string>
     <string name="empty_name">Complete name</string>
     <string name="empty_description">Complete description</string>
@@ -214,6 +219,8 @@
     <string name="sample_requirements" translatable="false">Sample requirements</string>
     <string name="sample_question" translatable="false">Sample question</string>
     <string name="sample_place" translatable="false">Sample place</string>
+    <string name="sample_dni" translatable="false">Sample DNI</string>
+    <string name="sample_blog" translatable="false">Sample blog</string>
 
     <string name="action_settings">Settings</string>
 

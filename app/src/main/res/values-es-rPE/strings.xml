@@ -33,11 +33,11 @@
     <string name="gender_hint">Sexo</string>
     <string name="birthdate_hint">Cumpleaños</string>
     <string name="mobile_phone_hint">Celular</string>
-    <string name="male_gender">Hombre</string>
-    <string name="female_gender">Mujer</string>
+    <string name="male_gender">Macho</string>
+    <string name="female_gender">Hembra</string>
     <string name="work_place_hint">Lugar de trabajo</string>
     <string name="dni_hint">DNI</string>
-    <string name="address_hint">Address</string>
+    <string name="address_hint">Dirección</string>
     <string name="date_format_hint">dd/mm/yyyy</string>
     <string name="name_hint">Nombre</string>
     <string name="weigth_hint">Peso Kg</string>
@@ -157,5 +157,10 @@
     <string name="visit_mail_subject">DOgIT - Visita agendada</string>
     <string name="mail_send_request">DOgIT - Solicitud de adopción</string>
     <string name="mail_send_request_request">has recibido una solicitud de adopción para</string>
+    <string name="man_gender">Hombre</string>
+    <string name="women_gender">Mujer</string>
+    <string name="select_spinner">Seleccionar</string>
+    <string name="rescue_date_hint">Fecha de rescate</string>
+    <string name="invalid_rescue_date">Fecha de rescate no válida</string>
 
 </resources>

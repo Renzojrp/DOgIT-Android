@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                 if(!getData(SplashActivity.this,"user").equals("") && !getData(SplashActivity.this,"password").equals("")) {
                     signIn(getData(SplashActivity.this,"user"), getData(SplashActivity.this,"password"));
                 } else {
-                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                     finish();
                 }
             };
@@ -94,6 +94,7 @@ public class SplashActivity extends AppCompatActivity {
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), R.string.internet_error, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                        finish();
                     }
                 });
     }

@@ -29,6 +29,8 @@ public class UserFragment extends Fragment {
     private TextView mobilePhoneTextView;
     private TextView genderTextView;
     private TextView birthDateTextView;
+    private TextView dniTextView;
+    private TextView workPlaceTextView;
 
     User user;
 
@@ -51,6 +53,8 @@ public class UserFragment extends Fragment {
         mobilePhoneTextView = view.findViewById(R.id.mobilePhoneTextView);
         genderTextView = view.findViewById(R.id.genderTextView);
         birthDateTextView = view.findViewById(R.id.birthDateTextView);
+        dniTextView = view.findViewById(R.id.dniTextView);
+        workPlaceTextView = view.findViewById(R.id.workPlaceTextView);
         editUserFloatingActionButton = view.findViewById(R.id.editUserFloatingActionButton);
         editUserFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,17 +76,19 @@ public class UserFragment extends Fragment {
         photoANImageView.setImageUrl(user.getPhoto());
         displayNameTextView.setText(user.getName() + " " + user.getLastName());
         emailTextView.setText(user.getEmail());
-        mobilePhoneTextView.setText((user.getMobilePhone().toString()));
+        mobilePhoneTextView.setText((user.getMobilePhone()));
         if (user.getGender().equals("1")) {
-            genderTextView.setText(getResources().getString(R.string.male_gender));
+            genderTextView.setText(getResources().getString(R.string.man_gender));
         } else {
             if (user.getGender().equals("2")) {
-                genderTextView.setText(getResources().getString(R.string.female_gender));
+                genderTextView.setText(getResources().getString(R.string.women_gender));
             } else {
                 genderTextView.setText("");
             }
         }
         birthDateTextView.setText(user.getBirthDate());
+        dniTextView.setText(String.valueOf(user.getDni()));
+        workPlaceTextView.setText(user.getWorkPlace());
     }
 
     @Override
