@@ -384,16 +384,17 @@ public class AddPetActivity extends AppCompatActivity {
     }
 
     private void deletePet() {
-        AndroidNetworking.delete(DOgITService.PET_EDIT_URL)
+        AndroidNetworking.put(DOgITService.PET_EDIT_URL)
                 .addPathParameter("pet_id", DOgITApp.getInstance().getCurrentPet().getId())
+                .addBodyParameter("status", "N")
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DOgITApp.getInstance().setCurrentPet(null);
                         Toast.makeText(getApplicationContext(), R.string.pet_delete, Toast.LENGTH_SHORT).show();
+                        DOgITApp.getInstance().setCurrentPet(null);
                         finish();
                     }
                     @Override

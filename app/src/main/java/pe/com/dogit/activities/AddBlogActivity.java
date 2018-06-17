@@ -192,8 +192,9 @@ public class AddBlogActivity extends AppCompatActivity {
     }
 
     private void deleteBlog() {
-        AndroidNetworking.delete(DOgITService.BLOG_EDIT_URL)
+        AndroidNetworking.put(DOgITService.BLOG_EDIT_URL)
                 .addPathParameter("blog_id", DOgITApp.getInstance().getCurrentBlog().getId())
+                .addBodyParameter("status", "N")
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()

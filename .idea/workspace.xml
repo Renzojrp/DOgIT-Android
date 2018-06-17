@@ -19,51 +19,17 @@
     <list default="true" id="7f4967fc-b853-48fe-bb08-96d4456cf368" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_0_jar.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutBlogActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutBlogActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPetActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPetActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPublicationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPublicationActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddBlogActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddBlogActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddEventActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddEventActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/EditUserProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/EditUserProfileActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/LoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/RecoverPasswordActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/RecoverPasswordActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/RegisterActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/RegisterActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/SplashActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/adapters/PetsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/adapters/PetsAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/UserFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/UserFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/models/Publication.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/models/Publication.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_adoption.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_adoption.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_blog.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_blog.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_publication.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_publication.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_list_adoption.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_list_adoption.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_send_request.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_send_request.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about_blog.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_about_blog.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about_event.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_about_event.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about_pet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_about_pet.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_about_publication.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_about_publication.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_add_pet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_add_pet.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_add_publication.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_add_publication.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en-rUS/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-en-rUS/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es-rPE/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-es-rPE/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/EventFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/EventFragment.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2169,9 +2135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_visit.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_list_adoption.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_visit.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/AdoptionFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/adapters/VisitsAdapter.java" />
@@ -2202,7 +2165,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/EditUserProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_pet.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/RecoverPasswordActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" />
@@ -2220,6 +2182,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_publication.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_about_publication.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPublicationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddBlogActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/EventFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddEventActivity.java" />
       </list>
     </option>
   </component>
@@ -2277,24 +2243,12 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="dogit" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DOgIT-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="DOgIT-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -2318,6 +2272,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -2523,7 +2478,6 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33182332" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29162192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2537,7 +2491,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3968254" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39637598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2546,6 +2500,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="StringPreview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29162192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879817" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2707,6 +2662,14 @@
           </properties>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java</url>
+          <line>385</line>
+          <properties class="pe.com.dogit.activities.AddPetActivity" method="deletePet">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutEventActivity.java</url>
           <line>139</line>
@@ -2726,55 +2689,11 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="101" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about_event.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about_pet.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="30" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about_request.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_event.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_pet.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2815,7 +2734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2878,7 +2796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="64" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2894,7 +2811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2902,7 +2818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2924,14 +2839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="60" column="74" lean-forward="false" selection-start-line="60" selection-start-column="74" selection-end-line="60" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2947,7 +2854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="4730" column="0" lean-forward="false" selection-start-line="4730" selection-start-column="0" selection-end-line="4730" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3042,27 +2948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="296" column="109" lean-forward="false" selection-start-line="296" selection-start-column="109" selection-end-line="296" selection-end-column="109" />
-          <folding>
-            <element signature="e#11732#11760#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPetActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="59" column="80" lean-forward="false" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
-          <folding>
-            <element signature="e#2287#2335#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3124,7 +3009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3248,6 +3132,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutPetActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="59" column="80" lean-forward="false" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <caret line="60" column="74" lean-forward="false" selection-start-line="60" selection-start-column="74" selection-end-line="60" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddBlogActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1287">
+          <caret line="196" column="48" lean-forward="false" selection-start-line="196" selection-start-column="48" selection-end-line="196" selection-end-column="48" />
+          <folding>
+            <element signature="e#2423#2431#0" expanded="false" />
+            <element signature="e#4746#4798#0" expanded="false" />
+            <element signature="e#5927#5948#0" expanded="false" />
+            <element signature="e#6185#6209#0" expanded="false" />
+            <element signature="e#7294#7322#0" expanded="false" />
+            <element signature="e#7559#7590#0" expanded="false" />
+            <element signature="e#8356#8383#0" expanded="false" />
+            <element signature="e#8620#8653#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddPetActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="388" column="16" lean-forward="false" selection-start-line="388" selection-start-column="16" selection-end-line="388" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AboutEventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2766">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/activities/AddEventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="340" column="46" lean-forward="false" selection-start-line="340" selection-start-column="46" selection-end-line="340" selection-end-column="46" />
+          <folding>
+            <element signature="e#3211#3359#0" expanded="false" />
+            <element signature="e#3358#3359#0" expanded="false" />
+            <element signature="e#6375#6837#0" expanded="false" />
+            <element signature="e#6836#6837#0" expanded="false" />
+            <element signature="e#6861#7371#0" expanded="false" />
+            <element signature="e#7370#7371#0" expanded="false" />
+            <element signature="e#7694#7953#0" expanded="false" />
+            <element signature="e#7952#7953#0" expanded="false" />
+            <element signature="e#8193#8238#0" expanded="false" />
+            <element signature="e#8510#8562#0" expanded="false" />
+            <element signature="e#9212#9233#0" expanded="false" />
+            <element signature="e#9403#9424#0" expanded="false" />
+            <element signature="e#9597#9646#0" expanded="false" />
+            <element signature="e#9938#9989#0" expanded="false" />
+            <element signature="e#10230#10250#0" expanded="false" />
+            <element signature="e#11743#11765#0" expanded="false" />
+            <element signature="e#12002#12027#0" expanded="false" />
+            <element signature="e#13997#14019#0" expanded="false" />
+            <element signature="e#14256#14281#0" expanded="false" />
+            <element signature="e#15051#15072#0" expanded="false" />
+            <element signature="e#15309#15336#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/pe/com/dogit/fragments/EventFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="904">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding />
         </state>
       </provider>

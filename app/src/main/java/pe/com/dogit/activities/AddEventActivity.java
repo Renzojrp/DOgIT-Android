@@ -336,8 +336,9 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     private void deleteEvent() {
-        AndroidNetworking.delete(DOgITService.EVENT_EDIT_URL)
+        AndroidNetworking.put(DOgITService.EVENT_EDIT_URL)
                 .addPathParameter("event_id", DOgITApp.getInstance().getCurrentEvent().getId())
+                .addBodyParameter("status","N")
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()

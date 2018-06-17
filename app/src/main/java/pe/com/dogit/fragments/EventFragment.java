@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -20,7 +21,11 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import pe.com.dogit.DOgITApp;
@@ -86,7 +91,23 @@ public class EventFragment extends Fragment {
                         if(response == null) return;
                         try {
                             events = Event.build(response.getJSONArray("events"));
-                            eventsAdapter.setEvents(events);
+
+                            List<Event> availableEvents = new ArrayList<>();
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                            Date date = null;
+                            for(int i = 0; i < events.size(); i++) {
+                                try {
+                                    date = sdf.parse(events.get(i).getDate());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                Calendar c = Calendar.getInstance();
+                                if(c.getTime().compareTo(date) <= 0) {
+                                    availableEvents.add(events.get(i));
+                                }
+                            }
+                            eventsAdapter.setEvents(availableEvents);
                             eventsAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
