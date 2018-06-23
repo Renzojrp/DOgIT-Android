@@ -3,6 +3,8 @@
     package="pe.com.dogit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".DOgITApp"
@@ -124,13 +126,17 @@
             android:name=".activities.ScheduleVisitActivity"
             android:label="@string/title_activity_schedule_visit"
             android:theme="@style/AppTheme.NoActionBar" />
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="pe.com.dogit.activities.ListAdoptionActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="pe.com.dogit.activities.ListAdoptionActivity" />
+
         <activity
             android:name=".activities.ListAdoptionActivity"
             android:label="@string/title_activity_list_adoption"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.PDFVisorActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>

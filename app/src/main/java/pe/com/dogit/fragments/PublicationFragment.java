@@ -86,8 +86,8 @@ public class PublicationFragment extends Fragment {
 
     private void getPublications() {
         AndroidNetworking
-                .get(DOgITService.PUBLICATION_URL)
-                .addPathParameter("user_id", user.getId())
+                .get(DOgITService.PUBLICATION_STATUS_URL)
+                .addPathParameter("status", "A")
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()

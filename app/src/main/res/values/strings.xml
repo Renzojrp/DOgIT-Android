@@ -36,6 +36,7 @@
     <string name="nav_option_adoption">Adoptions</string>
     <string name="nav_option_visit">Visits</string>
     <string name="nav_option_event">Events</string>
+    <string name="nav_option_report">Reports</string>
     <string name="nav_option_log_out">Log out</string>
     <string name="error_pet">No pets were found</string>
     <string name="action_edit">Edit</string>

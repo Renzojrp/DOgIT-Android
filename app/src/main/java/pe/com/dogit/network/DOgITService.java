@@ -13,6 +13,7 @@ import pe.com.dogit.models.User;
 public class DOgITService {
     public static String SIGNIN_URL = "https://dogit.herokuapp.com/api/signin";
     public static String SIGNUP_URL = "https://dogit.herokuapp.com/api/signup";
+    public static String USER_URL = "https://dogit.herokuapp.com/api/user";
     public static String USERS_EDIT_URL = "https://dogit.herokuapp.com/api/user/{user_id}";
     public static String USER_EMAIL_URL = "https://dogit.herokuapp.com/api/user/email/{email}";
     public static String PET_URL = "https://dogit.herokuapp.com/api/pet";
@@ -22,6 +23,7 @@ public class DOgITService {
     public static String PUBLICATION_USER_URL = "https://dogit.herokuapp.com/api/publication/user/{user_id}";
     public static String PUBLICATION_PET_URL = "https://dogit.herokuapp.com/api/publication/pet/{pet_id}";
     public static String PUBLICATION_URL = "https://dogit.herokuapp.com/api/publication";
+    public static String PUBLICATION_STATUS_URL = "https://dogit.herokuapp.com/api/publication/status/{status}";
     public static String EVENT_URL = "https://dogit.herokuapp.com/api/event";
     public static String EVENT_EDIT_URL = "https://dogit.herokuapp.com/api/event/{event_id}";
     public static String ASSISTENCE_URL = "https://dogit.herokuapp.com/api/assistance";
