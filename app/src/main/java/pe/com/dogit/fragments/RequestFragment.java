@@ -2,7 +2,6 @@ package pe.com.dogit.fragments;
 
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +22,6 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.adapters.PublicationsAdapter;
 import pe.com.dogit.adapters.RequestsAdapter;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.Request;
@@ -58,7 +56,7 @@ public class RequestFragment extends Fragment {
         requestsLayoutManager = new LinearLayoutManager(view.getContext());
         requestsRecyclerView.setAdapter(requestsAdapter);
         requestsRecyclerView.setLayoutManager(requestsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         pets = DOgITApp.getInstance().getCurrentPets();
         getMyRequets();
         return view;
@@ -78,7 +76,7 @@ public class RequestFragment extends Fragment {
                             requests = Request.build(response.getJSONArray("requests"));
                             List<Request> myRequests = new ArrayList<>();
                             for(int i = 0; i<requests.size(); i++) {
-                                if(requests.get(i).getPublication().getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())){
+                                if(requests.get(i).getPublication().getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())){
                                     myRequests.add(requests.get(i));
                                 }
                             }

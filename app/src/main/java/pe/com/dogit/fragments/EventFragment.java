@@ -7,11 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -74,7 +72,7 @@ public class EventFragment extends Fragment {
         eventsLayoutManager = new LinearLayoutManager(view.getContext());
         eventsRecyclerView.setAdapter(eventsAdapter);
         eventsRecyclerView.setLayoutManager(eventsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         getEvents();
         return view;
     }

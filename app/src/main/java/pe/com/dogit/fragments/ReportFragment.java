@@ -30,6 +30,7 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.Manifest;
 import pe.com.dogit.R;
+import pe.com.dogit.models.Adoption;
 import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
@@ -43,13 +44,16 @@ public class ReportFragment extends Fragment {
     private TemplatePDF templatePDF;
     private Spinner monthSpinner;
     private Button pdfButton;
-    private String[]headerUser={"Number","User","mail","Phone","Date"};
+    private String[]headerUser={"Number","User","mail","Phone","Date","Status"};
     private String[]headerPublication={"Number","Pet","User","Date","Status"};
+    private String[]headerAdoption={"Number","Pet","User","Date"};
     private List<Publication> publications;
     private List<User> users;
+    private List<Adoption> adoptions;
     List<String> monthList = new ArrayList<String>();
     List<Publication> monthPublications = new ArrayList<>();
     List<User> monthUsers = new ArrayList<>();
+    List<Adoption> monthAdoptions= new ArrayList<>();
 
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1 ;
 
@@ -93,6 +97,7 @@ public class ReportFragment extends Fragment {
 
         getPublications();
         getUsers();
+        getAdoptions();
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, monthList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,7 +130,8 @@ public class ReportFragment extends Fragment {
 
     private void getUsers() {
         AndroidNetworking
-                .get(DOgITService.USER_URL)
+                .get(DOgITService.USER_TYPE_URL)
+                .addPathParameter("type", "user")
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -135,6 +141,28 @@ public class ReportFragment extends Fragment {
                         if(response == null) return;
                         try {
                             users = User.build(response.getJSONArray("users"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                    }
+                });
+    }
+
+    private void getAdoptions() {
+        AndroidNetworking
+                .get(DOgITService.ADOPTION_URL)
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                        try {
+                            adoptions = Adoption.build(response.getJSONArray("adoptions"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -169,6 +197,15 @@ public class ReportFragment extends Fragment {
                 }
             }
         }
+        if (adoptions.size() >= 1) {
+            for(int i = 0;i<adoptions.size();i++) {
+                year = Integer.parseInt(adoptions.get(i).getDate().substring(0, 4));
+                month = Integer.parseInt(adoptions.get(i).getDate().substring(5,7));
+                if (year == 2018 && month == position) {
+                    monthAdoptions.add(adoptions.get(i));
+                }
+            }
+        }
         templatePDF.openDocument();
         templatePDF.addMetaData("DOgIT", "Reporte", "Grecia Armas");
         templatePDF.addTitles("DOgIT", "Reporte de " + String.valueOf(monthSpinner.getSelectedItem()), Calendar.getInstance().getTime().toString());
@@ -176,6 +213,8 @@ public class ReportFragment extends Fragment {
         templatePDF.createTable(headerUser, getUser());
         templatePDF.addParagraph("Lista de Publicaciones");
         templatePDF.createTable(headerPublication, getPublication());
+        templatePDF.addParagraph("Lista de Adopciones");
+        templatePDF.createTable(headerAdoption, getAdoption());
         templatePDF.closeDocument();
         templatePDF.viewPDF();
     }
@@ -196,10 +235,21 @@ public class ReportFragment extends Fragment {
 
         for(int i = 0; i < monthUsers.size(); i++) {
             rows.add(new String[]{String.valueOf(i+1), monthUsers.get(i).getName() + " " + monthUsers.get(i).getLastName(), monthUsers.get(i).getEmail(),
-                    monthUsers.get(i).getMobilePhone(), monthUsers.get(i).getSignupDate().substring(0,10),});
+                    monthUsers.get(i).getMobilePhone(), monthUsers.get(i).getSignupDate().substring(0,10), monthUsers.get(i).getStatus()});
         }
         return rows;
     }
+
+    private ArrayList<String[]>getAdoption(){
+        ArrayList<String[]>rows = new ArrayList<>();
+
+        for(int i = 0; i < monthAdoptions.size(); i++) {
+            rows.add(new String[]{String.valueOf(i+1), monthAdoptions.get(i).getPublication().getPet().getName(),
+                    monthAdoptions.get(i).getUser().getName(), monthAdoptions.get(i).getDate().substring(0,10)});
+        }
+        return rows;
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {

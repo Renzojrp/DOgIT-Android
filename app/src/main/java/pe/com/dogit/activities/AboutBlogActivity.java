@@ -2,27 +2,26 @@ package pe.com.dogit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.json.JSONObject;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.models.Blog;
-import pe.com.dogit.models.Publication;
+import pe.com.dogit.network.DOgITService;
 
 public class AboutBlogActivity extends AppCompatActivity {
 
@@ -54,8 +53,15 @@ public class AboutBlogActivity extends AppCompatActivity {
         setPublicationInformation();
     }
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_button_edit, menu);
+        if (blog.getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_button_edit, menu);
+        } else {
+            if (DOgITApp.getInstance().getMyUser().getType().equals("admin")) {
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.menu_button_delete, menu);
+            }
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -63,16 +69,40 @@ public class AboutBlogActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                if(blog.getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())) {
+                if(blog.getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
                     Intent intent = new Intent(this, AddBlogActivity.class);
                     this.startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.error_edit_publication, Toast.LENGTH_SHORT).show();
                 }
                 return true;
+            case R.id.action_delete:
+                deleteBlog();
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    private void deleteBlog() {
+        AndroidNetworking.put(DOgITService.BLOG_EDIT_URL)
+                .addPathParameter("blog_id", DOgITApp.getInstance().getCurrentBlog().getId())
+                .addBodyParameter("status", "N")
+                .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        DOgITApp.getInstance().setCurrentBlog(null);
+                        Toast.makeText(getApplicationContext(), R.string.publication_delete, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        Toast.makeText(getApplicationContext(), R.string.error_publication_delete, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void setPublicationInformation() {

@@ -26,7 +26,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.AddBlogActivity;
-import pe.com.dogit.activities.AddPublicationActivity;
 import pe.com.dogit.adapters.BlogsAdapter;
 import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Pet;
@@ -62,7 +61,7 @@ public class BlogFragment extends Fragment {
         blogsLayoutManager = new LinearLayoutManager(view.getContext());
         blogsRecyclerView.setAdapter(blogsAdapter);
         blogsRecyclerView.setLayoutManager(blogsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         pets = DOgITApp.getInstance().getCurrentPets();
         addBlogFloatingActionButton = view.findViewById(R.id.addBlogFloatingActionButton);
         addBlogFloatingActionButton.setOnClickListener(new View.OnClickListener() {

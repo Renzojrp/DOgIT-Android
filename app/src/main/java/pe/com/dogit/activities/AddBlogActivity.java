@@ -1,8 +1,6 @@
 package pe.com.dogit.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -61,7 +59,7 @@ public class AddBlogActivity extends AppCompatActivity {
         descriptionTextInputLayout = findViewById(R.id.descriptionTextInputLayout);
         petSpinner = findViewById(R.id.petSpinner);
 
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
 
         for(int i = 0; i<DOgITApp.getInstance().getCurrentPets().size(); i++) {
             idPet.add(DOgITApp.getInstance().getCurrentPets().get(i).getId());

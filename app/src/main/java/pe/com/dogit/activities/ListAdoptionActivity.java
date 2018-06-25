@@ -1,13 +1,10 @@
 package pe.com.dogit.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -23,7 +20,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.adapters.AdoptionByMyPublicationsAdapter;
-import pe.com.dogit.adapters.AdoptionsAdapter;
 import pe.com.dogit.models.Adoption;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
@@ -50,7 +46,7 @@ public class ListAdoptionActivity extends AppCompatActivity {
         adoptionsLayoutManager = new LinearLayoutManager(this);
         adoptionsRecyclerView.setAdapter(adoptionByMyPublicationsAdapter);
         adoptionsRecyclerView.setLayoutManager(adoptionsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         getAdoptions();
     }
 
@@ -69,7 +65,7 @@ public class ListAdoptionActivity extends AppCompatActivity {
                             adoptions = Adoption.build(response.getJSONArray("adoptions"));
                             List<Adoption> adoptionsByMyPublications = new ArrayList<>();
                             for(int i = 0; i<adoptions.size(); i++) {
-                                if(adoptions.get(i).getPublication().getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())){
+                                if(adoptions.get(i).getPublication().getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())){
                                     adoptionsByMyPublications.add(adoptions.get(i));
                                 }
                             }

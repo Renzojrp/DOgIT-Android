@@ -135,8 +135,17 @@
             android:name=".activities.ListAdoptionActivity"
             android:label="@string/title_activity_list_adoption"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.PDFVisorActivity"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity
+            android:name=".activities.PDFVisorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AdminMainActivity"
+            android:label="@string/title_activity_admin_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AboutUserActivity"
+            android:label="@string/title_activity_about_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

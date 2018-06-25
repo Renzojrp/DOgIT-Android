@@ -22,13 +22,14 @@ public class User {
     private String workPlace;
     private int dni;
     private String status;
+    private String type;
 
     public User() {
     }
 
     public User(String id, String email, String password, String name, String lastName, String signupDate,
                 String birthDate, String gender, String mobilePhone, String photo, String address, String workPlace,
-                int dni, String status) {
+                int dni, String status, String type) {
         this.setId(id);
         this.setEmail(email);
         this.setPassword(password);
@@ -43,6 +44,7 @@ public class User {
         this.setWorkPlace(workPlace);
         this.setDni(dni);
         this.setStatus(status);
+        this.setType(type);
     }
 
     public String getId() {
@@ -157,6 +159,14 @@ public class User {
         this.status = status;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public static User build(JSONObject jsonUser) {
         if(jsonUser == null) return null;
         User user = new User();
@@ -174,6 +184,8 @@ public class User {
             user.setDni(jsonUser.getInt("dni"));
             user.setAddress(jsonUser.getString("address"));
             user.setWorkPlace(jsonUser.getString("workPlace"));
+            user.setStatus(jsonUser.getString("status"));
+            user.setType(jsonUser.getString("type"));
             return user;
         } catch (JSONException e) {
             e.printStackTrace();

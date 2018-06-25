@@ -34,12 +34,21 @@ public class DOgITApp extends Application {
         DOgITService = new DOgITService();
     }
 
+    public User getMyUser() {
+        return DOgITService.getMyUser();
+    }
+
+    public DOgITApp setMyUser(User user) {
+        DOgITService.setMyUser(user);
+        return this;
+    }
+
     public User getCurrentUser() {
-        return DOgITService.getCurrentUser();
+        return DOgITService.getMyUser();
     }
 
     public DOgITApp setCurrentUser(User user) {
-        DOgITService.setCurrentUser(user);
+        DOgITService.setMyUser(user);
         return this;
     }
 

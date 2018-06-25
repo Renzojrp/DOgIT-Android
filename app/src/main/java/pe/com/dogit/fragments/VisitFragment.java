@@ -25,10 +25,7 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.ListAdoptionActivity;
-import pe.com.dogit.adapters.AdoptionsAdapter;
 import pe.com.dogit.adapters.VisitsAdapter;
-import pe.com.dogit.models.Pet;
-import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.models.Visit;
 import pe.com.dogit.network.DOgITService;
@@ -61,7 +58,7 @@ public class VisitFragment extends Fragment {
         visitsLayoutManager = new LinearLayoutManager(view.getContext());
         visitsRecyclerView.setAdapter(visitsAdapter);
         visitsRecyclerView.setLayoutManager(visitsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         addVisitFloatingActionButton = view.findViewById(R.id.addVisitFloatingActionButton);
         addVisitFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

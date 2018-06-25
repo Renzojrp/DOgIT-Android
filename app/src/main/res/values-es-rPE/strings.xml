@@ -6,7 +6,7 @@
     <string name="error_pet_publication">Existe una publicación con esa mascota</string>
     <string name="nav_option_adoption">Adopción</string>
     <string name="title_activity_register">Registro</string>
-    <string name="user_saved">Usuario guardado</string>
+    <string name="user_saved">Usuario guardadoF</string>
     <string name="user_exists">Ya existe una cuenta registrada con este correo</string>
     <string name="error_user_saved">Error al guardar el usuario</string>
     <string name="title_activity_main">Inicio</string>
@@ -162,5 +162,24 @@
     <string name="select_spinner">Seleccionar</string>
     <string name="rescue_date_hint">Fecha de rescate</string>
     <string name="invalid_rescue_date">Fecha de rescate no válida</string>
+    <string name="nav_option_users">Usuarios</string>
+    <string name="nav_option_pets">Mascotas</string>
+    <string name="nav_option_blogs">Blogs</string>
+    <string name="nav_option_publications">Publicaciones</string>
+    <string name="nav_option_adoptions">Adopciones</string>
+    <string name="nav_option_visits">Visitas</string>
+    <string name="nav_option_events">Eventos</string>
+    <string name="nav_option_reports">Reportes</string>
+    <string name="user_locked">Usuario bloqueado</string>
+    <string name="action_lock">Bloqueo</string>
+    <string name="action_unlock">Desbloqueo</string>
+    <string name="user_status">Cambio de estado satisfactorio</string>
+    <string name="error_status_update">Error al cambiar de estado</string>
+    <string name="subject_account_lock">DOgIT - Cuenta bloqueada</string>
+    <string name="subject_account_unlock">DOgIT - Cuenta desbloqueada</string>
+    <string name="content_account_lock">, queremos informarle que su cuenta ha sido desbloqueada</string>
+    <string name="content_account_unlock">, lamentamos informarle que su cuenta ha sido bloqueada</string>
+    <string name="title_activity_about_user">Datos de usuario</string>
+    <string name="title_activity_admin_main">Administrador</string>
 
 </resources>

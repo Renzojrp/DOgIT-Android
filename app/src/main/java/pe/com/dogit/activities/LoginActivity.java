@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,12 +94,20 @@ public class LoginActivity extends AppCompatActivity {
                             user = User.build(response.getJSONObject("user"));
                             token = response.getString("token");
                             DOgITApp.getInstance().setCurrentToken("Bearer " + token);
-                            DOgITApp.getInstance().setCurrentUser(user);
+                            DOgITApp.getInstance().setMyUser(user);
                             SplashActivity.setData(LoginActivity.this,"user" ,user.getEmail());
                             SplashActivity.setData(LoginActivity.this,"password" ,user.getPassword());
-                            Toast.makeText(getApplicationContext(),  getString(R.string.hello) + " " + DOgITApp.getInstance().getCurrentUser().getName(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-                            finish();
+                            if (user.getStatus().equals("A")) {
+                                Toast.makeText(getApplicationContext(),  getString(R.string.hello) + " " + DOgITApp.getInstance().getMyUser().getName(), Toast.LENGTH_SHORT).show();
+                                if (user.getType().equals("admin")) {
+                                    startActivity(new Intent(LoginActivity.this, AdminMainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                                } else {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                                }
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(),  R.string.user_locked, Toast.LENGTH_SHORT).show();
+                            }
                             signInProgressBar.setVisibility(View.INVISIBLE);
                         } catch (JSONException e) {
                             e.printStackTrace();

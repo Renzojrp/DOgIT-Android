@@ -1,13 +1,9 @@
 package pe.com.dogit.activities;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,7 +24,6 @@ import com.androidnetworking.widget.ANImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Calendar;
 import java.util.List;
 
 import pe.com.dogit.DOgITApp;
@@ -38,14 +33,12 @@ import pe.com.dogit.fragments.BlogFragment;
 import pe.com.dogit.fragments.EventFragment;
 import pe.com.dogit.fragments.PublicationFragment;
 import pe.com.dogit.fragments.PetFragment;
-import pe.com.dogit.fragments.ReportFragment;
 import pe.com.dogit.fragments.RequestFragment;
 import pe.com.dogit.fragments.UserFragment;
 import pe.com.dogit.fragments.VisitFragment;
 import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
-import pe.com.dogit.templates.TemplatePDF;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         displayNameTextView = headerView.findViewById(R.id.displayNameTextView);
         emailTextView = headerView.findViewById(R.id.emailTextView);
 
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
 
         photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
         photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
@@ -118,9 +111,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_visit:
                 toolbar.setTitle(R.string.nav_option_visit);
                 return new VisitFragment();
-            case R.id.nav_report:
-                toolbar.setTitle(R.string.nav_option_report);
-                return new ReportFragment();
             case R.id.nav_event:
                 toolbar.setTitle(R.string.nav_option_event);
                 return new EventFragment();
@@ -172,8 +162,6 @@ public class MainActivity extends AppCompatActivity
         }  else if (id == R.id.nav_visit) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_event) {
-            navigateAccordingTo(id);
-        } else if (id == R.id.nav_report) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_sesion) {
             SplashActivity.changeData(MainActivity.this,"user" ,"");

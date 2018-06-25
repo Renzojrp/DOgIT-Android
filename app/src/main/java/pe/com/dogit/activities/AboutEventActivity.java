@@ -74,7 +74,7 @@ public class AboutEventActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                if(event.getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())) {
+                if(event.getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
                     Intent intent = new Intent(this, AddEventActivity.class);
                     this.startActivity(intent);
                 } else {
@@ -128,7 +128,7 @@ public class AboutEventActivity extends AppCompatActivity {
     private void getAssistencesByUser() {
         AndroidNetworking
                 .get(DOgITService.ASSISTENCE_USER_URL)
-                .addPathParameter("user_id", DOgITApp.getInstance().getCurrentUser().getId())
+                .addPathParameter("user_id", DOgITApp.getInstance().getMyUser().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -140,7 +140,7 @@ public class AboutEventActivity extends AppCompatActivity {
                             assists = Assistance.build(response.getJSONArray("assistances"));
                             if (assists.size() != 0) {
                                 for (int i = 0; i < assists.size(); i++){
-                                    if (DOgITApp.getInstance().getCurrentUser().getId().equals(assists.get(i).getUser().getId())
+                                    if (DOgITApp.getInstance().getMyUser().getId().equals(assists.get(i).getUser().getId())
                                             && event.getId().equals(assists.get(i).getEvent().getId())) {
                                         assistanceExist = true;
                                     }
@@ -167,7 +167,7 @@ public class AboutEventActivity extends AppCompatActivity {
     private void saveAssistence() {
         AndroidNetworking
                 .post(DOgITService.ASSISTENCE_URL)
-                .addBodyParameter("user", DOgITApp.getInstance().getCurrentUser().getId())
+                .addBodyParameter("user", DOgITApp.getInstance().getMyUser().getId())
                 .addBodyParameter("event", event.getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)

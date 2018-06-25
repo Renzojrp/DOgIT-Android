@@ -24,8 +24,6 @@ import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.adapters.AdoptionsAdapter;
 import pe.com.dogit.models.Adoption;
-import pe.com.dogit.models.Pet;
-import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
 
@@ -56,7 +54,7 @@ public class AdoptionFragment extends Fragment {
         adoptionsLayoutManager = new LinearLayoutManager(view.getContext());
         adoptionsRecyclerView.setAdapter(adoptionsAdapter);
         adoptionsRecyclerView.setLayoutManager(adoptionsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         getAdoptions();
         return view;
     }

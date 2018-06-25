@@ -14,6 +14,7 @@ public class DOgITService {
     public static String SIGNIN_URL = "https://dogit.herokuapp.com/api/signin";
     public static String SIGNUP_URL = "https://dogit.herokuapp.com/api/signup";
     public static String USER_URL = "https://dogit.herokuapp.com/api/user";
+    public static String USER_TYPE_URL = "https://dogit.herokuapp.com/api/user/type/{type}";
     public static String USERS_EDIT_URL = "https://dogit.herokuapp.com/api/user/{user_id}";
     public static String USER_EMAIL_URL = "https://dogit.herokuapp.com/api/user/email/{email}";
     public static String PET_URL = "https://dogit.herokuapp.com/api/pet";
@@ -41,6 +42,7 @@ public class DOgITService {
     public static String VISIT_URL = "https://dogit.herokuapp.com/api/visit";
     public static String VISIT_USER_URL = "https://dogit.herokuapp.com/api/visit/user/{user_id}";
 
+    private User myUser;
     private User currentUser;
     private String currentToken;
     private Pet currentPet;
@@ -50,6 +52,15 @@ public class DOgITService {
     private Blog currentBlog;
     private Request currentRequest;
     private Adoption currentAdoption;
+
+    public User getMyUser() {
+        return myUser;
+    }
+
+    public DOgITService setMyUser(User myUser) {
+        this.myUser = myUser;
+        return this;
+    }
 
     public User getCurrentUser() {
         return currentUser;

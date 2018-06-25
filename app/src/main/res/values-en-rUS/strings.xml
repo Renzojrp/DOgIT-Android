@@ -162,4 +162,23 @@
     <string name="select_spinner">Select</string>
     <string name="rescue_date_hint">Rescue date</string>
     <string name="invalid_rescue_date">Invalid rescue date</string>
+    <string name="nav_option_users">Users</string>
+    <string name="nav_option_pets">Pets</string>
+    <string name="nav_option_blogs">Blogs</string>
+    <string name="nav_option_publications">Publications</string>
+    <string name="nav_option_adoptions">Adoptions</string>
+    <string name="nav_option_visits">Visits</string>
+    <string name="nav_option_events">Events</string>
+    <string name="nav_option_reports">Reports</string>
+    <string name="user_locked">User locked</string>
+    <string name="action_lock">Lock</string>
+    <string name="action_unlock">Unlock</string>
+    <string name="user_status">Satisfactory state change</string>
+    <string name="error_status_update">Error changing status</string>
+    <string name="subject_account_lock">DOgIT - Account lockout</string>
+    <string name="subject_account_unlock">DOgIT - Account unlockout</string>
+    <string name="content_account_unlock">, we want to inform you that your account has been unlocked.</string>
+    <string name="content_account_lock">, we regret report that account has been blocked.</string>
+    <string name="title_activity_admin_main">Admin</string>
+    <string name="title_activity_about_user">About User</string>
 </resources>

@@ -7,11 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -69,7 +67,7 @@ public class PetFragment extends Fragment {
         petsLayoutManager = new LinearLayoutManager(view.getContext());
         petsRecyclerView.setAdapter(petsAdapter);
         petsRecyclerView.setLayoutManager(petsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         getPets();
         return view;
     }

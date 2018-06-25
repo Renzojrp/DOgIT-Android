@@ -23,7 +23,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -31,7 +30,6 @@ import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONObject;
 
-import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -111,7 +109,7 @@ public class EditUserProfileActivity extends AppCompatActivity {
                 onDateButton();
             }
         });
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
 
         url = Uri.parse(user.getPhoto());
         photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);

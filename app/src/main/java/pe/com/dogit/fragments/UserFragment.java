@@ -45,7 +45,7 @@ public class UserFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
 
         photoANImageView = view.findViewById(R.id.photoANImageView);
         displayNameTextView = view.findViewById(R.id.displayNameTextView);

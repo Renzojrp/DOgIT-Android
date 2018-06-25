@@ -2,8 +2,6 @@ package pe.com.dogit.activities;
 
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -93,7 +91,7 @@ public class SendRequestActivity extends AppCompatActivity {
         }
 
         if(correctAnswer) {
-            if(publication.getUser().getId().equals(DOgITApp.getInstance().getCurrentUser().getId())) {
+            if(publication.getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
                 Toast.makeText(getApplicationContext(), R.string.error_request_publication, Toast.LENGTH_SHORT).show();
             } else {
                 getRequestByUser();
@@ -104,7 +102,7 @@ public class SendRequestActivity extends AppCompatActivity {
     private void getRequestByUser() {
         AndroidNetworking
                 .get(DOgITService.REQUEST_USER_URL)
-                .addPathParameter("user_id", DOgITApp.getInstance().getCurrentUser().getId())
+                .addPathParameter("user_id", DOgITApp.getInstance().getMyUser().getId())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -132,7 +130,7 @@ public class SendRequestActivity extends AppCompatActivity {
 
     private void sendResquest() {
         AndroidNetworking.post(DOgITService.REQUEST_URL)
-                .addBodyParameter("user", DOgITApp.getInstance().getCurrentUser().getId())
+                .addBodyParameter("user", DOgITApp.getInstance().getMyUser().getId())
                 .addBodyParameter("publication", publication.getId())
                 .addBodyParameter("message", answerTextInputLayout.getEditText().getText().toString())
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())

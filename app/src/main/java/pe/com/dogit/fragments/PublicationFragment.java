@@ -61,7 +61,7 @@ public class PublicationFragment extends Fragment {
         publicationsLayoutManager = new LinearLayoutManager(view.getContext());
         publicationsRecyclerView.setAdapter(publicationsAdapter);
         publicationsRecyclerView.setLayoutManager(publicationsLayoutManager);
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
         pets = DOgITApp.getInstance().getCurrentPets();
         addPublicationFloatingActionButton = view.findViewById(R.id.addPublicationFloatingActionButton);
         addPublicationFloatingActionButton.setOnClickListener(new View.OnClickListener() {

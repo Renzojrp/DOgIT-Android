@@ -65,7 +65,7 @@ public class AddPublicationActivity extends AppCompatActivity {
         requirementsTextInputLayout = findViewById(R.id.requirementsTextInputLayout);
         petSpinner = findViewById(R.id.petSpinner);
 
-        user = DOgITApp.getInstance().getCurrentUser();
+        user = DOgITApp.getInstance().getMyUser();
 
         for(int i = 0; i<DOgITApp.getInstance().getCurrentPets().size(); i++) {
             idPet.add(DOgITApp.getInstance().getCurrentPets().get(i).getId());

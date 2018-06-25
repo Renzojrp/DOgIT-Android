@@ -8,6 +8,7 @@
     <!-- LoginActivity -->
     <string name="title_activity_login">LoginActivity</string>
     <string name="incorrect_login">User or password incorrect</string>
+    <string name="user_locked">User locked</string>
 
     <!-- RecoverPasswordActivity -->
     <string name="title_activity_recover_password">RecoverPasswordActivity</string>
@@ -36,12 +37,31 @@
     <string name="nav_option_adoption">Adoptions</string>
     <string name="nav_option_visit">Visits</string>
     <string name="nav_option_event">Events</string>
-    <string name="nav_option_report">Reports</string>
     <string name="nav_option_log_out">Log out</string>
     <string name="error_pet">No pets were found</string>
     <string name="action_edit">Edit</string>
     <string name="action_delete">Delete</string>
     <string name="error_go_add_pet">You must have registered pets</string>
+
+    <!-- AdminMainActivity -->
+    <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="nav_option_users">Users</string>
+    <string name="nav_option_pets">Pets</string>
+    <string name="nav_option_blogs">Blogs</string>
+    <string name="nav_option_publications">Publications</string>
+    <string name="nav_option_adoptions">Adoptions</string>
+    <string name="nav_option_visits">Visits</string>
+    <string name="nav_option_events">Events</string>
+    <string name="nav_option_reports">Reports</string>
+    <string name="action_lock">Lock</string>
+    <string name="action_unlock">Unlock</string>
+    <string name="user_status">Satisfactory state change</string>
+    <string name="error_status_update">Error changing status</string>
+    <string name="subject_account_lock">DOgIT - Account lockout</string>
+    <string name="subject_account_unlock">DOgIT - Account unlockout</string>
+    <string name="content_account_lock">, we regret report that account has been blocked.</string>
+    <string name="content_account_unlock">, we want to inform you that your account has been unlocked.</string>
+
 
     <!-- EditUserProfileActivity -->
     <string name="title_activity_edit_user_profile">EditUserProfileActivity</string>
@@ -235,6 +255,7 @@
     <string name="title_activity_about_blog">AboutBlogActivity</string>
     <string name="title_activity_about_adoption">AboutAdoptionActivity</string>
     <string name="title_activity_list_adoption">ListAdoptionActivity</string>
+    <string name="title_activity_about_user">AboutUserActivity</string>
 
 
 </resources>
