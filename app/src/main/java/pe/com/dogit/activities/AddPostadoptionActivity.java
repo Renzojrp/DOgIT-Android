@@ -37,6 +37,7 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.models.Adoption;
+import pe.com.dogit.models.Pet;
 import pe.com.dogit.models.User;
 import pe.com.dogit.network.DOgITService;
 
@@ -55,6 +56,8 @@ public class AddPostadoptionActivity extends AppCompatActivity {
     private Uri url;
     private Uri uriSavedImage;
     private UploadTask uploadTask;
+
+    List<Adoption> petAdoption = new ArrayList<>();
 
     User user;
 
@@ -85,6 +88,27 @@ public class AddPostadoptionActivity extends AppCompatActivity {
         getAdoptions();
 
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        petSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+                idPetSelected = idPet.get(pos);
+                photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setImageUrl(petAdoption.get(pos).getPublication().getPet().getPhoto());
+                position = pos;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                idPetSelected = idPet.get(0);
+                photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
+                photoANImageView.setImageUrl(petAdoption.get(0).getPublication().getPet().getPhoto());
+                position = 0;
+            }
+        });
     }
 
     private void getAdoptions() {
@@ -98,9 +122,11 @@ public class AddPostadoptionActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         if(response == null) return;
+
                         try {
                             adoptions = Adoption.build(response.getJSONArray("adoptions"));
                             for(int i = 0; i<adoptions.size(); i++) {
+                                petAdoption.add(adoptions.get(i));
                                 idPet.add(adoptions.get(i).getId());
                                 namePet.add(adoptions.get(i).getPublication().getPet().getName());
                             }
@@ -108,26 +134,6 @@ public class AddPostadoptionActivity extends AppCompatActivity {
                             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             petSpinner.setAdapter(dataAdapter);
 
-                            petSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                                @Override
-                                public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-                                    idPetSelected = idPet.get(pos);
-                                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                                    photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(pos).getPhoto());
-                                    position = pos;
-                                }
-
-                                @Override
-                                public void onNothingSelected(AdapterView<?> parent) {
-                                    idPetSelected = idPet.get(0);
-                                    photoANImageView.setErrorImageResId(R.mipmap.ic_launcher);
-                                    photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
-                                    photoANImageView.setImageUrl(DOgITApp.getInstance().getCurrentPets().get(0).getPhoto());
-                                    position = 0;
-                                }
-                            });
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
