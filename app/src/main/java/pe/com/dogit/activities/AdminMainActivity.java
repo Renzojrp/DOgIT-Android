@@ -22,6 +22,7 @@ import pe.com.dogit.fragments.AdoptionFragment;
 import pe.com.dogit.fragments.BlogFragment;
 import pe.com.dogit.fragments.BlogsFragment;
 import pe.com.dogit.fragments.EventFragment;
+import pe.com.dogit.fragments.EventsFragment;
 import pe.com.dogit.fragments.PetFragment;
 import pe.com.dogit.fragments.PetsFragment;
 import pe.com.dogit.fragments.PublicationFragment;
@@ -84,27 +85,18 @@ public class AdminMainActivity extends AppCompatActivity
             case R.id.nav_users:
                 toolbar.setTitle(R.string.nav_option_users);
                 return new UsersFragment();
-            case R.id.nav_pets:
-                toolbar.setTitle(R.string.nav_option_pets);
-                return new PetsFragment();
             case R.id.nav_blogs:
                 toolbar.setTitle(R.string.nav_option_blogs);
                 return new BlogsFragment();
             case R.id.nav_publications:
                 toolbar.setTitle(R.string.nav_option_publications);
                 return new PublicationsFragment();
-            case R.id.nav_adoptions:
-                toolbar.setTitle(R.string.nav_option_adoptions);
-                return new AdoptionFragment();
-            case R.id.nav_visits:
-                toolbar.setTitle(R.string.nav_option_visits);
-                return new VisitFragment();
             case R.id.nav_reports:
                 toolbar.setTitle(R.string.nav_option_reports);
                 return new ReportFragment();
             case R.id.nav_events:
                 toolbar.setTitle(R.string.nav_option_events);
-                return new EventFragment();
+                return new EventsFragment();
         }
         return null;
     }
@@ -142,15 +134,9 @@ public class AdminMainActivity extends AppCompatActivity
             navigateAccordingTo(id);
         } else if (id == R.id.nav_users) {
             navigateAccordingTo(id);
-        } else if (id == R.id.nav_pets) {
-            navigateAccordingTo(id);
         }  else if (id == R.id.nav_blogs) {
             navigateAccordingTo(id);
         }  else if (id == R.id.nav_publications) {
-            navigateAccordingTo(id);
-        }  else if (id == R.id.nav_adoptions) {
-            navigateAccordingTo(id);
-        }  else if (id == R.id.nav_visits) {
             navigateAccordingTo(id);
         } else if (id == R.id.nav_events) {
             navigateAccordingTo(id);

@@ -50,6 +50,7 @@ public class AddPublicationActivity extends AppCompatActivity {
 
     User user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +106,12 @@ public class AddPublicationActivity extends AppCompatActivity {
             requirementsTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getRequirements());
             descriptionTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getDescription());
             addressTextInputLayout.getEditText().setText(DOgITApp.getInstance().getCurrentPublication().getAddress());
+            for(int i=0;i<idPet.size();i++) {
+                if(idPet.get(i).equals(DOgITApp.getInstance().getCurrentPublication().getPet().getId())) {
+                    position = i;
+                    petSpinner.setSelection(position);
+                }
+            }
         }
     }
 

@@ -44,7 +44,7 @@ public class AboutPetActivity extends AppCompatActivity {
 
         photoANImageView = findViewById(R.id.photoANImageView);
         nameTextView = findViewById(R.id.nameTextView);
-        descriptionTextView = findViewById(R.id.descriptionTextView);
+        descriptionTextView = findViewById(R.id.descriptionBeforeTextView);
         weightTextView = findViewById(R.id.weightTextView);
         rescueDateTextView = findViewById(R.id.rescueDateTextView);
         sizeTextView = findViewById(R.id.sizeTextView);

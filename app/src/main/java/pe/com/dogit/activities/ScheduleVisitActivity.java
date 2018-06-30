@@ -190,7 +190,6 @@ public class ScheduleVisitActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), R.string.visit_created, Toast.LENGTH_SHORT).show();
                         sendMail();
                         finish();
                     }
@@ -233,11 +232,11 @@ public class ScheduleVisitActivity extends AppCompatActivity {
                                 + " " + dateEditText.getText() + " " + getResources().getString(R.string.response_mail_visit_in) + " " +
                                     locationTextInputLayout.getEditText().getText(), "text/html; charset=utf-8");
                 Transport.send(message);
+                Toast.makeText(getApplicationContext(), R.string.visit_created, Toast.LENGTH_SHORT).show();
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
         }
-        Toast.makeText(getApplicationContext(),  R.string.mail_send_visit, Toast.LENGTH_SHORT).show();
         finish();
     }
 

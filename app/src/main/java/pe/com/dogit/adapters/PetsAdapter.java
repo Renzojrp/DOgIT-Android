@@ -84,7 +84,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder> {
             super(itemView);
             photoPetANImageView = itemView.findViewById(R.id.photoPetANImageView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = itemView.findViewById(R.id.descriptionBeforeTextView);
             genderTextView = itemView.findViewById(R.id.genderTextView);
             petCardView = itemView.findViewById(R.id.petCardView);
         }

@@ -37,7 +37,7 @@
             android:layout_margin="8dp" />
 
         <TextView
-            android:id="@+id/descriptionTextView"
+            android:id="@+id/descriptionBeforeTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sourcesansprolight"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sourcesansprolight"
             android:text="@string/sample_date"
-            app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeforeTextView"
             app:layout_constraintStart_toEndOf="@id/photoPetANImageView"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="8dp"/>

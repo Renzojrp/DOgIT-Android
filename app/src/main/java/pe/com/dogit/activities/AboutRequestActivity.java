@@ -2,8 +2,6 @@ package pe.com.dogit.activities;
 
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -34,7 +32,6 @@ import javax.mail.internet.MimeMessage;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.Request;
 import pe.com.dogit.network.DOgITService;
 
@@ -66,7 +63,7 @@ public class AboutRequestActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.nameTextView);
         photoUserANImageView = findViewById(R.id.photoUserANImageView);
         nameUserTextView = findViewById(R.id.nameUserTextView);
-        descriptionTextView = findViewById(R.id.descriptionTextView);
+        descriptionTextView = findViewById(R.id.descriptionBeforeTextView);
         messageProgressBar = findViewById(R.id.messageProgressBar);
 
         request = DOgITApp.getInstance().getCurrentRequest();

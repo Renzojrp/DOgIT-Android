@@ -175,6 +175,9 @@ public class ReportFragment extends Fragment {
 
 
     public void pdfView(View view) {
+        monthUsers.clear();
+        monthPublications.clear();
+        monthAdoptions.clear();
         templatePDF = new TemplatePDF(view.getContext());
         int year;
         int month;

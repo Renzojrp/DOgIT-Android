@@ -74,8 +74,7 @@ public class VisitFragment extends Fragment {
 
     private void getVisits() {
         AndroidNetworking
-                .get(DOgITService.VISIT_USER_URL)
-                .addPathParameter("user_id", user.getId())
+                .get(DOgITService.VISIT_URL)
                 .addHeaders("Authorization", DOgITApp.getInstance().getCurrentToken())
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -85,7 +84,17 @@ public class VisitFragment extends Fragment {
                         if(response == null) return;
                         try {
                             visits = Visit.build(response.getJSONArray("visits"));
-                            visitsAdapter.setVisits(visits);
+                            List<Visit> myVisits = new ArrayList<>();
+                            for (int i=0;i<visits.size();i++) {
+                                if(visits.get(i).getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
+                                    myVisits.add(visits.get(i));
+                                } else {
+                                    if (visits.get(i).getPublication().getUser().getId().equals(DOgITApp.getInstance().getMyUser().getId())) {
+                                        myVisits.add(visits.get(i));
+                                    }
+                                }
+                            }
+                            visitsAdapter.setVisits(myVisits);
                             visitsAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();

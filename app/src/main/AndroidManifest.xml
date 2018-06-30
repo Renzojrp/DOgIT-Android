@@ -145,6 +145,18 @@
         <activity
             android:name=".activities.AboutUserActivity"
             android:label="@string/title_activity_about_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PostadoptionActivity"
+            android:label="@string/title_activity_postadoption"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AddPostadoptionActivity"
+            android:label="@string/title_activity_add_postadoption"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AboutPostadoptionActivity"
+            android:label="@string/title_activity_about_postadoption"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -2,7 +2,6 @@ package pe.com.dogit.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -82,7 +81,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             super(itemView);
             photoPetANImageView = itemView.findViewById(R.id.photoPetANImageView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = itemView.findViewById(R.id.descriptionBeforeTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             eventCardView = itemView.findViewById(R.id.eventCardView);
         }

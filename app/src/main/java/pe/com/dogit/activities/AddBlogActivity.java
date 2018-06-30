@@ -179,12 +179,12 @@ public class AddBlogActivity extends AppCompatActivity {
                         DOgITApp.getInstance().getCurrentBlog().setPet(DOgITApp.getInstance().getCurrentPets().get(position));
                         DOgITApp.getInstance().getCurrentBlog().setDescription(descriptionTextInputLayout.getEditText().getText().toString());
 
-                        Toast.makeText(getApplicationContext(), R.string.publication_created, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.publication_update, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     @Override
                     public void onError(ANError error) {
-                        Toast.makeText(getApplicationContext(), R.string.error_publication_save, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_publication_update, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

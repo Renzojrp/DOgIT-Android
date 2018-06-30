@@ -75,7 +75,7 @@ public class AdoptionByMyPublicationsAdapter extends RecyclerView.Adapter<Adopti
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionBeforeTextView);
             adoptionCardView = (CardView) itemView.findViewById(R.id.adoptionCardView);
         }
     }

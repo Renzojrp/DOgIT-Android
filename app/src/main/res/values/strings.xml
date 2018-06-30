@@ -35,6 +35,7 @@
     <string name="nav_option_publication">Publications</string>
     <string name="nav_option_request">Requests</string>
     <string name="nav_option_adoption">Adoptions</string>
+    <string name="nav_option_post_adoption">Post-Adoptions</string>
     <string name="nav_option_visit">Visits</string>
     <string name="nav_option_event">Events</string>
     <string name="nav_option_log_out">Log out</string>
@@ -256,6 +257,9 @@
     <string name="title_activity_about_adoption">AboutAdoptionActivity</string>
     <string name="title_activity_list_adoption">ListAdoptionActivity</string>
     <string name="title_activity_about_user">AboutUserActivity</string>
+    <string name="title_activity_postadoption">PostadoptionActivity</string>
+    <string name="title_activity_add_postadoption">AddPostadoptionActivity</string>
+    <string name="title_activity_about_postadoption">AboutPostadoptionActivity</string>
 
 
 </resources>

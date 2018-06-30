@@ -14,7 +14,7 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.activities.AboutPublicationActivity;
+import pe.com.dogit.activities.AboutAdoptionActivity;
 import pe.com.dogit.models.Adoption;
 
 public class AdoptionsAdapter extends RecyclerView.Adapter<AdoptionsAdapter.ViewHolder>  {
@@ -44,7 +44,8 @@ public class AdoptionsAdapter extends RecyclerView.Adapter<AdoptionsAdapter.View
         holder.adoptionCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DOgITApp.getInstance().setCurrentAdoption(adoptions.get(position));
+                v.getContext().startActivity(new Intent(v.getContext(), AboutAdoptionActivity.class));
             }
         });
     }
@@ -72,7 +73,7 @@ public class AdoptionsAdapter extends RecyclerView.Adapter<AdoptionsAdapter.View
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionBeforeTextView);
             adoptionCardView = (CardView) itemView.findViewById(R.id.adoptionCardView);
         }
     }

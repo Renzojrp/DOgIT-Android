@@ -45,7 +45,7 @@ public class AboutBlogActivity extends AppCompatActivity {
         photoANImageView = findViewById(R.id.photoANImageView);
         nameUserTextView = findViewById(R.id.nameUserTextView);
         nameTextView = findViewById(R.id.nameTextView);
-        descriptionTextView = findViewById(R.id.descriptionTextView);
+        descriptionTextView = findViewById(R.id.descriptionBeforeTextView);
         dateTextView = findViewById(R.id.dateTextView);
 
         blog = DOgITApp.getInstance().getCurrentBlog();

@@ -181,5 +181,8 @@
     <string name="content_account_unlock">, lamentamos informarle que su cuenta ha sido bloqueada</string>
     <string name="title_activity_about_user">Datos de usuario</string>
     <string name="title_activity_admin_main">Administrador</string>
+    <string name="nav_option_post_adoption">Post-Adopciones</string>
+    <string name="title_activity_add_postadoption">Crear Post-Adopción</string>
+    <string name="title_activity_about_postadoption">Datos de Post-Adopción</string>
 
 </resources>

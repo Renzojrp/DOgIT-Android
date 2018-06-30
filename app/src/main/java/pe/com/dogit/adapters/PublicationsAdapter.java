@@ -73,7 +73,7 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionBeforeTextView);
             publicationCardView = (CardView) itemView.findViewById(R.id.publicationCardView);
         }
     }

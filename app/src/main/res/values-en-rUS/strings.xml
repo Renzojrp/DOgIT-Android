@@ -181,4 +181,7 @@
     <string name="content_account_lock">, we regret report that account has been blocked.</string>
     <string name="title_activity_admin_main">Admin</string>
     <string name="title_activity_about_user">About User</string>
+    <string name="nav_option_post_adoption">Post-Adoptions</string>
+    <string name="title_activity_add_postadoption">AddPostadoption</string>
+    <string name="title_activity_about_postadoption">AboutPostadoption</string>
 </resources>

@@ -323,12 +323,12 @@ public class AddEventActivity extends AppCompatActivity {
                         DOgITApp.getInstance().getCurrentEvent().setAddress(locationTextInputLayout.getEditText().getText().toString());
                         DOgITApp.getInstance().getCurrentEvent().setCapacity(Integer.parseInt(capabilityTextInputLayout.getEditText().getText().toString()));
 
-                        Toast.makeText(getApplicationContext(), R.string.event_created, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.event_update, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     @Override
                     public void onError(ANError error) {
-                        Toast.makeText(getApplicationContext(), R.string.error_event_save, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_event_update, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

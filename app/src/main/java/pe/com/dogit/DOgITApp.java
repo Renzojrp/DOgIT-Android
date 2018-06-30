@@ -10,6 +10,7 @@ import pe.com.dogit.models.Adoption;
 import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
+import pe.com.dogit.models.Postadoption;
 import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.Request;
 import pe.com.dogit.models.User;
@@ -121,6 +122,15 @@ public class DOgITApp extends Application {
 
     public DOgITApp setCurrentAdoption(Adoption adoption) {
         DOgITService.setCurrentAdoption(adoption);
+        return this;
+    }
+
+    public Postadoption getCurrentPostadoption() {
+        return DOgITService.getCurrentPostadoption();
+    }
+
+    public DOgITApp setCurrentPostadoption(Postadoption postadoption) {
+        DOgITService.setCurrentPostadoption(postadoption);
         return this;
     }
 }

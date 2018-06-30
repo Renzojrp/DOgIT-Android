@@ -6,6 +6,7 @@ import pe.com.dogit.models.Adoption;
 import pe.com.dogit.models.Blog;
 import pe.com.dogit.models.Event;
 import pe.com.dogit.models.Pet;
+import pe.com.dogit.models.Postadoption;
 import pe.com.dogit.models.Publication;
 import pe.com.dogit.models.Request;
 import pe.com.dogit.models.User;
@@ -39,6 +40,7 @@ public class DOgITService {
     public static String REQUEST_EDIT_URL = "https://dogit.herokuapp.com/api/request/{request_id}";
     public static String ADOPTION_URL = "https://dogit.herokuapp.com/api/adoption";
     public static String ADOPTION_USER_URL = "https://dogit.herokuapp.com/api/adoption/user/{user_id}";
+    public static String POSTADOPTION_URL = "https://dogit.herokuapp.com/api/postadoption";
     public static String VISIT_URL = "https://dogit.herokuapp.com/api/visit";
     public static String VISIT_USER_URL = "https://dogit.herokuapp.com/api/visit/user/{user_id}";
 
@@ -52,6 +54,7 @@ public class DOgITService {
     private Blog currentBlog;
     private Request currentRequest;
     private Adoption currentAdoption;
+    private Postadoption currentPostadoption;
 
     public User getMyUser() {
         return myUser;
@@ -140,6 +143,15 @@ public class DOgITService {
 
     public DOgITService setCurrentAdoption(Adoption currentAdoption) {
         this.currentAdoption = currentAdoption;
+        return this;
+    }
+
+    public Postadoption getCurrentPostadoption() {
+        return currentPostadoption;
+    }
+
+    public DOgITService setCurrentPostadoption(Postadoption currentPostadoption) {
+        this.currentPostadoption = currentPostadoption;
         return this;
     }
 }

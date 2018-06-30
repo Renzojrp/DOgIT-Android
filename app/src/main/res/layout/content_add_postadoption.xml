@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.AddPostadoptionActivity"
+    tools:showIn="@layout/activity_add_postadoption">
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoANImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:elevation="6dp" />
+
+    <TextView
+        android:id="@+id/petTextView"
+        android:fontFamily="@font/sourcesansprolight"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:text="@string/pet_hint"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/dateEditText"
+        android:textColor="@color/colorAccent"/>
+
+    <Spinner
+        android:id="@+id/petSpinner"
+        android:fontFamily="@font/sourcesansprolight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toEndOf="@id/petTextView"
+        app:layout_constraintTop_toBottomOf="@id/photoANImageView" />
+
+
+    <com.androidnetworking.widget.ANImageView
+        android:id="@+id/photoPostAdotionANImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="6dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petTextView" />
+
+    <Button
+        android:id="@+id/galeryButton"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/sourcesansprolight"
+        android:onClick="galeryClick"
+        android:text="@string/galeryButton"
+        app:layout_constraintBottom_toBottomOf="@+id/photoPostAdotionANImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/photoPostAdotionANImageView"
+        app:layout_constraintTop_toBottomOf="@+id/petTextView" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/descriptionTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sourcesansprolight"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
+        app:counterOverflowTextAppearance="@style/Error"
+        app:errorTextAppearance="@style/Error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photoPostAdotionANImageView">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/descriptionInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description_hint"
+            android:inputType="textCapSentences|textMultiLine" />
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

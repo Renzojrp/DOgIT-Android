@@ -62,7 +62,7 @@ public class SendRequestActivity extends AppCompatActivity {
 
         photoANImageView = findViewById(R.id.photoANImageView);
         nameTextView = findViewById(R.id.nameTextView);
-        descriptionTextView = findViewById(R.id.descriptionTextView);
+        descriptionTextView = findViewById(R.id.descriptionBeforeTextView);
         questionTextView = findViewById(R.id.questionTextView);
         answerTextInputLayout = findViewById(R.id.answerTextInputLayout);
 
@@ -139,7 +139,6 @@ public class SendRequestActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), R.string.request_send, Toast.LENGTH_SHORT).show();
                         sendMail();
                     }
                     @Override
@@ -178,6 +177,7 @@ public class SendRequestActivity extends AppCompatActivity {
                 message.setContent(publication.getUser().getName() + " " + getResources().getString(R.string.mail_send_request_request)
                         + " " + publication.getPet().getName(), "text/html; charset=utf-8");
                 Transport.send(message);
+                Toast.makeText(getApplicationContext(), R.string.request_send, Toast.LENGTH_SHORT).show();
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

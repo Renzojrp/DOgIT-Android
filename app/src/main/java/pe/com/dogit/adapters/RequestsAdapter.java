@@ -14,7 +14,6 @@ import java.util.List;
 
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
-import pe.com.dogit.activities.AboutPublicationActivity;
 import pe.com.dogit.activities.AboutRequestActivity;
 import pe.com.dogit.models.Request;
 
@@ -74,7 +73,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionBeforeTextView);
             requestCardView = (CardView) itemView.findViewById(R.id.requestCardView);
         }
     }

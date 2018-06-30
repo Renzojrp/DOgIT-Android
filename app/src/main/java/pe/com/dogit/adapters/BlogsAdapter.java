@@ -15,7 +15,6 @@ import java.util.List;
 import pe.com.dogit.DOgITApp;
 import pe.com.dogit.R;
 import pe.com.dogit.activities.AboutBlogActivity;
-import pe.com.dogit.activities.AboutPublicationActivity;
 import pe.com.dogit.models.Blog;
 
 public class BlogsAdapter extends RecyclerView.Adapter<BlogsAdapter.ViewHolder>  {
@@ -74,7 +73,7 @@ public class BlogsAdapter extends RecyclerView.Adapter<BlogsAdapter.ViewHolder> 
             super(itemView);
             photoANImageView = (ANImageView) itemView.findViewById(R.id.photoANImageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionBeforeTextView);
             blogCardView = (CardView) itemView.findViewById(R.id.blogCardView);
         }
     }
