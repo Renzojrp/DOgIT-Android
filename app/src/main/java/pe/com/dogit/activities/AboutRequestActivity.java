@@ -101,7 +101,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), R.string.request_refuse, Toast.LENGTH_SHORT).show();
+
                         sendMail("R", request);
                         finish();
                     }
@@ -122,7 +122,7 @@ public class AboutRequestActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), R.string.request_accept, Toast.LENGTH_SHORT).show();
+
                         sendMail("A", request);
                         getRequestByPublication();
                         changePublicationStatus();
@@ -219,6 +219,11 @@ public class AboutRequestActivity extends AppCompatActivity {
                 message.setContent(requestOfUser.getUser().getName() + " " + getResources().getString(R.string.response_mail) + " " + requestOfUser.getPublication().getPet().getName() +
                         " " + getResources().getString(R.string.response_mail_body) + " " + status, "text/html; charset=utf-8");
                 Transport.send(message);
+                if (answer.equals("A")) {
+                    Toast.makeText(getApplicationContext(), R.string.request_accept, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.request_refuse, Toast.LENGTH_SHORT).show();
+                }
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
