@@ -172,7 +172,7 @@ public class ScheduleVisitActivity extends AppCompatActivity {
             correctMessage = true;
         }
 
-        if(correctDate && correctLocation) {
+        if(correctDate && correctLocation && correctMessage) {
             saveVisit();
         }
     }
