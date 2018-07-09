@@ -177,8 +177,8 @@
     <string name="error_status_update">Error al cambiar de estado</string>
     <string name="subject_account_lock">DOgIT - Cuenta bloqueada</string>
     <string name="subject_account_unlock">DOgIT - Cuenta desbloqueada</string>
-    <string name="content_account_lock">, queremos informarle que su cuenta ha sido bloqueada</string>
-    <string name="content_account_unlock">, lamentamos informarle que su cuenta ha sido desbloqueada</string>
+    <string name="content_account_lock">, lamentamos informarle que su cuenta ha sido bloqueada</string>
+    <string name="content_account_unlock">, queremos informarle que su cuenta ha sido desbloqueada</string>
     <string name="title_activity_about_user">Datos de usuario</string>
     <string name="title_activity_admin_main">Administrador</string>
     <string name="nav_option_post_adoption">Post-Adopciones</string>

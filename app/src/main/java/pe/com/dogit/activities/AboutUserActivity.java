@@ -147,10 +147,10 @@ public class AboutUserActivity extends AppCompatActivity {
         String content;
         if (status.equals("B")) {
             subject = getResources().getString(R.string.subject_account_lock);
-            content = getResources().getString(R.string.content_account_lock);
+            content = DOgITApp.getInstance().getCurrentUser().getName() + getResources().getString(R.string.content_account_lock);
         } else {
             subject = getResources().getString(R.string.subject_account_unlock);
-            content = getResources().getString(R.string.content_account_unlock);
+            content = DOgITApp.getInstance().getCurrentUser().getName() + getResources().getString(R.string.content_account_unlock);
         }
 
         if(session != null) {
